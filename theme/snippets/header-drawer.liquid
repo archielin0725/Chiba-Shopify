@@ -351,6 +351,12 @@
                               "
                             >
                               {%- if childlink.links == blank -%}
+                                {% liquid
+                                  assign is_cycling_child = false
+                                  if childlink.title contains '自行車' or childlink.title contains 'Cycling' or childlink.handle == 'chiba-gloves-germany'
+                                    assign is_cycling_child = true
+                                  endif
+                                %}
                                 {%- comment -%}
                                   Simple links for links with no children (regardless of accordion setting), in menus with 3 levels of links
                                   This link is currently using --parent class style but --child would match the pattern on desktop
@@ -374,6 +380,34 @@
                                     {{- childlink.title | escape -}}
                                   </span>
                                 </a>
+                                {% if is_cycling_child %}
+                                  <ul
+                                    class="menu-drawer__menu menu-drawer__menu--grandchildlist details-content"
+                                    role="list"
+                                    tabindex="-1"
+                                  >
+                                    <li class="menu-drawer__list-item" style="--menu-drawer-animation-index: 1;">
+                                      <a href="/collections/chiba-gloves-germany/bioxcell-line" class="menu-drawer__menu-item menu-drawer__menu-item--child">
+                                        <span class="menu-drawer__menu-item-text wrap-text">BioXCell 減壓系列</span>
+                                      </a>
+                                    </li>
+                                    <li class="menu-drawer__list-item" style="--menu-drawer-animation-index: 2;">
+                                      <a href="/collections/chiba-gloves-germany/comfort-line" class="menu-drawer__menu-item menu-drawer__menu-item--child">
+                                        <span class="menu-drawer__menu-item-text wrap-text">Comfort 舒適系列</span>
+                                      </a>
+                                    </li>
+                                    <li class="menu-drawer__list-item" style="--menu-drawer-animation-index: 3;">
+                                      <a href="/collections/chiba-gloves-germany/active-line" class="menu-drawer__menu-item menu-drawer__menu-item--child">
+                                        <span class="menu-drawer__menu-item-text wrap-text">Active 活力系列</span>
+                                      </a>
+                                    </li>
+                                    <li class="menu-drawer__list-item" style="--menu-drawer-animation-index: 4;">
+                                      <a href="/collections/chiba-gloves-germany/race-line" class="menu-drawer__menu-item menu-drawer__menu-item--child">
+                                        <span class="menu-drawer__menu-item-text wrap-text">Race 競速系列</span>
+                                      </a>
+                                    </li>
+                                  </ul>
+                                {% endif %}
                               {%- else -%}
                                 {% liquid
                                   assign should_open_first_nested = false

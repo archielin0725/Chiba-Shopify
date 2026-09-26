@@ -106,10 +106,16 @@
         echo '<li class="mega-menu__column ' | append: span_class | append: '">'
       endif
     %}
+    {% liquid
+      assign is_cycling_link = false
+      if link.title contains '自行車' or link.title contains 'Cycling' or link.handle == 'chiba-gloves-germany'
+        assign is_cycling_link = true
+      endif
+    %}
     <div>
       <a
         href="{{ link.url }}"
-        class="mega-menu__link {% if link.links != blank %}mega-menu__link--parent{% endif %}"
+        class="mega-menu__link {% if link.links != blank or is_cycling_link %}mega-menu__link--parent{% endif %}"
       >
         {% if menu_content_type == 'collection_images' %}
           {%- capture collection_image_sizes -%}
@@ -157,6 +163,29 @@
               </a>
             </li>
           {% endfor %}
+        </ul>
+      {% elsif is_cycling_link %}
+        <ul class="list-unstyled">
+          <li>
+            <a href="/collections/chiba-gloves-germany/bioxcell-line" class="mega-menu__link">
+              <span class="wrap-text">BioXCell 減壓系列</span>
+            </a>
+          </li>
+          <li>
+            <a href="/collections/chiba-gloves-germany/comfort-line" class="mega-menu__link">
+              <span class="wrap-text">Comfort 舒適系列</span>
+            </a>
+          </li>
+          <li>
+            <a href="/collections/chiba-gloves-germany/active-line" class="mega-menu__link">
+              <span class="wrap-text">Active 活力系列</span>
+            </a>
+          </li>
+          <li>
+            <a href="/collections/chiba-gloves-germany/race-line" class="mega-menu__link">
+              <span class="wrap-text">Race 競速系列</span>
+            </a>
+          </li>
         </ul>
       {% endif %}
     </div>
