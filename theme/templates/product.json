@@ -26,20 +26,20 @@
           "type": "_product-media-gallery",
           "static": true,
           "settings": {
-            "media_presentation": "grid",
-            "media_columns": "two",
-            "image_gap": 4,
-            "large_first_image": false,
-            "icons_style": "arrow",
-            "slideshow_controls_style": "counter",
-            "slideshow_mobile_controls_style": "counter",
-            "thumbnail_position": "right",
-            "thumbnail_width": 44,
-            "thumbnail_radius": 0,
-            "aspect_ratio": "adapt",
+            "media_presentation": "carousel",
+            "media_columns": "one",
+            "image_gap": 8,
+            "large_first_image": true,
+            "icons_style": "chevron",
+            "slideshow_controls_style": "thumbnails",
+            "slideshow_mobile_controls_style": "thumbnails",
+            "thumbnail_position": "bottom",
+            "thumbnail_width": 64,
+            "thumbnail_radius": 4,
+            "aspect_ratio": "1",
             "constrain_to_viewport": true,
             "media_fit": "contain",
-            "media_radius": 0,
+            "media_radius": 4,
             "extend_media": false,
             "zoom": true,
             "video_loop": false,
@@ -150,16 +150,42 @@
                     "show_sale_price_first": true,
                     "show_installments": false,
                     "show_tax_info": false,
-                    "type_preset": "paragraph",
+                    "type_preset": "h4",
                     "width": "100%",
                     "alignment": "left",
-                    "font": "var(--font-body--family)",
-                    "font_size": "1rem",
+                    "font": "var(--font-heading--family)",
+                    "font_size": "1.5rem",
                     "line_height": "normal",
                     "letter_spacing": "normal",
                     "case": "none",
                     "text_color": "",
                     "padding-block-start": 4,
+                    "padding-block-end": 4,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "text_eyebrow": {
+                  "type": "text",
+                  "name": "t:names.product_vendor",
+                  "settings": {
+                    "text": "<p style=\"text-transform:uppercase;letter-spacing:0.12em;font-size:0.75rem;font-weight:700;color:#d42b31;margin:0 0 2px;\">CHIBA GLOVES GERMANY · 台灣官方代理</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "custom",
+                    "font": "var(--font-body--family)",
+                    "font_size": "0.75rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "text_color": "#d42b31",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
                     "padding-block-end": 0,
                     "padding-inline-start": 0,
                     "padding-inline-end": 0
@@ -168,6 +194,7 @@
                 }
               },
               "block_order": [
+                "text_eyebrow",
                 "text_xrnftG",
                 "price_tVjtKg"
               ]
@@ -277,7 +304,7 @@
                 "alignment": "left",
                 "type_preset": "custom",
                 "font": "var(--font-body--family)",
-                "font_size": "1.25rem",
+                "font_size": "1rem",
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
@@ -287,11 +314,99 @@
                 "background_color": "#00000026",
                 "corner_radius": 0,
                 "padding-block-start": 0,
-                "padding-block-end": 0,
+                "padding-block-end": 12,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
               },
               "blocks": {}
+            },
+            "accordion_specs": {
+              "type": "accordion",
+              "name": "t:names.accordion",
+              "settings": {
+                "icon": "caret",
+                "dividers": true,
+                "divider_color": "{{ settings.color_palette.color2 }}",
+                "type_preset": "h6",
+                "background_color": "",
+                "text_color": "",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_color": "",
+                "border_radius": 0,
+                "padding-block-start": 8,
+                "padding-block-end": 16,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "row_size_guide": {
+                  "type": "_accordion-row",
+                  "settings": {
+                    "heading": "尺寸測量指南 (Size Guide)",
+                    "open_by_default": false,
+                    "icon": "ruler"
+                  },
+                  "blocks": {
+                    "text_size": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p><strong>手圍測量方式</strong>：請使用軟尺繞手掌最寬處（不含大拇指虎口），對照以下掌圍選購：<br>• <strong>XS (6號)</strong>：16.5 ~ 17.5 cm<br>• <strong>S (7號)</strong>：18 ~ 19.5 cm<br>• <strong>M (8號)</strong>：20 ~ 21.5 cm<br>• <strong>L (9號)</strong>：22 ~ 23.5 cm<br>• <strong>XL (10號)</strong>：24 ~ 25.5 cm<br>• <strong>XXL (11號)</strong>：26 ~ 27.5 cm<br>• <strong>3XL (12號)</strong>：28 cm 以上</p><p style=\"font-size:0.875rem;color:#67727d;margin-top:6px;\">※ 測量值若介於兩尺寸之間，偏好服貼包覆請選小號，習慣活動餘裕請選大號。</p>",
+                        "width": "100%"
+                      }
+                    }
+                  },
+                  "block_order": [
+                    "text_size"
+                  ]
+                },
+                "row_german_tech": {
+                  "type": "_accordion-row",
+                  "settings": {
+                    "heading": "德國百年機能與專利 (German Craft & Tech)",
+                    "open_by_default": false,
+                    "icon": "star"
+                  },
+                  "blocks": {
+                    "text_tech": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p><strong>100% 德國正品工藝</strong>：CHIBA 創立於 1853 年，為歐洲頂級運動防護手套先驅。全系列手套採用高階人體工學剪裁，掌心配置高分子減震襯墊（BioXCell / Gel / Poron XRD），顯著降低長途騎行手麻與運動壓迫感。</p>",
+                        "width": "100%"
+                      }
+                    }
+                  },
+                  "block_order": [
+                    "text_tech"
+                  ]
+                },
+                "row_care": {
+                  "type": "_accordion-row",
+                  "settings": {
+                    "heading": "洗滌與保養指南 (Care & Maintenance)",
+                    "open_by_default": false,
+                    "icon": "washing"
+                  },
+                  "blocks": {
+                    "text_care": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>• 建議使用 30°C 以下溫水手洗，請勿機洗強力脫水。<br>• 請使用中性洗衣精，<strong>切勿使用漂白劑、衣物柔軟精</strong>。<br>• 洗後請平放於陰涼通風處陰乾，<strong>嚴禁烘乾機烘乾或直曬強烈陽光</strong>，以免防滑塗層與彈性皮革硬化老化。</p>",
+                        "width": "100%"
+                      }
+                    }
+                  },
+                  "block_order": [
+                    "text_care"
+                  ]
+                }
+              },
+              "block_order": [
+                "row_size_guide",
+                "row_german_tech",
+                "row_care"
+              ]
             }
           },
           "block_order": [
@@ -299,7 +414,8 @@
             "divider_VJhene",
             "variant_picker_R3rGDr",
             "buy_buttons_eYQEYi",
-            "text_aEtTtq"
+            "text_aEtTtq",
+            "accordion_specs"
           ]
         }
       },

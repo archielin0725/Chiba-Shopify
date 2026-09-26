@@ -111,7 +111,7 @@
       {% endif %}
     {% else %}
       <span class="price"
-        ><bdi>{{ price | default: '&nbsp;' }}</bdi></span
+        ><span class="price-prefix">{{ 'content.price_regular' | t }}</span><bdi>{{ price | default: '&nbsp;' }}</bdi></span
       >
     {% endif %}
   {% endif %}

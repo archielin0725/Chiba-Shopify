@@ -245,23 +245,13 @@
             "label": "競速系列",
             "tag": "Race Line"
           }
-        },
-        "line_tile_5": {
-          "type": "line_tile",
-          "name": "Line tile",
-          "settings": {
-            "image": "shopify://shop_images/fitness__30410__black-uni-101__5e1d85e7e7700a8d__30410-101-1.jpg",
-            "label": "全能系列",
-            "tag": "Allround Line"
-          }
         }
       },
       "block_order": [
         "line_tile_1",
         "line_tile_2",
         "line_tile_3",
-        "line_tile_4",
-        "line_tile_5"
+        "line_tile_4"
       ],
       "settings": {
         "heading": "<h2>依款式選購</h2>",

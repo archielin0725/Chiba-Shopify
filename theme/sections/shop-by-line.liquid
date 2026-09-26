@@ -144,6 +144,18 @@
     opacity: 0.65;
   }
 
+  @media screen and (min-width: 990px) {
+    .shop-by-line__row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      overflow-x: visible;
+      gap: 20px;
+    }
+    .shop-by-line__tile {
+      width: 100%;
+    }
+  }
+
   @media screen and (max-width: 749px) {
     .shop-by-line__tile {
       width: clamp(120px, 42vw, 170px);
@@ -243,8 +255,7 @@
         { "type": "line_tile", "settings": { "label": "舒適系列", "tag": "Comfort Line" } },
         { "type": "line_tile", "settings": { "label": "運動系列", "tag": "Active Line" } },
         { "type": "line_tile", "settings": { "label": "BioXCell 減壓系列", "tag": "BioXCell Line" } },
-        { "type": "line_tile", "settings": { "label": "競速系列", "tag": "Race Line" } },
-        { "type": "line_tile", "settings": { "label": "全能系列", "tag": "Allround Line" } }
+        { "type": "line_tile", "settings": { "label": "競速系列", "tag": "Race Line" } }
       ]
     }
   ]
