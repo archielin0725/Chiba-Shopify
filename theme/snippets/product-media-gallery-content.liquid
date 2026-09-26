@@ -125,13 +125,83 @@
     assign sorted_media = sorted_media | concat: selected_product.media | where: 'id', selected_variant_media.id
   endif
 
+  # Determine variant color code from selected_variant_media filename if present
+  assign variant_color_code = blank
+  if selected_variant_media
+    assign var_media_fname = selected_variant_media.src | split: '/' | last | split: '?' | first
+    if var_media_fname contains '_01_'
+      assign variant_color_code = '_01_'
+    elsif var_media_fname contains '_03-1_'
+      assign variant_color_code = '_03-1_'
+    elsif var_media_fname contains '_04_'
+      assign variant_color_code = '_04_'
+    elsif var_media_fname contains '_06_'
+      assign variant_color_code = '_06_'
+    elsif var_media_fname contains '_10_'
+      assign variant_color_code = '_10_'
+    elsif var_media_fname contains '_19_'
+      assign variant_color_code = '_19_'
+    elsif var_media_fname contains '_20-1_'
+      assign variant_color_code = '_20-1_'
+    elsif var_media_fname contains '_23_'
+      assign variant_color_code = '_23_'
+    elsif var_media_fname contains '_28_'
+      assign variant_color_code = '_28_'
+    elsif var_media_fname contains '_1003-1_'
+      assign variant_color_code = '_1003-1_'
+    elsif var_media_fname contains '_1004_'
+      assign variant_color_code = '_1004_'
+    elsif var_media_fname contains '_1005_'
+      assign variant_color_code = '_1005_'
+    elsif var_media_fname contains '_1010_'
+      assign variant_color_code = '_1010_'
+    elsif var_media_fname contains '_1020_'
+      assign variant_color_code = '_1020_'
+    elsif var_media_fname contains '-1010-'
+      assign variant_color_code = '-1010-'
+    elsif var_media_fname contains '-1020-'
+      assign variant_color_code = '-1020-'
+    elsif var_media_fname contains '-1004-'
+      assign variant_color_code = '-1004-'
+    elsif var_media_fname contains '-20-1-'
+      assign variant_color_code = '-20-1-'
+    elsif var_media_fname contains '-23-'
+      assign variant_color_code = '-23-'
+    elsif var_media_fname contains '-0110-'
+      assign variant_color_code = '-0110-'
+    elsif var_media_fname contains '-1023-1-'
+      assign variant_color_code = '-1023-1-'
+    endif
+  endif
+
   for media in selected_product.media
     if selected_variant_media and media.id == selected_variant_media.id
       continue
     endif
 
-    # Color isolation filter: filter out images that belong exclusively to other colors (space-aware matching)
-    if active_color != blank and all_product_colors.size > 1
+    # Stop adding once we have Front + Palm images (max 2 images per variant to remove redundant photos)
+    if sorted_media.size >= 2
+      break
+    endif
+
+    # Filter out redundant crops and stitches (_3.._9, -4..-9)
+    assign media_fname = media.src | split: '/' | last | split: '?' | first
+    assign is_redundant_crop = false
+    if media_fname contains '_3.' or media_fname contains '_4.' or media_fname contains '_5.' or media_fname contains '_6.' or media_fname contains '_7.' or media_fname contains '_8.' or media_fname contains '_9.' or media_fname contains '_10.' or media_fname contains '_11.'
+      assign is_redundant_crop = true
+    elsif media_fname contains '-4.' or media_fname contains '-5.' or media_fname contains '-6.' or media_fname contains '-7.' or media_fname contains '-8.' or media_fname contains '-9.'
+      assign is_redundant_crop = true
+    endif
+    if is_redundant_crop
+      continue
+    endif
+
+    # Color isolation: if variant color code exists, ensure media matches it
+    if variant_color_code != blank
+      unless media_fname contains variant_color_code
+        continue
+      endunless
+    elsif active_color != blank and all_product_colors.size > 1
       assign is_other_color_media = false
 
       # Check if this media specifically belongs to another color
@@ -167,9 +237,9 @@
     assign sorted_media = sorted_media | concat: found_media
   endfor
 
-  # Fallback safety: if filtering resulted in empty media, show all product media
+  # Fallback safety: if filtering resulted in empty media, show first 2 images
   if sorted_media.size == 0
-    assign sorted_media = selected_product.media
+    assign sorted_media = selected_product.media | slice: 0, 2
   endif
   assign has_image_drop = sorted_media | has: 'media_type', 'image'
 
