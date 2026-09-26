@@ -60,17 +60,45 @@
     assign use_currency = true
   endif
 
-  # Format all prices
-  if use_currency
-    assign price = price | money_with_currency
-    assign compare_at_price = compare_at_price | money_with_currency
-    assign price_min = price_min | money_with_currency
-    assign price_max = price_max | money_with_currency
+  # Format all prices ensuring official Taiwan format: NT$ X,XXX
+  assign raw_price = price | money_without_trailing_zeros | remove: ' TWD' | remove: 'TWD' | strip
+  if raw_price contains 'NT$'
+    assign price = raw_price | replace: 'NT$', 'NT$ ' | replace: 'NT$  ', 'NT$ '
+  elsif raw_price contains '$'
+    assign price = raw_price | replace: '$', 'NT$ ' | replace: 'NT$  ', 'NT$ '
   else
-    assign price = price | money
-    assign compare_at_price = compare_at_price | money
-    assign price_min = price_min | money
-    assign price_max = price_max | money
+    assign price = 'NT$ ' | append: raw_price
+  endif
+
+  if compare_at_price > 0
+    assign raw_compare = compare_at_price | money_without_trailing_zeros | remove: ' TWD' | remove: 'TWD' | strip
+    if raw_compare contains 'NT$'
+      assign compare_at_price = raw_compare | replace: 'NT$', 'NT$ ' | replace: 'NT$  ', 'NT$ '
+    elsif raw_compare contains '$'
+      assign compare_at_price = raw_compare | replace: '$', 'NT$ ' | replace: 'NT$  ', 'NT$ '
+    else
+      assign compare_at_price = 'NT$ ' | append: raw_compare
+    endif
+  endif
+
+  if price_min != null
+    assign raw_min = price_min | money_without_trailing_zeros | remove: ' TWD' | remove: 'TWD' | strip
+    if raw_min contains 'NT$'
+      assign price_min = raw_min | replace: 'NT$', 'NT$ ' | replace: 'NT$  ', 'NT$ '
+    elsif raw_min contains '$'
+      assign price_min = raw_min | replace: '$', 'NT$ ' | replace: 'NT$  ', 'NT$ '
+    else
+      assign price_min = 'NT$ ' | append: raw_min
+    endif
+
+    assign raw_max = price_max | money_without_trailing_zeros | remove: ' TWD' | remove: 'TWD' | strip
+    if raw_max contains 'NT$'
+      assign price_max = raw_max | replace: 'NT$', 'NT$ ' | replace: 'NT$  ', 'NT$ '
+    elsif raw_max contains '$'
+      assign price_max = raw_max | replace: '$', 'NT$ ' | replace: 'NT$  ', 'NT$ '
+    else
+      assign price_max = 'NT$ ' | append: raw_max
+    endif
   endif
 -%}
 

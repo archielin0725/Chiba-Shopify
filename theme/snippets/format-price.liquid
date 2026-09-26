@@ -14,12 +14,13 @@
   assign price_value = price | default: 0
   assign price_type = type | default: 'regular'
 
-  assign show_currency = settings.currency_code_enabled_product_pages
-
-  if show_currency
-    assign formatted_price = price_value | money_with_currency
+  assign raw_price_str = price_value | money_without_trailing_zeros | remove: ' TWD' | remove: 'TWD' | strip
+  if raw_price_str contains 'NT$'
+    assign formatted_price = raw_price_str | replace: 'NT$', 'NT$ ' | replace: 'NT$  ', 'NT$ '
+  elsif raw_price_str contains '$'
+    assign formatted_price = raw_price_str | replace: '$', 'NT$ ' | replace: 'NT$  ', 'NT$ '
   else
-    assign formatted_price = price_value | money
+    assign formatted_price = 'NT$ ' | append: raw_price_str
   endif
 
   # callers using this in attributes strip the bdi via strip_html
