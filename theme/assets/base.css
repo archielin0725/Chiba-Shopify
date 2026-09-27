@@ -1970,6 +1970,28 @@ main > .shopify-section:first-child .section:not(.disable-section-top-offset) {
   transform: scale(0.96) !important;
 }
 
+.menu-drawer__close-button svg,
+.menu-drawer__close-button .svg-wrapper svg,
+.menu-drawer__close-button .header-drawer-icon--close svg {
+  width: 18px !important;
+  height: 18px !important;
+  min-width: 18px !important;
+  min-height: 18px !important;
+  stroke: #1e293b !important;
+  stroke-width: 2.2px !important;
+  display: block !important;
+}
+
+.menu-drawer__close-button .svg-wrapper,
+.menu-drawer__close-button .header-drawer-icon {
+  width: 18px !important;
+  height: 18px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+}
+
 .menu-drawer__navigation {
   flex-shrink: 0 !important;
   padding: 12px 16px 6px 16px !important;
@@ -2148,6 +2170,17 @@ main > .shopify-section:first-child .section:not(.disable-section-top-offset) {
   height: 38px !important;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04) !important;
   color: #334155 !important;
+}
+
+#filters-drawer .theme-drawer__close-button svg,
+#filters-drawer .theme-drawer__close-button .svg-wrapper svg {
+  width: 18px !important;
+  height: 18px !important;
+  min-width: 18px !important;
+  min-height: 18px !important;
+  stroke: #1e293b !important;
+  stroke-width: 2.2px !important;
+  display: block !important;
 }
 
 /* Price Filter Modern Pill Inputs */
