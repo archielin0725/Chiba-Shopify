@@ -71,4 +71,15 @@
   .price-item__group {
     display: inline-block;
   }
+
+  /* Mobile: ensure product card prices are legible (>= 14px) */
+  @media screen and (max-width: 749px) {
+    .product-grid__card .price,
+    .product-grid__card product-price {
+      font-size: max(0.875rem, var(--font-size, 0.875rem)) !important;
+    }
+    .product-grid__card .price-prefix {
+      font-size: 0.92em;
+    }
+  }
 {% endstylesheet %}

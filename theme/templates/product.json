@@ -325,7 +325,7 @@
           "type": "text",
           "name": "t:names.header",
           "settings": {
-            "text": "<h3>You may also like </h3>",
+            "text": "<h3>你可能也會喜歡</h3>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
