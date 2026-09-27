@@ -416,6 +416,23 @@
     }
   {% endif %}
 
+  /* Zero-Cropping Guarantee: Ensure product detail gallery photos are always fully displayed */
+  media-gallery .product-media {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  media-gallery .product-media-container img,
+  media-gallery .product-media__image {
+    object-fit: contain !important;
+    object-position: center center;
+    max-width: 100%;
+    max-height: 100%;
+  }
+
   {% capture view_transition_styles_contain %}
     ::view-transition-old(gallery-item-open),
     ::view-transition-new(gallery-item-open),

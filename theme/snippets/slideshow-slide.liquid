@@ -36,16 +36,22 @@
   endcase
 -%}
 
+{%- liquid
+  assign media_fit_val = media_fit | default: 'contain'
+  assign base_slide_style = '--slideshow-timeline: --slide-' | append: index | append: '; --product-media-fit: ' | append: media_fit_val | append: '; ' | append: grid_template_rows | append: ' ' | append: grid_template_rows_desktop
+  if style != blank
+    assign combined_slide_style = base_slide_style | append: '; ' | append: style
+  else
+    assign combined_slide_style = base_slide_style
+  endif
+-%}
+
 <slideshow-slide
   ref="slides[]"
   aria-hidden="{% if index == 0 %}false{% else %}true{% endif %}"
-  style="--slideshow-timeline: --slide-{{ index }}; --product-media-fit: {{ media_fit | default: 'cover' }}; {{ grid_template_rows }} {{ grid_template_rows_desktop }}"
+  style="{{ combined_slide_style }}"
   {% if class != blank %}
     class="{{ class }}"
-  {% endif %}
-  {{ attributes }}
-  {% if style != blank %}
-    style="{{ style }}"
   {% endif %}
   {% if slide_id != blank %}
     slide-id="{{ slide_id }}"
