@@ -1,0 +1,217 @@
+{%- unless template == 'index' or template == '404' or template == 'list-collections' -%}
+<nav class="chiba-breadcrumbs page-width" aria-label="Breadcrumb">
+  <ol class="chiba-breadcrumbs__list" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li class="chiba-breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a href="/" class="chiba-breadcrumbs__link" itemprop="item">
+        <span itemprop="name">首頁</span>
+      </a>
+      <meta itemprop="position" content="1" />
+      <span class="chiba-breadcrumbs__separator" aria-hidden="true">/</span>
+    </li>
+
+    {%- if template contains 'collection' and collection.handle -%}
+      {%- liquid
+        assign is_cycling_tag = false
+        assign subcategory_title = ''
+        assign current_tag_str = current_tags | join: ' ' | downcase
+
+        if current_tag_str contains 'bioxcell'
+          assign is_cycling_tag = true
+          assign subcategory_title = 'BioXCell 減壓系列'
+        elsif current_tag_str contains 'comfort'
+          assign is_cycling_tag = true
+          assign subcategory_title = 'Comfort 舒適系列'
+        elsif current_tag_str contains 'active'
+          assign is_cycling_tag = true
+          assign subcategory_title = 'Active 活力系列'
+        elsif current_tag_str contains 'race'
+          assign is_cycling_tag = true
+          assign subcategory_title = 'Race 競速系列'
+        endif
+      -%}
+
+      {%- if is_cycling_tag -%}
+        <li class="chiba-breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/collections/chiba-gloves-germany" class="chiba-breadcrumbs__link" itemprop="item">
+            <span itemprop="name">自行車系列</span>
+          </a>
+          <meta itemprop="position" content="2" />
+          <span class="chiba-breadcrumbs__separator" aria-hidden="true">/</span>
+        </li>
+        <li class="chiba-breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span class="chiba-breadcrumbs__current" itemprop="name" aria-current="page">{{ subcategory_title }}</span>
+          <meta itemprop="position" content="3" />
+        </li>
+      {%- elsif collection.handle == 'fitness-gloves' or collection.handle == 'training-supports' or collection.handle == 'training-belts' -%}
+        <li class="chiba-breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/collections/chiba-gloves-germany-1" class="chiba-breadcrumbs__link" itemprop="item">
+            <span itemprop="name">健身系列</span>
+          </a>
+          <meta itemprop="position" content="2" />
+          <span class="chiba-breadcrumbs__separator" aria-hidden="true">/</span>
+        </li>
+        <li class="chiba-breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span class="chiba-breadcrumbs__current" itemprop="name" aria-current="page">{{ collection.title }}</span>
+          <meta itemprop="position" content="3" />
+        </li>
+      {%- elsif collection.handle == 'chiba-gloves-germany' -%}
+        <li class="chiba-breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span class="chiba-breadcrumbs__current" itemprop="name" aria-current="page">自行車系列</span>
+          <meta itemprop="position" content="2" />
+        </li>
+      {%- elsif collection.handle == 'chiba-gloves-germany-1' -%}
+        <li class="chiba-breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span class="chiba-breadcrumbs__current" itemprop="name" aria-current="page">健身系列</span>
+          <meta itemprop="position" content="2" />
+        </li>
+      {%- else -%}
+        <li class="chiba-breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span class="chiba-breadcrumbs__current" itemprop="name" aria-current="page">{{ collection.title }}</span>
+          <meta itemprop="position" content="2" />
+        </li>
+      {%- endif -%}
+
+    {%- elsif template contains 'product' -%}
+      {%- liquid
+        assign is_cycling = false
+        assign is_fitness = false
+        assign prod_tags_str = product.tags | join: ' ' | downcase
+        assign prod_type_str = product.type | downcase
+
+        if prod_type_str contains 'cycling' or prod_tags_str contains 'cycling' or product.handle contains 'cycling'
+          assign is_cycling = true
+        elsif prod_type_str contains 'fitness' or prod_tags_str contains 'fitness' or product.handle contains 'fitness'
+          assign is_fitness = true
+        endif
+
+        assign sub_title = ''
+        assign sub_url = ''
+
+        if is_cycling
+          if prod_tags_str contains 'bioxcell'
+            assign sub_title = 'BioXCell 減壓系列'
+            assign sub_url = '/collections/all/bioxcell-line'
+          elsif prod_tags_str contains 'comfort'
+            assign sub_title = 'Comfort 舒適系列'
+            assign sub_url = '/collections/all/comfort-line'
+          elsif prod_tags_str contains 'active'
+            assign sub_title = 'Active 活力系列'
+            assign sub_url = '/collections/all/active-line'
+          elsif prod_tags_str contains 'race'
+            assign sub_title = 'Race 競速系列'
+            assign sub_url = '/collections/all/race-line'
+          endif
+        elsif is_fitness
+          if prod_tags_str contains 'training-supports' or prod_tags_str contains 'supports' or product.title contains '護腕' or product.title contains '護膝' or product.title contains '護肘'
+            assign sub_title = '護腕護膝與護肘'
+            assign sub_url = '/collections/training-supports'
+          elsif prod_tags_str contains 'training-belts' or prod_tags_str contains 'belts' or product.title contains '腰帶'
+            assign sub_title = '重訓與健力腰帶'
+            assign sub_url = '/collections/training-belts'
+          else
+            assign sub_title = '重訓手套'
+            assign sub_url = '/collections/fitness-gloves'
+          endif
+        endif
+      -%}
+
+      {%- if is_cycling -%}
+        <li class="chiba-breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/collections/chiba-gloves-germany" class="chiba-breadcrumbs__link" itemprop="item">
+            <span itemprop="name">自行車系列</span>
+          </a>
+          <meta itemprop="position" content="2" />
+          <span class="chiba-breadcrumbs__separator" aria-hidden="true">/</span>
+        </li>
+      {%- elsif is_fitness -%}
+        <li class="chiba-breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/collections/chiba-gloves-germany-1" class="chiba-breadcrumbs__link" itemprop="item">
+            <span itemprop="name">健身系列</span>
+          </a>
+          <meta itemprop="position" content="2" />
+          <span class="chiba-breadcrumbs__separator" aria-hidden="true">/</span>
+        </li>
+      {%- endif -%}
+
+      {%- if sub_title != '' -%}
+        <li class="chiba-breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="{{ sub_url }}" class="chiba-breadcrumbs__link" itemprop="item">
+            <span itemprop="name">{{ sub_title }}</span>
+          </a>
+          <meta itemprop="position" content="3" />
+          <span class="chiba-breadcrumbs__separator" aria-hidden="true">/</span>
+        </li>
+      {%- endif -%}
+
+      <li class="chiba-breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <span class="chiba-breadcrumbs__current" itemprop="name" aria-current="page">{{ product.title }}</span>
+        <meta itemprop="position" content="{% if sub_title != '' %}4{% else %}3{% endif %}" />
+      </li>
+
+    {%- elsif template contains 'page' -%}
+      <li class="chiba-breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <span class="chiba-breadcrumbs__current" itemprop="name" aria-current="page">{{ page.title }}</span>
+        <meta itemprop="position" content="2" />
+      </li>
+    {%- elsif template contains 'cart' -%}
+      <li class="chiba-breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <span class="chiba-breadcrumbs__current" itemprop="name" aria-current="page">購物車</span>
+        <meta itemprop="position" content="2" />
+      </li>
+    {%- else -%}
+      <li class="chiba-breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <span class="chiba-breadcrumbs__current" itemprop="name" aria-current="page">{{ page_title }}</span>
+        <meta itemprop="position" content="2" />
+      </li>
+    {%- endif -%}
+  </ol>
+</nav>
+
+<style>
+  .chiba-breadcrumbs {
+    padding-top: 14px;
+    padding-bottom: 8px;
+    font-size: 0.84rem;
+    color: var(--color-foreground-subdued, #666);
+    letter-spacing: 0.01em;
+  }
+  .chiba-breadcrumbs__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 2px 6px;
+  }
+  .chiba-breadcrumbs__item {
+    display: inline-flex;
+    align-items: center;
+  }
+  .chiba-breadcrumbs__link {
+    color: var(--color-foreground-subdued, #555);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+  .chiba-breadcrumbs__link:hover {
+    color: var(--color-foreground, #000);
+    text-decoration: underline;
+  }
+  .chiba-breadcrumbs__separator {
+    margin-left: 6px;
+    opacity: 0.45;
+    font-size: 0.75rem;
+    user-select: none;
+  }
+  .chiba-breadcrumbs__current {
+    color: var(--color-foreground, #111);
+    font-weight: 500;
+  }
+  @media screen and (max-width: 749px) {
+    .chiba-breadcrumbs {
+      font-size: 0.8rem;
+      padding-top: 10px;
+    }
+  }
+</style>
+{%- endunless -%}
