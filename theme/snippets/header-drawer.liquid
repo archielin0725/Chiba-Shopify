@@ -81,16 +81,22 @@
         {% endif %}
       "
     >
-      <button
-        class="button close-button menu-drawer__close-button focus-inset"
-        type="button"
-        aria-label="{{ 'actions.close' | t }}"
-        on:click="/close"
-      >
-        <span class="svg-wrapper header-drawer-icon header-drawer-icon--close">
-          {{- 'icon-close-menu.svg' | inline_asset_content -}}
-        </span>
-      </button>
+      <div class="menu-drawer__header-bar">
+        <div class="menu-drawer__brand-badge">
+          <span class="menu-drawer__brand-badge-flag">🇩🇪</span>
+          <span class="menu-drawer__brand-badge-title">CHIBA GERMANY 1853</span>
+        </div>
+        <button
+          class="button close-button menu-drawer__close-button focus-inset"
+          type="button"
+          aria-label="{{ 'actions.close' | t }}"
+          on:click="/close"
+        >
+          <span class="svg-wrapper header-drawer-icon header-drawer-icon--close">
+            {{- 'icon-close-menu.svg' | inline_asset_content -}}
+          </span>
+        </button>
+      </div>
       <nav
         class="menu-drawer__navigation"
         style="
@@ -607,6 +613,32 @@
           {% endif %}
         </ul>
       </nav>
+
+      {%- comment -%} Antigravity Mobile Brand & Experience Section (Eliminates dead white space) {%- endcomment -%}
+      <div class="menu-drawer__antigravity-hub menu-drawer__animated-element" style="--menu-drawer-animation-index: 4;">
+        <div class="menu-drawer__card menu-drawer__card--guarantee">
+          <div class="menu-drawer__card-header">
+            <span class="menu-drawer__card-pill">德國百年工藝</span>
+            <span class="menu-drawer__card-sub">EST. 1853</span>
+          </div>
+          <div class="menu-drawer__card-title">台灣官方線上旗艦館</div>
+          <div class="menu-drawer__card-desc">全館商品皆為台灣總代理原廠正品・享官方保固與售後服務</div>
+        </div>
+
+        <div class="menu-drawer__quick-grid">
+          <a href="https://www.chibataiwan.com" target="_blank" rel="noopener" class="menu-drawer__quick-pill">
+            <span class="menu-drawer__pill-icon">🌐</span>
+            <span class="menu-drawer__pill-text">品牌形象官網</span>
+            <span class="menu-drawer__pill-arrow">↗</span>
+          </a>
+          <a href="/pages/contact" class="menu-drawer__quick-pill">
+            <span class="menu-drawer__pill-icon">💬</span>
+            <span class="menu-drawer__pill-text">官方顧客服務</span>
+            <span class="menu-drawer__pill-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
       <div
         class="menu-drawer__utility-links menu-drawer__animated-element"
         style="--menu-drawer-animation-index: {{ linklist.links.size }};"
