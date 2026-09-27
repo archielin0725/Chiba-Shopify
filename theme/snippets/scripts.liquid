@@ -264,7 +264,7 @@
   ></script>
 {% endif %}
 
-{% if template == 'product' or template.name == 'product' or request.page_type == 'product' %}
+{% if template.name == 'product' or request.page_type == 'product' %}
   <script
     src="{{ 'sticky-add-to-cart.js' | asset_url }}"
     type="module"
