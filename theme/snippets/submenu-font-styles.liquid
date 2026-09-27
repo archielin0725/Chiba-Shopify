@@ -13,9 +13,9 @@ var(--font-
 {% if settings.type_case_primary_link == 'uppercase' %}uppercase{% else %}none{% endif %};
 {% case settings.menu_font_style %}
   {% when 'regular' %}
-    --menu-parent-font-size: var(--menu-font-md--size); --menu-parent-font-line-height:
-    var(--menu-font-md--line-height); --menu-parent-font-color: var(--color-foreground);
-    --menu-parent-active-font-color: var(--color-foreground-subdued);
+    --menu-parent-font-size: 1.15rem; --menu-parent-font-line-height:
+    1.4; --menu-parent-font-color: #111111; --menu-parent-font-weight: 700;
+    --menu-parent-active-font-color: #111111;
   {% when 'inverse' %}
     --menu-parent-font-size: var(--menu-font-sm--size); --menu-parent-font-line-height:
     var(--menu-font-sm--line-height); --menu-parent-font-color: var(--color-foreground-subdued);
@@ -33,8 +33,8 @@ var(--font-
 {% if settings.type_case_primary_link == 'uppercase' %}uppercase{% else %}none{% endif %};
 {% case settings.menu_font_style %}
   {% when 'regular' %}
-    --menu-child-font-size: var(--menu-font-sm--size); --menu-child-font-line-height: var(--menu-font-sm--line-height);
-    --menu-child-font-color: var(--color-foreground-subdued); --menu-child-active-font-color: var(--color-foreground);
+    --menu-child-font-size: 0.95rem; --menu-child-font-line-height: 1.4;
+    --menu-child-font-color: #4b5563; --menu-child-active-font-color: #111111;
   {% when 'inverse' %}
     --menu-child-font-size: var(--menu-font-md--size); --menu-child-font-line-height: var(--menu-font-md--line-height);
     --menu-child-font-color: var(--color-foreground); --menu-child-active-font-color: var(--color-foreground-subdued);

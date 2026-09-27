@@ -1836,3 +1836,63 @@ main > .shopify-section:first-child .section:not(.disable-section-top-offset) {
     margin-top: calc(var(--header-height) * var(--transparent-header-offset-boolean) * -1);
   }
 }
+
+/* Custom Mobile Menu Typography Hierarchy Standard */
+.menu-drawer__menu-item--mainlist {
+  font-weight: 600 !important;
+  font-size: 1.25rem !important;
+  color: #111111 !important;
+  min-height: 48px !important;
+  padding: 12px 6px !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+  text-transform: none !important;
+}
+
+.menu-drawer__menu-item--parent {
+  font-weight: 700 !important;
+  font-size: 1.15rem !important;
+  color: #111111 !important;
+  border-bottom: 1.5px solid #e5e7eb !important;
+  padding-top: 18px !important;
+  padding-bottom: 8px !important;
+  margin-top: 10px !important;
+  margin-bottom: 6px !important;
+  text-transform: none !important;
+  letter-spacing: 0.02em !important;
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+
+.menu-drawer__menu-item--child {
+  font-weight: 400 !important;
+  font-size: 0.95rem !important;
+  color: #4b5563 !important;
+  text-transform: none !important;
+  min-height: 38px !important;
+  padding: 8px 6px !important;
+  display: flex !important;
+  align-items: center !important;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.menu-drawer__menu-item--child:hover,
+.menu-drawer__menu-item--child:active {
+  color: #111111 !important;
+}
+
+.menu-drawer__title {
+  font-size: 1.15rem !important;
+  font-weight: 600 !important;
+  color: #111111 !important;
+  letter-spacing: 0.02em !important;
+}
+
+.menu-drawer__back-button,
+.menu-drawer__close-button {
+  min-height: 44px !important;
+  min-width: 44px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
