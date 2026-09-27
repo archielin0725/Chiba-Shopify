@@ -239,7 +239,7 @@
 
   # Fallback safety: if filtering resulted in empty media, show first 2 images
   if sorted_media.size == 0
-    assign sorted_media = selected_product.media | slice: 0, 2
+    assign sorted_media = selected_product.media
   endif
   assign has_image_drop = sorted_media | has: 'media_type', 'image'
 

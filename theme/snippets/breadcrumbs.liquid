@@ -1,4 +1,8 @@
-{%- unless template == 'index' or template == '404' or template == 'list-collections' -%}
+{%- doc -%}
+  Renders breadcrumbs navigation for collection and product pages.
+{%- enddoc -%}
+
+{%- if template.name == 'collection' or template.name == 'product' -%}
 <nav class="chiba-breadcrumbs page-width" aria-label="Breadcrumb">
   <ol class="chiba-breadcrumbs__list" itemscope itemtype="https://schema.org/BreadcrumbList">
     <li class="chiba-breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
@@ -9,7 +13,7 @@
       <span class="chiba-breadcrumbs__separator" aria-hidden="true">/</span>
     </li>
 
-    {%- if template contains 'collection' and collection.handle -%}
+    {%- if template.name == 'collection' and collection.handle -%}
       {%- liquid
         assign is_cycling_tag = false
         assign subcategory_title = ''
@@ -71,7 +75,7 @@
         </li>
       {%- endif -%}
 
-    {%- elsif template contains 'product' -%}
+    {%- elsif template.name == 'product' and product -%}
       {%- liquid
         assign is_cycling = false
         assign is_fitness = false
@@ -147,22 +151,6 @@
         <span class="chiba-breadcrumbs__current" itemprop="name" aria-current="page">{{ product.title }}</span>
         <meta itemprop="position" content="{% if sub_title != '' %}4{% else %}3{% endif %}" />
       </li>
-
-    {%- elsif template contains 'page' -%}
-      <li class="chiba-breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <span class="chiba-breadcrumbs__current" itemprop="name" aria-current="page">{{ page.title }}</span>
-        <meta itemprop="position" content="2" />
-      </li>
-    {%- elsif template contains 'cart' -%}
-      <li class="chiba-breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <span class="chiba-breadcrumbs__current" itemprop="name" aria-current="page">購物車</span>
-        <meta itemprop="position" content="2" />
-      </li>
-    {%- else -%}
-      <li class="chiba-breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <span class="chiba-breadcrumbs__current" itemprop="name" aria-current="page">{{ page_title }}</span>
-        <meta itemprop="position" content="2" />
-      </li>
     {%- endif -%}
   </ol>
 </nav>
@@ -214,4 +202,4 @@
     }
   }
 </style>
-{%- endunless -%}
+{%- endif -%}
