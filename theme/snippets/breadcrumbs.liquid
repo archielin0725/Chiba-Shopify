@@ -70,7 +70,7 @@
         </li>
       {%- else -%}
         <li class="chiba-breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <span class="chiba-breadcrumbs__current" itemprop="name" aria-current="page">{{ collection.title }}</span>
+          <span class="chiba-breadcrumbs__current" itemprop="name" aria-current="page">{% if collection.handle == 'all' %}全部商品{% else %}{{ collection.title }}{% endif %}</span>
           <meta itemprop="position" content="2" />
         </li>
       {%- endif -%}

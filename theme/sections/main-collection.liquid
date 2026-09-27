@@ -35,6 +35,13 @@
   class="section-background{% if section.settings.background_color != blank %} color-custom-{{ section.id }}{% endif %}"
 ></div>
 <collection-component view-event-payload="{{ collection | standard_event_data: 'view' | escape }}">
+  <h1 class="visually-hidden">
+    {%- if collection.handle == 'all' -%}
+      全部商品
+    {%- else -%}
+      {{ collection.title }}
+    {%- endif -%}
+  </h1>
   <results-list
     class="section product-grid-container{% if section.settings.background_color != blank %} color-custom-{{ section.id }}{% endif %}"
     style="--padding-block-start: {{ section.settings.padding-block-start }}px; --padding-block-end: {{ section.settings.padding-block-end }}px;"
