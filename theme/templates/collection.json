@@ -1,4 +1,12 @@
-{
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */{
   "sections": {
     "section": {
       "type": "section",
@@ -126,7 +134,7 @@
             "card-gallery": {
               "type": "_product-card-gallery",
               "settings": {
-                "image_ratio": "square",
+                "image_ratio": "adapt",
                 "border": "none",
                 "border_width": 1,
                 "border_opacity": 100,
@@ -205,67 +213,10 @@
         "padding-block-start": 0,
         "padding-block-end": 32
       }
-    },
-    "shop_by_line": {
-      "type": "shop-by-line",
-      "name": "Shop by line",
-      "blocks": {
-        "line_tile_1": {
-          "type": "line_tile",
-          "name": "Line tile",
-          "settings": {
-            "image": "shopify://shop_images/cycling__3040518__ffda842fd1fbc89c__3040518_04_1.jpg",
-            "label": "舒適系列",
-            "tag": "Comfort Line"
-          }
-        },
-        "line_tile_2": {
-          "type": "line_tile",
-          "name": "Line tile",
-          "settings": {
-            "image": "shopify://shop_images/cycling__3029125__178ea47e27f1a6a6__3029125_1001_catalog_p32_Im7.png",
-            "label": "運動系列",
-            "tag": "Active Line"
-          }
-        },
-        "line_tile_3": {
-          "type": "line_tile",
-          "name": "Line tile",
-          "settings": {
-            "image": "shopify://shop_images/cycling__3069122__0e672c3fe10a59cc__3069122_01_1.jpg",
-            "label": "BioXCell 減壓系列",
-            "tag": "BioXCell Line"
-          }
-        },
-        "line_tile_4": {
-          "type": "line_tile",
-          "name": "Line tile",
-          "settings": {
-            "image": "shopify://shop_images/cycling__3070820__70bd7b2df5c1a877__3070820_1003-1_1.jpg",
-            "label": "競速系列",
-            "tag": "Race Line"
-          }
-        }
-      },
-      "block_order": [
-        "line_tile_1",
-        "line_tile_2",
-        "line_tile_3",
-        "line_tile_4"
-      ],
-      "settings": {
-        "heading": "<h2>依款式選購</h2>",
-        "target_collection_handle": "chiba-gloves-germany",
-        "section_width": "page-width",
-        "color_scheme": "scheme-1",
-        "padding-block-start": 24,
-        "padding-block-end": 24
-      }
     }
   },
   "order": [
     "section",
-    "shop_by_line",
     "main"
   ]
 }
