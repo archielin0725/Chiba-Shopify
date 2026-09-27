@@ -104,3 +104,40 @@ git push origin main
 ---
 
 若在開發或同步過程中有任何問題，隨時與 Archie 聯繫！祝協同開發順利！
+
+
+---
+
+## 第六步：雙帳號與本機磁碟一鍵全自動同步腳本 (Master Sync Script)
+
+當 Archie 在官方倉庫（`archielin0725`）進行任何更新發布後，你只需在你的 Mac 電腦執行以下標準腳本，即可**一次性完成三方同步**：
+1. **官方最新代碼 (`archielin0725`)** ➔ **Sammy 本機磁碟 (`/Users/sammywang`)**
+2. **Sammy 本機磁碟** ➔ **Sammy 個人 GitHub (`sammywanwan`)**
+
+### 執行方式 (Run Once to Sync All)：
+```bash
+bash ~/Chiba-Shopify/scripts/sync_chiba.sh
+```
+
+### 腳本執行內容說明：
+```bash
+#!/usr/bin/env bash
+# 1. 自動同步 Chiba-Shopify
+cd ~/Chiba-Shopify
+git remote set-url origin https://github.com/archielin0725/Chiba-Shopify.git
+git pull --rebase origin main
+git push https://github.com/sammywanwan/Chiba-Shopify.git main:main
+
+# 2. 自動同步 Chiba-AI
+cd ~/Chiba-AI
+git remote set-url origin https://github.com/archielin0725/Chiba-AI.git
+git pull --rebase origin main
+git push https://github.com/sammywanwan/Chiba-AI.git main:main
+```
+
+### 💡 進階技巧：設定每 5 分鐘背景自動同步（完全免手動）
+如果你希望本機磁碟與 GitHub 永遠自動保持最新，可以在終端機輸入 `crontab -e` 並加入此行：
+```cron
+*/5 * * * * bash ~/Chiba-Shopify/scripts/sync_chiba.sh >/dev/null 2>&1
+```
+從此只要 Archie 在 `archielin0725` 有任何修改，5 分鐘內自動推送到你的電腦硬碟與 `sammywanwan` GitHub，完全無感同步！
