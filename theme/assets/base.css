@@ -1929,23 +1929,25 @@ main > .shopify-section:first-child .section:not(.disable-section-top-offset) {
 .menu-drawer__brand-badge {
   display: inline-flex !important;
   align-items: center !important;
-  gap: 8px !important;
+  gap: 6px !important;
   background: #f1f5f9 !important;
-  padding: 6px 14px !important;
+  padding: 5px 12px !important;
   border-radius: 999px !important;
   border: 1px solid rgba(0, 0, 0, 0.06) !important;
+  white-space: nowrap !important;
 }
 
 .menu-drawer__brand-badge-flag {
-  font-size: 1rem !important;
+  font-size: 0.95rem !important;
   line-height: 1 !important;
 }
 
 .menu-drawer__brand-badge-title {
-  font-size: 0.8rem !important;
+  font-size: 0.76rem !important;
   font-weight: 700 !important;
-  letter-spacing: 0.06em !important;
+  letter-spacing: 0.04em !important;
   color: #0f172a !important;
+  white-space: nowrap !important;
 }
 
 .menu-drawer__close-button {
