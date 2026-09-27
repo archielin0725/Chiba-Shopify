@@ -64,46 +64,4 @@
       display: none;
     }
   }
-
-  /* Ensure uniform 1:1 square card image container and clean centering */
-  .card-gallery,
-  .product-media-container--image {
-    aspect-ratio: 1 / 1 !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    background-color: #ffffff !important;
-    overflow: hidden !important;
-    width: 100% !important;
-  }
-
-  .card-gallery img,
-  .card-gallery picture,
-  .product-media-container--image img {
-    object-fit: contain !important;
-    max-width: 92% !important;
-    max-height: 92% !important;
-    width: auto !important;
-    height: auto !important;
-    margin: auto !important;
-    display: block !important;
-  }
-
-  /* Standardized product card text spacing and baseline alignment */
-  .product-grid__card product-title,
-  .product-card product-title {
-    min-height: 2.8rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    margin-top: 8px;
-  }
-
-  .product-grid__card price,
-  .product-card price {
-    margin-top: auto;
-    font-weight: 600;
-  }
-
 {% endstylesheet %}

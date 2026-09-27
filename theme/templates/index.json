@@ -128,7 +128,7 @@
               "type": "_product-list-text",
               "name": "t:names.collection_title",
               "settings": {
-                "text": "<h3>{{ closest.collection.title }}熱門推薦商品</h3>",
+                "text": "<h3>熱門推薦商品</h3>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
