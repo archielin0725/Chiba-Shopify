@@ -221,6 +221,10 @@
                       -%}
                     {% else %}
                       {% liquid
+                        if filter.param_name == 'filter.v.availability' or filter.label contains '供貨' or filter.label contains 'Availability'
+                          continue
+                        endif
+
                         if filter.active_values.size > 0
                           assign is_active = true
                         endif
@@ -238,28 +242,42 @@
                 {%- endfor -%}
               {% endcapture %}
 
-              <div class="facets__filters-wrapper">
-                {% if block_settings.filter_style == 'horizontal' %}
-                  {% liquid
-                    assign more_attributes = 'on:click="#filters-drawer/toggle"'
-                    if block_settings.text_label_case == 'uppercase'
-                      assign more_attributes = more_attributes | append: ' style="--text-transform: uppercase;"'
-                    endif
-                  %}
-                  {% render 'overflow-list',
-                    class: 'facets__overflow-list',
-                    children: rendered_filters,
-                    more-attributes: more_attributes,
-                    more-button-attributes: 'aria-haspopup="dialog"',
-                    minimum-items: 2,
-                    data-testid: 'horizontal-filters-overflow-list'
-                  %}
-                {% else %}
-                  {{ rendered_filters }}
-                {% endif %}
-              </div>
-
               {% if block_settings.filter_style == 'horizontal' %}
+                <div class="facets-toolbar-left">
+                  {% if block_settings.enable_filtering %}
+                    <button
+                      class="button facets-drawer-trigger button-unstyled button-unstyled--with-icon"
+                      on:click="#filters-drawer/open"
+                      type="button"
+                      aria-haspopup="dialog"
+                    >
+                      <span class="svg-wrapper">
+                        {{ 'icon-filter.svg' | inline_asset_content }}
+                      </span>
+                      <span class="facets-drawer-trigger__label">{{ 'actions.show_filters' | t }}</span>
+                      {% if total_active_values > 0 %}
+                        <span class="filter-count-bubble">
+                          <span class="filter-count-bubble__background"></span>
+                          <span class="filter-count-bubble__text">{{ total_active_values }}</span>
+                        </span>
+                      {% endif %}
+                    </button>
+                  {% endif %}
+
+                  <div
+                    class="products-count-wrapper"
+                    data-testid="products-count"
+                  >
+                    <span role="status">
+                      {% if products_count > 25000 %}
+                        {{- 'content.item_count_cutoff' | t: count: 25000 -}}
+                      {% else %}
+                        {{- 'content.item_count' | t: count: products_count -}}
+                      {% endif %}
+                    </span>
+                  </div>
+                </div>
+
                 <facet-remove-component
                   class="facets-horizontal-remove {% if is_active %}facets-horizontal-remove--active{% endif %}"
                   active-class="facets__clear-all-link--active"
@@ -275,36 +293,28 @@
                     {{- 'actions.clear_all' | t -}}
                   </button>
                 </facet-remove-component>
-              {% endif %}
-            {% endif %}
-            {% if block_settings.filter_style == 'horizontal' %}
-              <div
-                class="products-count-wrapper"
-                data-testid="products-count"
-              >
-                <span role="status">
-                  {% if products_count > 25000 %}
-                    {{- 'content.item_count_cutoff' | t: count: 25000 -}}
-                  {% else %}
-                    {{- 'content.item_count' | t: count: products_count -}}
+
+                <div class="facets-toolbar-right">
+                  {% if block_settings.enable_sorting %}
+                    {% render 'sorting',
+                      results: results,
+                      sort_by: sort_by,
+                      filter_style: block_settings.filter_style,
+                      suffix: 'desktop',
+                      sort_position: 'desktop',
+                      should_use_select_on_mobile: false,
+                      section_id: section.id
+                    %}
                   {% endif %}
-                </span>
-              </div>
 
-              {% if block_settings.enable_sorting %}
-                {% render 'sorting',
-                  results: results,
-                  sort_by: sort_by,
-                  filter_style: block_settings.filter_style,
-                  suffix: 'desktop',
-                  sort_position: 'desktop',
-                  should_use_select_on_mobile: false,
-                  section_id: section.id
-                %}
-              {% endif %}
-
-              {% if block_settings.enable_grid_density %}
-                {% render 'grid-density-controls', viewport: 'desktop' %}
+                  {% if block_settings.enable_grid_density %}
+                    {% render 'grid-density-controls', viewport: 'desktop' %}
+                  {% endif %}
+                </div>
+              {% else %}
+                <div class="facets__filters-wrapper">
+                  {{ rendered_filters }}
+                </div>
               {% endif %}
             {% endif %}
           {% endif %}
@@ -485,6 +495,10 @@
                       -%}
                     {% else %}
                       {% liquid
+                        if filter.param_name == 'filter.v.availability' or filter.label contains '供貨' or filter.label contains 'Availability'
+                          continue
+                        endif
+
                         if filter.active_values.size > 0
                           assign is_active = true
                         endif
@@ -787,8 +801,64 @@
 
   .facets--horizontal .facets__form {
     @media screen and (min-width: 750px) {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       flex-flow: row nowrap;
       height: auto;
+      width: 100%;
+    }
+  }
+
+  .facets-toolbar-left {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-md);
+  }
+
+  .facets-toolbar-right {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-xs);
+    margin-inline-start: auto;
+  }
+
+  .facets-drawer-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: var(--font-paragraph--size);
+    font-weight: 500;
+    cursor: pointer;
+    padding: 6px 14px;
+    border-radius: var(--style-border-radius-xs);
+    background-color: rgb(var(--color-foreground-rgb) / 0.04);
+    border: 1px solid rgb(var(--color-border-rgb) / 0.2);
+    color: var(--color-foreground);
+    transition: all var(--animation-speed-fast) var(--animation-easing);
+  }
+
+  .facets-drawer-trigger:hover {
+    background-color: rgb(var(--color-foreground-rgb) / 0.08);
+    border-color: rgb(var(--color-border-rgb) / 0.35);
+  }
+
+  .facets-drawer-trigger .svg-wrapper {
+    width: 15px;
+    height: 15px;
+    display: flex;
+    align-items: center;
+  }
+
+  .facets-toolbar-left .products-count-wrapper {
+    @media screen and (min-width: 750px) {
+      display: flex !important;
+      align-items: center;
+      margin-inline-start: 0 !important;
+      color: var(--color-foreground-subdued);
+      font-size: var(--font-paragraph--size);
+      font-weight: 400;
+      white-space: nowrap;
     }
   }
 

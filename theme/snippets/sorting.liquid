@@ -21,9 +21,30 @@
 >
   {% liquid
     assign default_sort_by = results.default_sort_by
+    assign has_relevance = false
+    for opt in results.sort_options
+      if opt.value == 'relevance'
+        assign has_relevance = true
+      endif
+    endfor
+
     for option in results.sort_options
       if option.value == sort_by
         assign status = option.name
+        case option.value
+          when 'manual'
+            assign status = '精選推薦'
+          when 'relevance'
+            assign status = '精選推薦'
+          when 'best-selling'
+            assign status = '熱門暢銷'
+          when 'price-ascending'
+            assign status = '價格：由低至高'
+          when 'price-descending'
+            assign status = '價格：由高至低'
+          when 'created-descending'
+            assign status = '最新上架'
+        endcase
       endif
     endfor
   %}
@@ -45,13 +66,36 @@
         {% endif %}
       >
         {% for option in results.sort_options %}
+          {% liquid
+            if option.value == 'title-ascending' or option.value == 'title-descending' or option.value == 'created-ascending'
+              continue
+            endif
+            if has_relevance and option.value == 'manual'
+              continue
+            endif
+            assign display_name = option.name
+            case option.value
+              when 'manual'
+                assign display_name = '精選推薦'
+              when 'relevance'
+                assign display_name = '精選推薦'
+              when 'best-selling'
+                assign display_name = '熱門暢銷'
+              when 'price-ascending'
+                assign display_name = '價格：由低至高'
+              when 'price-descending'
+                assign display_name = '價格：由高至低'
+              when 'created-descending'
+                assign display_name = '最新上架'
+            endcase
+          %}
           <option
             value="{{ option.value }}"
             {% if option.value == sort_by %}
               selected
             {% endif %}
           >
-            {{ option.name }}
+            {{ display_name }}
           </option>
         {% endfor %}
       </select>
@@ -108,6 +152,29 @@
       >
         <div class="sorting-filter__options-inner">
           {% for option in results.sort_options %}
+            {% liquid
+              if option.value == 'title-ascending' or option.value == 'title-descending' or option.value == 'created-ascending'
+                continue
+              endif
+              if has_relevance and option.value == 'manual'
+                continue
+              endif
+              assign display_name = option.name
+              case option.value
+                when 'manual'
+                  assign display_name = '精選推薦'
+                when 'relevance'
+                  assign display_name = '精選推薦'
+                when 'best-selling'
+                  assign display_name = '熱門暢銷'
+                when 'price-ascending'
+                  assign display_name = '價格：由低至高'
+                when 'price-descending'
+                  assign display_name = '價格：由高至低'
+                when 'created-descending'
+                  assign display_name = '最新上架'
+              endcase
+            %}
             <label
               for="sort-option-{{ option.value }}-{{ section_id }}"
             >
@@ -126,7 +193,7 @@
                   {% endif %}
                   value="{{ option.value }}"
                   class="sorting-filter__input"
-                  data-option-name="{{ option.name }}"
+                  data-option-name="{{ display_name }}"
                   {% if option.value == sort_by %}
                     checked
                   {% endif %}
@@ -135,7 +202,7 @@
                 <span class="svg-wrapper icon-checkmark sorting-filter__checkmark">
                   {{- 'icon-checkmark.svg' | inline_asset_content -}}
                 </span>
-                <span class="sorting-filter__label">{{ option.name }}</span>
+                <span class="sorting-filter__label">{{ display_name }}</span>
               </div>
             </label>
           {% endfor %}

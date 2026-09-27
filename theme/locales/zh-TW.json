@@ -87,8 +87,8 @@
     "continue_shopping": "繼續購物",
     "log_in_html": "已有帳號？<a href=\"{{ link }}\">登入</a>以加速結帳。",
     "see_items": {
-      "one": "查看 {{ count }} 個品項",
-      "other": "查看 {{ count }} 個品項"
+      "one": "查看 {{ count }} 件商品",
+      "other": "查看 {{ count }} 件商品"
     },
     "view_all": "檢視全部",
     "add": "新增",
@@ -184,8 +184,8 @@
     "recently_viewed_products": "最近檢視的項目",
     "product_count": "商品數量",
     "item_count": {
-      "one": "{{ count }} 個品項",
-      "other": "{{ count }} 個品項"
+      "one": "共 {{ count }} 件商品",
+      "other": "共 {{ count }} 件商品"
     },
     "errors": "錯誤",
     "search": "搜尋",
@@ -274,7 +274,7 @@
       "one": "1 個品項已加入購物車",
       "other": "{{ count }} 個品項已加入購物車"
     },
-    "item_count_cutoff": "超過 {{ count }} 個品項",
+    "item_count_cutoff": "超過 {{ count }} 件商品",
     "quick_order_list": "快速訂購清單",
     "product_disclosures": "商品揭露資訊"
   },
