@@ -182,3 +182,15 @@ Current execution scope: **Phase 2 Production Readiness**, explicitly authorized
   `archielin0725 (GitHub 主幹)` ➔ `Sammy 本地磁碟 (/Users/sammywang/)` ➔ `sammywanwan (Sammy 個人 GitHub)`
 - **標準同步腳本（Deterministic Sync Script: `scripts/sync_chiba.sh`）**：
   在 Sammy 本機執行時，腳本自動拉取 `archielin0725` 最新提交至本機磁碟，並自動推送至 Sammy 個人 GitHub，實現三方（Archie 官方、Sammy 本機、Sammy GitHub）100% 同步。
+
+## Rule Governance & Health Checkpoint Standard (MD 規則治理與健康檢查標準)
+- **三層分立架構（Three-Tier Architecture）**：
+  1. **憲法層（`AGENTS.md`）**：僅保留不可撼動之全域核心紅線（資料來源、價格保護、編譯門檻、同步規範）。嚴格控制在 **250 行 / 30KB** 以內，避免模型「迷失在中間（Lost in the Middle）」。
+  2. **手冊層（`.agents/skills/<name>/SKILL.md`）**：模組細節（Liquid 語法、MOMO 欄位代碼、CSV 對照邏輯）拆分至專屬技能庫，由 AI 依任務按需載入。
+  3. **動態進度層（`Output/CHIBA_TASK_CHECKPOINT.md`）**：記錄任務歷程、除錯紀錄與時間戳交付檔案，嚴禁混入憲法層。
+- **跨 AI 工具單一橋接（Universal AI Rule Bridge）**：
+  - `CLAUDE.md` 與 `.cursorrules` 必須以 Symlink 永遠指向 `AGENTS.md`，杜絕跨工具規格漂移。
+  - Web AI 工具（Claude Projects、ChatGPT Custom GPTs）直接將 `AGENTS.md` 設為專案知識庫與指示基準。
+- **定期健康審查防線（Deterministic MD Health Gate）**：
+  - 必須定期執行 `python3 scripts/audit_md_health.py`。
+  - 自動檢驗：行數上限（≤ 250 行）、大小上限（≤ 30KB）、Symlink 有效性、機密防護（零批發價與金鑰洩漏）、跨倉庫（`Chiba-AI` 與 `Chiba-Shopify`）100% 同步性。
