@@ -2450,3 +2450,182 @@ product-card .price .price-prefix,
   font-weight: 500 !important;
   letter-spacing: 0.04em !important;
 }
+
+
+/* ==========================================================================
+   Product Detail Page (PDP) Glove Size Guide & Trust Badges Enhancement
+   ========================================================================== */
+.variant-option__legend {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  margin-bottom: 8px !important;
+}
+
+.glove-size-guide-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #2563eb;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.15s ease;
+}
+
+.glove-size-guide-btn:hover {
+  color: #1d4ed8;
+}
+
+.glove-size-modal {
+  padding: 0;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+  max-width: 520px;
+  width: 90vw;
+  background: #ffffff;
+  margin: auto;
+}
+
+.glove-size-modal::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+.glove-size-modal__content {
+  padding: 24px;
+}
+
+.glove-size-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.glove-size-modal__header h3 {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.glove-size-modal__close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.glove-size-modal__body {
+  padding-top: 16px;
+}
+
+.glove-size-modal__desc {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #4b5563;
+  margin-bottom: 16px;
+}
+
+.glove-size-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.glove-size-table th {
+  background-color: #f3f4f6;
+  color: #111827;
+  font-weight: 600;
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.glove-size-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #e5e7eb;
+  color: #374151;
+}
+
+.glove-size-modal__footer-note {
+  margin-top: 16px;
+  text-align: center;
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: #059669;
+  background: #ecfdf5;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+/* PDP Trust Badges */
+.pdp-trust-badges {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 20px;
+  padding: 12px 16px;
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+}
+
+.pdp-trust-badge-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+.pdp-trust-icon {
+  font-size: 1.1rem;
+}
+
+@media screen and (max-width: 749px) {
+  .pdp-trust-badges {
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 10px 12px;
+  }
+  .pdp-trust-badge-item {
+    font-size: 0.8rem;
+  }
+}
+
+
+/* Cart Drawer Free Shipping Bar */
+.cart-free-shipping-bar {
+  background: #f0fdf4;
+  border-bottom: 1px solid #bbf7d0;
+  padding: 10px 16px;
+  font-size: 0.85rem;
+  color: #166534;
+  width: 100%;
+}
+
+.cart-free-shipping-bar__message {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+}
+
+.cart-free-shipping-bar__icon {
+  font-size: 1.1rem;
+}

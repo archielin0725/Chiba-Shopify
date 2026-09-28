@@ -1,0 +1,94 @@
+{%- comment -%}
+  CHIBA Glove Size Guide Button and Dialog Modal
+  Only renders for glove products (excludes waist belts, arm loops, jerseys, sleeves).
+{%- endcomment -%}
+{%- liquid
+  assign prod_title = product.title | downcase
+  assign prod_type = product.type | downcase
+  assign is_glove = false
+
+  if prod_title contains '手套' or prod_type contains 'glove' or prod_type contains '手套'
+    assign is_glove = true
+  endif
+
+  if prod_title contains '腰帶' or prod_title contains '懸垂' or prod_title contains '車衣' or prod_title contains '袖套' or prod_title contains '腳套'
+    assign is_glove = false
+  endif
+-%}
+
+{%- if is_glove -%}
+  <button
+    type="button"
+    class="glove-size-guide-btn"
+    onclick="document.getElementById('glove-size-guide-modal').showModal()"
+    aria-label="查看手套掌圍對照表"
+  >
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M2 12h20M6 8v8M10 9v6M14 8v8M18 9v6"/>
+    </svg>
+    <span>掌圍對照表</span>
+  </button>
+
+  <dialog id="glove-size-guide-modal" class="glove-size-modal">
+    <div class="glove-size-modal__content">
+      <div class="glove-size-modal__header">
+        <h3>📐 CHIBA 手套掌圍測量指南</h3>
+        <button
+          type="button"
+          class="glove-size-modal__close"
+          onclick="document.getElementById('glove-size-guide-modal').close()"
+          aria-label="關閉"
+        >&times;</button>
+      </div>
+      <div class="glove-size-modal__body">
+        <p class="glove-size-modal__desc">
+          <strong>測量方法：</strong>使用軟尺繞過掌心四指最寬處（不含大拇指）測量周長。若介於兩尺寸之間，建議選擇較大尺寸以獲得最佳舒適合腳感。
+        </p>
+        <table class="glove-size-table">
+          <thead>
+            <tr>
+              <th>尺寸 (Size)</th>
+              <th>歐規號碼</th>
+              <th>掌圍周長 (Palm Circumference)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>XS</strong></td>
+              <td>6.5</td>
+              <td>16.5 – 17.5 cm</td>
+            </tr>
+            <tr>
+              <td><strong>S</strong></td>
+              <td>7.0 – 7.5</td>
+              <td>17.6 – 19.0 cm</td>
+            </tr>
+            <tr>
+              <td><strong>M</strong></td>
+              <td>8.0 – 8.5</td>
+              <td>19.1 – 21.5 cm</td>
+            </tr>
+            <tr>
+              <td><strong>L</strong></td>
+              <td>9.0 – 9.5</td>
+              <td>21.6 – 24.0 cm</td>
+            </tr>
+            <tr>
+              <td><strong>XL</strong></td>
+              <td>10.0</td>
+              <td>24.1 – 26.5 cm</td>
+            </tr>
+            <tr>
+              <td><strong>XXL</strong></td>
+              <td>11.0</td>
+              <td>26.6 – 29.0 cm</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="glove-size-modal__footer-note">
+          🇩🇪 德國原廠極致工藝 · 3D 人體工學剪裁包覆
+        </div>
+      </div>
+    </div>
+  </dialog>
+{%- endif -%}
