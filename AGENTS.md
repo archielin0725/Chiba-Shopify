@@ -172,6 +172,10 @@ Current execution scope: **Phase 2 Production Readiness**, explicitly authorized
     4. **自動更新 `SKILL.md`（操作手冊層）**：AI 必須同步將更新的操作流程與防錯禁忌寫入 `.agents/skills/<skill_name>/SKILL.md`（如 `shopify-theme-guardian` 或 `momo-package-builder`）。
     5. **透明回報已更新的 MD**：在每次解決問題的結尾，AI 必須向使用者主動列出本次已自動更新的規則檔與技能檔路徑。
     6. **跨任務與重啟繼承**：新規則一旦寫入，立即永久生效於此工作區，所有未來的 AI 對話與任務皆無條件遵循。
+- **基準版本主動閉環機制 (Proactive Baseline Artifact & MD Auto-Binding)**：
+  - 未來只要產出任何新的里程碑標準檔（包括但不限於：商品 CSV 主檔、主題 ZIP 發布包、MOMO 上架包）：
+  - **AI 必須在交付該任務的當下，自動將新檔名、時間戳與校驗狀態沉澱至 `AGENTS.md`、`SKILL.md` 與 `CHIBA_TASK_CHECKPOINT.md`，並在回覆中以專屬區塊主動展示「已完成 MD 自動更新」**。
+  - 嚴禁等待使用者開口詢問或提醒更新 MD。若使用者需要提醒 AI 更新 MD，即判定為流程缺陷並觸發本條款自我修正。
 
 
 
