@@ -1,12 +1,48 @@
 {%- comment -%}
-  Free Shipping Banner for Cart Drawer
-  High-visibility free shipping indicator for shop.chibataiwan.com
+  Dynamic Free Shipping Progress Bar for Cart Drawer
+  shop.chibataiwan.com - Standard Free Shipping Threshold: NT$ 1,500
 {%- endcomment -%}
-<div class="cart-free-shipping-bar">
+
+{%- liquid
+  assign free_shipping_threshold = 150000
+  assign cart_total = cart.total_price | default: 0
+  assign is_free_shipping = false
+  assign remaining_amount = 0
+  assign progress_percent = 0
+
+  if cart_total >= free_shipping_threshold
+    assign is_free_shipping = true
+    assign progress_percent = 100
+  else
+    assign remaining_amount = free_shipping_threshold | minus: cart_total
+    assign progress_percent = cart_total | times: 100 | divided_by: free_shipping_threshold
+  endif
+-%}
+
+<div class="cart-free-shipping-bar" data-threshold="{{ free_shipping_threshold }}">
   <div class="cart-free-shipping-bar__message">
-    <span class="cart-free-shipping-bar__icon">🚚</span>
-    <span class="cart-free-shipping-bar__text">
-      <strong>全館滿額免運</strong> · 台灣本島配送享 0 元免運優惠
-    </span>
+    {%- if cart.item_count == 0 -%}
+      <span class="cart-free-shipping-bar__icon">🚚</span>
+      <span class="cart-free-shipping-bar__text">
+        全館消費滿 <strong>NT$ 1,500</strong> 享免運優惠
+      </span>
+    {%- elsif is_free_shipping -%}
+      <span class="cart-free-shipping-bar__icon">🎉</span>
+      <span class="cart-free-shipping-bar__text cart-free-shipping-bar__text--achieved">
+        <strong>已達成！</strong> 您已享有 0 元免運優惠
+      </span>
+    {%- else -%}
+      <span class="cart-free-shipping-bar__icon">🚚</span>
+      <span class="cart-free-shipping-bar__text">
+        還差 <strong>{{ remaining_amount | money }}</strong> 即可享有免運優惠！
+      </span>
+    {%- endif -%}
+  </div>
+
+  <div class="cart-free-shipping-bar__progress-track" aria-hidden="true">
+    <div
+      class="cart-free-shipping-bar__progress-fill{% if is_free_shipping %} cart-free-shipping-bar__progress-fill--achieved{% endif %}"
+      style="width: {{ progress_percent }}%;"
+    ></div>
   </div>
 </div>

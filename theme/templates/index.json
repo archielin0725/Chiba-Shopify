@@ -266,10 +266,28 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "brand_trust_badges": {
+      "type": "brand-trust-badges",
+      "settings": {
+        "background_color": "#f8fafc",
+        "padding_top": 32,
+        "padding_bottom": 32
+      }
+    },
+    "category_entrance_grid": {
+      "type": "category-entrance-grid",
+      "settings": {
+        "background_color": "#ffffff",
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
     }
   },
   "order": [
     "hero_jVaWmY",
+    "brand_trust_badges",
+    "category_entrance_grid",
     "product_list_fa6P9H"
   ]
 }

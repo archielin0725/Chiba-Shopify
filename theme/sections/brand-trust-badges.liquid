@@ -1,0 +1,171 @@
+{%- comment -%}
+  Brand Trust Badges Section
+  Displays 4 core trust pillars: German Heritage, Official Authenticity, Free Shipping, Easy Returns
+{%- endcomment -%}
+
+<style>
+  .brand-trust-badges-{{ section.id }} {
+    padding-block-start: {{ section.settings.padding_top }}px;
+    padding-block-end: {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.background_color | default: '#f8fafc' }};
+    border-top: 1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .brand-trust-badges-container {
+    max-width: var(--normal-page-width, 120rem);
+    margin-inline: auto;
+    padding-inline: max(1.5rem, 5vw);
+  }
+
+  .brand-trust-badges-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+
+  .brand-trust-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem 1rem;
+    background: #ffffff;
+    border-radius: 8px;
+    border: 1px solid #edf2f7;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .brand-trust-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+
+  .brand-trust-icon-wrap {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f1f5f9;
+    border-radius: 50%;
+    font-size: 1.35rem;
+  }
+
+  .brand-trust-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .brand-trust-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0 0 0.25rem;
+    line-height: 1.3;
+  }
+
+  .brand-trust-desc {
+    font-size: 0.875rem;
+    color: #64748b;
+    margin: 0;
+    line-height: 1.45;
+  }
+
+  @media screen and (max-width: 1024px) {
+    .brand-trust-badges-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+  }
+
+  @media screen and (max-width: 640px) {
+    .brand-trust-badges-grid {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+
+    .brand-trust-card {
+      padding: 1rem;
+    }
+  }
+</style>
+
+<div class="brand-trust-badges-{{ section.id }}">
+  <div class="brand-trust-badges-container">
+    <div class="brand-trust-badges-grid">
+      <div class="brand-trust-card">
+        <div class="brand-trust-icon-wrap" aria-hidden="true">🇩🇪</div>
+        <div class="brand-trust-content">
+          <h4 class="brand-trust-title">德國百年傳承</h4>
+          <p class="brand-trust-desc">始於 1853 年，超過 170 年人體工學工藝，專業運動員信賴首選</p>
+        </div>
+      </div>
+
+      <div class="brand-trust-card">
+        <div class="brand-trust-icon-wrap" aria-hidden="true">🛡️</div>
+        <div class="brand-trust-content">
+          <h4 class="brand-trust-title">官方正品保障</h4>
+          <p class="brand-trust-desc">台灣官方直營旗艦館，原廠正品防偽標籤，售後無虞安心選購</p>
+        </div>
+      </div>
+
+      <div class="brand-trust-card">
+        <div class="brand-trust-icon-wrap" aria-hidden="true">🚚</div>
+        <div class="brand-trust-content">
+          <h4 class="brand-trust-title">全館滿額免運</h4>
+          <p class="brand-trust-desc">單筆訂單滿 NT$ 1,500 即享台灣本島超商/宅配零元免運直送</p>
+        </div>
+      </div>
+
+      <div class="brand-trust-card">
+        <div class="brand-trust-icon-wrap" aria-hidden="true">🔄</div>
+        <div class="brand-trust-content">
+          <h4 class="brand-trust-title">7 天鑑賞換貨</h4>
+          <p class="brand-trust-desc">享 7 天鑑賞期服務，專人提供尺寸對照與規格更換專業諮詢</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "品牌承諾與信任標章",
+  "class": "section-brand-trust-badges",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "背景顏色",
+      "default": "#f8fafc"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 16,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "上方間距",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 16,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "下方間距",
+      "default": 32
+    }
+  ],
+  "presets": [
+    {
+      "name": "品牌承諾與信任標章"
+    }
+  ]
+}
+{% endschema %}

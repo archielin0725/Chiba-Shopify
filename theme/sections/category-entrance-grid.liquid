@@ -1,0 +1,296 @@
+{%- comment -%}
+  Category Entrance Grid Section
+  Dual-pillar category entrance: Cycling Collection vs Fitness Collection
+{%- endcomment -%}
+
+<style>
+  .category-entrance-{{ section.id }} {
+    padding-block-start: {{ section.settings.padding_top }}px;
+    padding-block-end: {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.background_color | default: '#ffffff' }};
+  }
+
+  .category-entrance-container {
+    max-width: var(--normal-page-width, 120rem);
+    margin-inline: auto;
+    padding-inline: max(1.5rem, 5vw);
+  }
+
+  .category-entrance-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .category-entrance-eyebrow {
+    display: inline-block;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #475569;
+    margin-bottom: 0.5rem;
+  }
+
+  .category-entrance-title {
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0 0 0.75rem;
+    letter-spacing: -0.02em;
+  }
+
+  .category-entrance-subtitle {
+    font-size: 1rem;
+    color: #64748b;
+    max-width: 600px;
+    margin-inline: auto;
+    margin-block: 0;
+    line-height: 1.6;
+  }
+
+  .category-entrance-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .category-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #0f172a;
+    min-height: 420px;
+    display: flex;
+    align-items: flex-end;
+    text-decoration: none;
+    color: #ffffff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+  }
+
+  .category-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.16);
+  }
+
+  .category-card__media {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .category-card:hover .category-card__media {
+    transform: scale(1.05);
+  }
+
+  .category-card__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(15, 23, 42, 0.15) 0%,
+      rgba(15, 23, 42, 0.5) 50%,
+      rgba(15, 23, 42, 0.92) 100%
+    );
+    transition: opacity 0.3s ease;
+  }
+
+  .category-card:hover .category-card__overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(15, 23, 42, 0.1) 0%,
+      rgba(15, 23, 42, 0.45) 45%,
+      rgba(15, 23, 42, 0.95) 100%
+    );
+  }
+
+  .category-card__content {
+    position: relative;
+    z-index: 2;
+    padding: 2.25rem 2rem;
+    width: 100%;
+  }
+
+  .category-card__tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #38bdf8;
+    background: rgba(14, 165, 233, 0.15);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    border-radius: 4px;
+    padding: 3px 8px;
+    margin-bottom: 0.75rem;
+  }
+
+  .category-card__title {
+    font-size: clamp(1.5rem, 2.5vw, 1.85rem);
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 0.5rem;
+    line-height: 1.25;
+  }
+
+  .category-card__desc {
+    font-size: 0.9375rem;
+    color: #cbd5e1;
+    margin: 0 0 1.25rem;
+    line-height: 1.5;
+  }
+
+  .category-card__button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: #ffffff;
+    color: #0f172a;
+    font-size: 0.875rem;
+    font-weight: 700;
+    border-radius: 6px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .category-card:hover .category-card__button {
+    background: #f1f5f9;
+    transform: translateX(4px);
+  }
+
+  @media screen and (max-width: 768px) {
+    .category-entrance-grid {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+
+    .category-card {
+      min-height: 340px;
+    }
+
+    .category-card__content {
+      padding: 1.5rem;
+    }
+  }
+</style>
+
+<div class="category-entrance-{{ section.id }}">
+  <div class="category-entrance-container">
+    <div class="category-entrance-header">
+      <span class="category-entrance-eyebrow">EXPLORE BY SPORT</span>
+      <h2 class="category-entrance-title">探索專業運動裝備</h2>
+      <p class="category-entrance-subtitle">
+        德國百年人體工學研究，針對不同運動強度與受力模式，提供專屬掌部減壓與關節保護
+      </p>
+    </div>
+
+    <div class="category-entrance-grid">
+      <!-- Card 1: Cycling -->
+      <a href="{{ routes.collections_url }}/chiba-gloves-germany" class="category-card">
+        {%- if section.settings.cycling_image != blank -%}
+          {{ section.settings.cycling_image | image_url: width: 1200 | image_tag: class: 'category-card__media', loading: 'lazy', alt: 'CHIBA 自行車系列' }}
+        {%- else -%}
+          <img
+            src="https://cdn.shopify.com/s/files/1/1015/5950/1113/files/cycling__3067125__60482bd116237396__3067125_04_1.jpg?v=1790331631"
+            class="category-card__media"
+            alt="CHIBA 自行車系列"
+            loading="lazy"
+            width="600"
+            height="600"
+          >
+        {%- endif -%}
+        <div class="category-card__overlay"></div>
+        <div class="category-card__content">
+          <span class="category-card__tag">CYCLING COLLECTION</span>
+          <h3 class="category-card__title">自行車專業裝備</h3>
+          <p class="category-card__desc">
+            BioXCell® 專利雙階醫學減壓 · Poron® XRD 衝擊吸收 · 公路競速與長途巡航
+          </p>
+          <span class="category-card__button">
+            選購自行車系列 <span aria-hidden="true">→</span>
+          </span>
+        </div>
+      </a>
+
+      <!-- Card 2: Fitness -->
+      <a href="{{ routes.collections_url }}/chiba-gloves-germany-1" class="category-card">
+        {%- if section.settings.fitness_image != blank -%}
+          {{ section.settings.fitness_image | image_url: width: 1200 | image_tag: class: 'category-card__media', loading: 'lazy', alt: 'CHIBA 健身重訓系列' }}
+        {%- else -%}
+          <img
+            src="https://cdn.shopify.com/s/files/1/1015/5950/1113/files/fitness__44766__black-10__b55474ec05bd0e04__44766-10-1.jpg?v=1790331715"
+            class="category-card__media"
+            alt="CHIBA 健身重訓系列"
+            loading="lazy"
+            width="600"
+            height="600"
+          >
+        {%- endif -%}
+        <div class="category-card__overlay"></div>
+        <div class="category-card__content">
+          <span class="category-card__tag" style="color: #f59e0b; background: rgba(245, 158, 11, 0.15); border-color: rgba(245, 158, 11, 0.3);">FITNESS & TRAINING</span>
+          <h3 class="category-card__title">健身重訓裝備</h3>
+          <p class="category-card__desc">
+            腕關節剛性鎖定 · 激勵防滑握力護墊 · 頂級重訓腰帶與硬派護膝護腕
+          </p>
+          <span class="category-card__button">
+            選購健身重訓系列 <span aria-hidden="true">→</span>
+          </span>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "運動領域雙大門分流",
+  "class": "section-category-entrance-grid",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "背景顏色",
+      "default": "#ffffff"
+    },
+    {
+      "type": "image_picker",
+      "id": "cycling_image",
+      "label": "自行車系列代表圖片"
+    },
+    {
+      "type": "image_picker",
+      "id": "fitness_image",
+      "label": "健身系列代表圖片"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 24,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "上方間距",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 24,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "下方間距",
+      "default": 56
+    }
+  ],
+  "presets": [
+    {
+      "name": "運動領域雙大門分流"
+    }
+  ]
+}
+{% endschema %}
