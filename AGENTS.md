@@ -126,7 +126,7 @@ Current execution scope: **Phase 2 Production Readiness**, explicitly authorized
      - **Shopify 商品多變體 CSV 匯入規範與唯一真實資料來源 (Shopify Product CSV Single Source of Truth Standard)**：
        * **唯一合法真實資料來源 (Single Source of Truth)**：全站商品 CSV 的唯一標準基底檔為：
          `/Users/archie/Chiba-AI/data/canonical_shopify_products_master.csv`
-         （此檔案具備 43 欄完整官方結構、94 款商品、1,271 列規格、0 重複變體、100% 繁中優化與 UTF-8 BOM 編碼）。
+         （此檔案具備 43 欄完整官方結構、94 款商品、1,271 列規格、0 重複變體、100% 繁中優化與 UTF-8 BOM 編碼；最新通過驗證基準版本為 `CHIBA_Shopify_Full_Products_Fixed_20260928-1905.csv`，含 0 醫學/0 專利法規避險與 40425 正反面圖庫校正）。
        * **嚴禁從零重新合成（Forbidden to Synthesize from Scratch）**：未來任何商品文字、標題、描述、圖片、SEO 或價格更新，**嚴禁**使用自製腳本從零拼裝或推導變體名稱（避免字典對照碰撞與 Fallback 錯誤）。**必須一律以該主檔為基底**，載入後僅修改目標欄位並另存新時間戳檔案。
        * **三大匯出硬門檻檢驗（Mandatory Assertion Gates Before Delivery）**：
          1. **結構門檻**：必須維持 43 欄標準結構，嚴禁只傳送 `Handle`、`Title`、`Body (HTML)`（否則觸發「`• 更新子類時，必須提供商品選項的輸入資料。`」報錯）。
