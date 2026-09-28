@@ -22,7 +22,7 @@ Phase 2 Production Readiness — approved production publish of the collection f
 
 - Verified source changes are committed locally as `3d4ff34` (`Publish collection filter UX and localized category filters`).
 - GitHub `origin/main` was fetched and confirmed at `7804e5e` before commit.
-- Push to `origin main` failed because Git could not obtain a password; GitHub CLI is not installed. The local branch is now 1 commit ahead of `origin/main`. Do not attempt another remote or bypass authentication; publish after GitHub credentials are configured.
+- Push to `origin main` failed because Git could not obtain a password; GitHub CLI is not installed. The verified production source commit `3d4ff34` and checkpoint follow-up commit are local and await GitHub authentication. Do not attempt another remote or bypass authentication.
 
 ## Last known good production
 
@@ -34,4 +34,4 @@ Phase 2 Production Readiness — approved production publish of the collection f
 
 ## Next action
 
-After GitHub authentication is available, push the local verified commit to `origin main`. Shopify production deployment is complete and verified.
+After GitHub authentication is available, push the local verified commits to `origin main`. Shopify production deployment is complete and verified.
