@@ -1,6 +1,6 @@
 # CHIBA Task Checkpoint
 
-Updated: 2026-09-29 00:00:35 +08:00
+Updated: 2026-09-29 00:01:29 +08:00
 
 ## Current scope
 
@@ -20,8 +20,9 @@ Phase 2 Production Readiness — approved production publish of the collection f
 
 ## Pending / blockers
 
-- Push the corresponding verified source changes to GitHub after confirming the current branch/upstream state; do not include unexpected files.
-- GitHub `origin/main` was fetched and confirmed at `7804e5e`; the current branch HEAD matches it (`0` ahead, `0` behind). The verified theme changes and checkpoint are the only uncommitted files.
+- Verified source changes are committed locally as `3d4ff34` (`Publish collection filter UX and localized category filters`).
+- GitHub `origin/main` was fetched and confirmed at `7804e5e` before commit.
+- Push to `origin main` failed because Git could not obtain a password; GitHub CLI is not installed. The local branch is now 1 commit ahead of `origin/main`. Do not attempt another remote or bypass authentication; publish after GitHub credentials are configured.
 
 ## Last known good production
 
@@ -33,4 +34,4 @@ Phase 2 Production Readiness — approved production publish of the collection f
 
 ## Next action
 
-Commit and fast-forward-push the verified source changes to GitHub `main`, then update this checkpoint with the final repository state and timestamp.
+After GitHub authentication is available, push the local verified commit to `origin main`. Shopify production deployment is complete and verified.
