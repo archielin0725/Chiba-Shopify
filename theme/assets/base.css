@@ -2629,3 +2629,26 @@ product-card .price .price-prefix,
 .cart-free-shipping-bar__icon {
   font-size: 1.1rem;
 }
+
+
+/* Price Filter Field Truncation Fix */
+.price-facet__field {
+  min-width: 95px !important;
+  flex: 1 1 auto !important;
+}
+
+.price-facet__input {
+  text-align: center !important;
+  padding-inline-start: 1.8rem !important;
+  padding-inline-end: 0.6rem !important;
+  font-size: 0.95rem !important;
+}
+
+.price-facet__label {
+  inset-inline-start: 0.6rem !important;
+  font-size: 0.9rem !important;
+}
+
+.price-facet__inputs-wrapper {
+  gap: 12px !important;
+}
