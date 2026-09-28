@@ -11,6 +11,11 @@
 {%- enddoc -%}
 
 {%- liquid
+  capture taiwan_money_format
+    echo 'NT$ '
+    echo '{{amount_no_decimals}}'
+  endcapture
+
   assign is_horizontal = false
   assign is_vertical = false
   if filter_style == 'horizontal'
@@ -35,7 +40,7 @@
     >
       <span class="facets__label">{{ filter.label }}</span>
       <facet-status-component class="facets__status">
-        <template ref="moneyFormat">{{ shop.money_format }}</template>
+        <template ref="moneyFormat">{{ taiwan_money_format }}</template>
 
         <span
           class="hide-when-empty"
@@ -45,12 +50,12 @@
         >
           {%- if filter.min_value.value != null or filter.max_value.value != null %}
             {%- if filter.min_value.value != null and filter.max_value.value != null %}
-              <bdi>{{ filter.min_value.value | money | strip_html }}–{{ filter.max_value.value | money | strip_html }}</bdi>
+              {% render 'format-price', price: filter.min_value.value %}–{% render 'format-price', price: filter.max_value.value %}
             {%- elsif filter.min_value.value != null -%}
-              <bdi>{{ filter.min_value.value | money | strip_html }}–{{ filter.range_max | money | strip_html }}</bdi>
+              {% render 'format-price', price: filter.min_value.value %}–{% render 'format-price', price: filter.range_max %}
 
             {%- elsif filter.max_value.value != null -%}
-              <bdi>{{ 0 | money | strip_html }}–{{ filter.max_value.value | money | strip_html }}</bdi>
+              {% render 'format-price', price: 0 %}–{% render 'format-price', price: filter.max_value.value %}
             {%- endif -%}
           {%- endif -%}
         </span>
@@ -76,7 +81,7 @@
           {%- endif %}
         "
         id="facet-inputs-{{ filter.param_name | escape | replace: '.', '-' }}"
-        data-money-format="{{ shop.money_format | strip_html }}"
+        data-money-format="{{ taiwan_money_format | escape }}"
         data-currency="{{ localization.country.currency.iso_code }}"
         on:change="/updatePriceFilterAndResults"
       >
@@ -90,7 +95,7 @@
                 name="{{ filter.min_value.param_name }}"
                 id="{{ filter.label | escape }}-GTE-{{ id_prefix }}"
                 {%- if filter.min_value.value -%}
-                  value="{{ filter.min_value.value | money_without_currency }}"
+                  value="{{ filter.min_value.value | money_without_trailing_zeros | remove: ' TWD' | remove: 'TWD' | remove: 'NT$' | remove: '$' | strip }}"
                 {%- endif -%}
                 type="text"
                 inputmode="decimal"
@@ -106,7 +111,7 @@
                 class="field__label price-facet__label"
                 for="{{ filter.label | escape }}-GTE-{{ id_prefix }}"
               >
-                {{ cart.currency.symbol }}
+                NT$
               </label>
             </div>
 
@@ -118,11 +123,11 @@
                 name="{{ filter.max_value.param_name }}"
                 id="{{ filter.label | escape }}-LTE-{{ id_prefix }}"
                 {%- if filter.max_value.value -%}
-                  value="{{ filter.max_value.value | money_without_currency }}"
+                  value="{{ filter.max_value.value | money_without_trailing_zeros | remove: ' TWD' | remove: 'TWD' | remove: 'NT$' | remove: '$' | strip }}"
                 {%- endif -%}
                 type="text"
                 inputmode="decimal"
-                placeholder="{{ filter.range_max | money_without_currency }}"
+                placeholder="{{ filter.range_max | money_without_trailing_zeros | remove: ' TWD' | remove: 'TWD' | remove: 'NT$' | remove: '$' | strip }}"
                 data-min="{{ max_input_min_value | money_without_currency }}"
                 data-max="{{ filter.range_max | money_without_currency }}"
                 ref="maxInput"
@@ -133,7 +138,7 @@
                 class="field__label price-facet__label"
                 for="{{ filter.label | escape }}-LTE-{{ id_prefix }}"
               >
-                {{ cart.currency.symbol }}
+                NT$
               </label>
             </div>
           </div>
@@ -147,7 +152,7 @@
             {%- endif %}
           "
         >
-          {%- capture formatted_highest_price -%}<bdi>{{ filter.range_max | money }}</bdi>{%- endcapture -%}
+          {%- capture formatted_highest_price -%}{%- render 'format-price', price: filter.range_max -%}{%- endcapture -%}
           {{ 'content.price_filter_html' | t: price: formatted_highest_price }}
         </div>
 
