@@ -282,12 +282,21 @@
         "padding_top": 56,
         "padding_bottom": 56
       }
+    },
+    "technology_spotlight": {
+      "type": "technology-spotlight",
+      "settings": {
+        "background_color": "#090d16",
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
     }
   },
   "order": [
     "hero_jVaWmY",
     "brand_trust_badges",
     "category_entrance_grid",
+    "technology_spotlight",
     "product_list_fa6P9H"
   ]
 }

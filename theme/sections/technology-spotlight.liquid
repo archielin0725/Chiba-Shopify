@@ -1,0 +1,264 @@
+{%- comment -%}
+  BioXCell® Technology Spotlight Section
+  High-impact technical breakdown of Chiba's proprietary ergonomic patents:
+  BioXCell 2-phase gel, Poron XRD shock absorption, Quick-Pull system.
+{%- endcomment -%}
+
+<style>
+  .tech-spotlight-{{ section.id }} {
+    padding-block-start: {{ section.settings.padding_top }}px;
+    padding-block-end: {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.background_color | default: '#090d16' }};
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tech-spotlight-{{ section.id }}::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: 50%;
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(14, 165, 233, 0.12) 0%, rgba(14, 165, 233, 0) 70%);
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
+
+  .tech-spotlight-container {
+    max-width: var(--normal-page-width, 120rem);
+    margin-inline: auto;
+    padding-inline: max(1.5rem, 5vw);
+    position: relative;
+    z-index: 1;
+  }
+
+  .tech-spotlight-header {
+    text-align: center;
+    max-width: 760px;
+    margin-inline: auto;
+    margin-bottom: 3.5rem;
+  }
+
+  .tech-spotlight-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #38bdf8;
+    background: rgba(14, 165, 233, 0.12);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    border-radius: 999px;
+    padding: 4px 14px;
+    margin-bottom: 1rem;
+  }
+
+  .tech-spotlight-title {
+    font-size: clamp(1.85rem, 3.5vw, 2.75rem);
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 1rem;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  .tech-spotlight-subtitle {
+    font-size: 1.0625rem;
+    color: #94a3b8;
+    margin: 0;
+    line-height: 1.65;
+  }
+
+  .tech-spotlight-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
+    margin-bottom: 3rem;
+  }
+
+  .tech-card {
+    background: rgba(15, 23, 42, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 2.25rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    backdrop-filter: blur(12px);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .tech-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(56, 189, 248, 0.4);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35), 0 0 20px rgba(14, 165, 233, 0.15);
+  }
+
+  .tech-card__badge {
+    align-self: flex-start;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #38bdf8;
+    background: rgba(56, 189, 248, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 4px;
+    padding: 3px 8px;
+    margin-bottom: 1.25rem;
+  }
+
+  .tech-card__icon {
+    font-size: 2.25rem;
+    margin-bottom: 1.25rem;
+    line-height: 1;
+  }
+
+  .tech-card__title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #f8fafc;
+    margin: 0 0 0.75rem;
+    line-height: 1.35;
+  }
+
+  .tech-card__desc {
+    font-size: 0.9375rem;
+    color: #94a3b8;
+    margin: 0;
+    line-height: 1.6;
+    flex: 1;
+  }
+
+  .tech-spotlight-cta {
+    text-align: center;
+  }
+
+  .tech-spotlight-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    background: #0ea5e9;
+    color: #ffffff;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 16px rgba(14, 165, 233, 0.3);
+  }
+
+  .tech-spotlight-button:hover {
+    background: #0284c7;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(14, 165, 233, 0.45);
+  }
+
+  @media screen and (max-width: 900px) {
+    .tech-spotlight-grid {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+
+    .tech-card {
+      padding: 1.75rem 1.5rem;
+    }
+
+    .tech-spotlight-header {
+      margin-bottom: 2.5rem;
+    }
+  }
+</style>
+
+<div class="tech-spotlight-{{ section.id }}">
+  <div class="tech-spotlight-container">
+    <div class="tech-spotlight-header">
+      <span class="tech-spotlight-eyebrow">GERMAN ERGONOMIC PATENT</span>
+      <h2 class="tech-spotlight-title">BioXCell® 專利醫學減壓系統</h2>
+      <p class="tech-spotlight-subtitle">
+        專為解決手麻、掌心疼痛與壓迫而生。由德國百年人體工學團隊與歐洲專業運動醫學機構聯合研發，守護每一次騎乘與高強度抓握。
+      </p>
+    </div>
+
+    <div class="tech-spotlight-grid">
+      <!-- Card 1 -->
+      <div class="tech-card">
+        <span class="tech-card__badge">歐洲醫學專利</span>
+        <div class="tech-card__icon" aria-hidden="true">🧬</div>
+        <h3 class="tech-card__title">BioXCell 雙階避震凝膠</h3>
+        <p class="tech-card__desc">
+          精確避開掌面尺神經與正中神經通道，階梯式雙層凝膠墊有效分散車把微幅震盪，徹底防止長途騎乘所產生的手指麻痺與握力疲乏。
+        </p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="tech-card">
+        <span class="tech-card__badge" style="color: #f59e0b; background: rgba(245, 158, 11, 0.1); border-color: rgba(245, 158, 11, 0.2);">90% 衝擊吸收</span>
+        <div class="tech-card__icon" aria-hidden="true">⚡</div>
+        <h3 class="tech-card__title">Poron® XRD 極致吸震核心</h3>
+        <p class="tech-card__desc">
+          常態下柔軟透氣貼合掌形，遭遇劇烈衝擊或摔跌瞬間分子連鎖硬化，瞬間吸收高達 90% 衝擊能量，為掌骨提供最堅固的無形護盾。
+        </p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="tech-card">
+        <span class="tech-card__badge" style="color: #10b981; background: rgba(16, 185, 129, 0.1); border-color: rgba(16, 185, 129, 0.2);">原創專利結構</span>
+        <div class="tech-card__icon" aria-hidden="true">🧲</div>
+        <h3 class="tech-card__title">Quick-Pull 專利脫手拉環</h3>
+        <p class="tech-card__desc">
+          Chiba 原創經典設計。高強度運動大量出汗後，只需以雙指穿入中指與無名指間的專利拉環，即可一秒俐落脫卸手套，保護縫線不拉扯。
+        </p>
+      </div>
+    </div>
+
+    <div class="tech-spotlight-cta">
+      <a href="{{ routes.all_products_collection_url }}/bioxcell-line" class="tech-spotlight-button">
+        探索 BioXCell 專利減壓系列 <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "BioXCell 專利科技專題",
+  "class": "section-technology-spotlight",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "背景顏色",
+      "default": "#090d16"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 24,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "上方間距",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 24,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "下方間距",
+      "default": 64
+    }
+  ],
+  "presets": [
+    {
+      "name": "BioXCell 專利科技專題"
+    }
+  ]
+}
+{% endschema %}

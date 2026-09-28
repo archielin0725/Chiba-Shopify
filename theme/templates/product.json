@@ -7,7 +7,7 @@
           "type": "disclosures",
           "name": "t:names.disclosures",
           "settings": {
-            "heading": "Disclosures",
+            "heading": "商品特色與保養指南",
             "heading_preset": "h5",
             "open_by_default": false,
             "icon": "caret",
