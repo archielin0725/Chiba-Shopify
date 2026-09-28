@@ -23,6 +23,12 @@
   fetchpriority="low"
 ></script>
 
+<script
+  src="{{ 'facets-popover.js' | asset_url }}"
+  type="module"
+  fetchpriority="low"
+></script>
+
 {%- liquid
   assign block_settings = block.settings
   assign products_count = results_size
@@ -371,7 +377,7 @@
 
     {% liquid
       assign child_count = 0
-      if block_settings.enable_filtering == false and block_settings.enable_sorting
+      if block_settings.enable_sorting
         assign child_count = child_count | plus: 1
       endif
       if block_settings.enable_grid_density
@@ -380,7 +386,7 @@
     %}
 
     <div class="facets-mobile-wrapper facets-controls-wrapper{% if child_count > 1 %} facets-mobile-wrapper--multiple-controls{% endif %}">
-      {% if block_settings.enable_filtering == false and block_settings.enable_sorting %}
+      {% if block_settings.enable_sorting %}
         <facets-form-component
           section-id="{{ section.id }}"
           id="FacetFiltersForm--{{ section.id }}-mobile-sorting-only"
@@ -512,27 +518,6 @@
               </div>
             {% endif %}
 
-            {% if block_settings.enable_sorting %}
-              {% render 'sorting',
-                results: results,
-                sort_by: sort_by,
-                filter_style: block_settings.filter_style,
-                suffix: 'overflow',
-                should_use_select_on_mobile: should_use_select_on_mobile,
-                section_id: section.id
-              %}
-            {% endif %}
-
-            {%- comment -%} Antigravity Quick Brand Guarantee Card to eliminate empty dead space {%- endcomment -%}
-            <div class="facets-drawer__brand-hub">
-              <div class="facets-drawer__guarantee-card">
-                <div class="facets-drawer__guarantee-header">
-                  <span class="facets-drawer__guarantee-badge">🛡️ 原廠正品保證</span>
-                  <span class="facets-drawer__guarantee-flag">🇩🇪 德國直營</span>
-                </div>
-                <div class="facets-drawer__guarantee-text">全館商品皆為台灣總代理現貨供應，享完善退換貨與售後保固服務。</div>
-              </div>
-            </div>
           </scroll-hint>
         </form>
       </facets-form-component>
@@ -1379,6 +1364,68 @@
     border-inline-start: var(--style-border-width) solid rgb(var(--color-foreground-rgb) / var(--opacity-10-25));
     height: var(--font-paragraph--size);
     position: absolute;
+  }
+
+  #filters-drawer .theme-drawer__dialog:not([open]) {
+    display: none !important;
+  }
+
+  @media screen and (min-width: 990px) {
+    .page-wrapper:has(#filters-drawer[open]) {
+      margin-inline-end: 0;
+    }
+
+    #filters-drawer .theme-drawer__dialog {
+      --theme-drawer-padding: 14px;
+
+      inset-block-start: var(--filters-popover-top, 0px) !important;
+      inset-inline-start: var(--filters-popover-left, 0px) !important;
+      inset-inline-end: auto !important;
+      width: min(320px, calc(100vw - 32px)) !important;
+      height: min(450px, calc(100dvh - var(--filters-popover-top, 0px) - 16px)) !important;
+      max-height: calc(100dvh - var(--filters-popover-top, 0px) - 16px) !important;
+      padding: 0 !important;
+      border: 1px solid rgb(var(--color-border-rgb) / 0.7) !important;
+      border-radius: 10px !important;
+      box-shadow: 0 12px 32px rgb(0 0 0 / 0.18) !important;
+      animation: none !important;
+    }
+
+    #filters-drawer .theme-drawer__dialog[open] {
+      inset-inline-end: auto !important;
+    }
+
+    #filters-drawer .facets__see-results {
+      display: inline-flex;
+      min-height: 42px;
+      padding-block: var(--padding-sm);
+    }
+
+    #filters-drawer .facets__drawer-actions {
+      padding: 10px 14px;
+    }
+  }
+
+  @media screen and (max-width: 989px) {
+    #filters-drawer .theme-drawer__dialog {
+      inset-block-start: auto !important;
+      inset-block-end: 0 !important;
+      inset-inline: 0 !important;
+      width: 100% !important;
+      height: min(72dvh, 620px) !important;
+      max-height: 82dvh !important;
+      padding: var(--safe-area-inset-top) 0 var(--safe-area-inset-bottom) !important;
+      border: none !important;
+      border-radius: 20px 20px 0 0 !important;
+      box-shadow: 0 -10px 36px rgb(0 0 0 / 0.16) !important;
+      animation: none !important;
+    }
+
+    #filters-drawer .theme-drawer__dialog[open] {
+      inset-block-start: auto !important;
+      inset-block-end: 0 !important;
+      inset-inline: 0 !important;
+    }
   }
 {% endstylesheet %}
 

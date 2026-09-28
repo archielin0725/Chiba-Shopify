@@ -140,7 +140,7 @@
                         id="HeaderDrawer-{{ link.handle }}"
                         class="menu-drawer__menu-item menu-drawer__menu-item--mainlist menu-drawer__animated-element"
                       >
-                        <span class="menu-drawer__menu-item-text wrap-text">{{ link.title | replace_first: '目錄', '產品' | replace_first: 'Catalog', '產品' | escape }}</span>
+                        <span class="menu-drawer__menu-item-text wrap-text">{{ link.title | replace_first: '目錄', '商品' | replace_first: 'Catalog', '商品' | replace_first: '產品', '商品' | escape }}</span>
                         <span class="svg-wrapper icon-plus">
                           {{- 'icon-plus.svg' | inline_asset_content -}}
                         </span>
@@ -204,7 +204,7 @@
                       aria-current="page"
                     {% endif %}
                   >
-                    <span class="menu-drawer__menu-item-text wrap-text">{{ link.title | replace_first: '目錄', '產品' | replace_first: 'Catalog', '產品' | escape }}</span>
+                    <span class="menu-drawer__menu-item-text wrap-text">{{ link.title | replace_first: '目錄', '商品' | replace_first: 'Catalog', '商品' | replace_first: '產品', '商品' | escape }}</span>
                   </a>
                   {% liquid
                     assign render_link_image = false
@@ -258,7 +258,7 @@
                       aria-current="page"
                     {% endif %}
                   >
-                    <span class="menu-drawer__menu-item-text wrap-text">{{ link.title | replace_first: '目錄', '產品' | replace_first: 'Catalog', '產品' | escape }}</span>
+                    <span class="menu-drawer__menu-item-text wrap-text">{{ link.title | replace_first: '目錄', '商品' | replace_first: 'Catalog', '商品' | replace_first: '產品', '商品' | escape }}</span>
                   </a>
                 {% endif %}
               </li>
@@ -287,7 +287,7 @@
                       class="menu-drawer__menu-item menu-drawer__menu-item--mainlist menu-drawer__animated-element{% if link.child_active %} menu-drawer__menu-item--active{% endif %}"
                       on:click="header-drawer/open/submenu"
                     >
-                      <span class="menu-drawer__menu-item-text wrap-text">{{ link.title | replace_first: '目錄', '產品' | replace_first: 'Catalog', '產品' | escape }}</span>
+                      <span class="menu-drawer__menu-item-text wrap-text">{{ link.title | replace_first: '目錄', '商品' | replace_first: 'Catalog', '商品' | replace_first: '產品', '商品' | escape }}</span>
                       <span class="svg-wrapper icon-caret icon-caret--forward">
                         {{- 'icon-caret.svg' | inline_asset_content -}}
                       </span>
@@ -316,7 +316,7 @@
                               aria-current="page"
                             {% endif %}
                           >
-                            <span class="menu-drawer__menu-item-text wrap-text">{{ link.title | replace_first: '目錄', '產品' | replace_first: 'Catalog', '產品' | escape }}</span>
+                            <span class="menu-drawer__menu-item-text wrap-text">{{ link.title | replace_first: '目錄', '商品' | replace_first: 'Catalog', '商品' | replace_first: '產品', '商品' | escape }}</span>
                           </a>
                           <button
                             class="button button-unstyled close-button menu-drawer__close-button focus-inset"
@@ -605,7 +605,7 @@
                       aria-current="page"
                     {% endif %}
                   >
-                    <span class="menu-drawer__menu-item-text wrap-text">{{ link.title | replace_first: '目錄', '產品' | replace_first: 'Catalog', '產品' | escape }}</span>
+                    <span class="menu-drawer__menu-item-text wrap-text">{{ link.title | replace_first: '目錄', '商品' | replace_first: 'Catalog', '商品' | replace_first: '產品', '商品' | escape }}</span>
                   </a>
                 {%- endif -%}
               </li>

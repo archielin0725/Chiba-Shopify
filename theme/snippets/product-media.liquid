@@ -18,6 +18,12 @@
 
 {% liquid
   assign widths = widths | default: '240, 352, 640, 832, 1200, 1600, 1920, 2560, 3840'
+  assign image_loading = loading
+  if image_loading == blank and is_main_product_media
+    assign image_loading = 'eager'
+  else
+    assign image_loading = image_loading | default: 'lazy'
+  endif
   assign ref_image_to_transition = ''
   if settings.transition_to_main_product
     assign ref_image_to_transition = 'imagesToTransition[]'
@@ -44,7 +50,7 @@
       widths: widths,
       alt: media.alt,
       sizes: sizes,
-      loading: loading,
+      loading: image_loading,
       class: 'product-media__image',
       ref: ref_image_to_transition,
       data_max_resolution: high_res_url,
