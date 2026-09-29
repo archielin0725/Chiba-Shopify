@@ -67,7 +67,8 @@ Current execution scope: **Phase 2 Production Readiness**, explicitly authorized
 - Checkpoint is read FIRST, followed by policy and this file. Latest dated recovery entry takes precedence over historical entries. Record previous-task valid stop before switching missions.
 
 ## Repository Synchronization Standard (Chiba-Shopify & Chiba-AI)
-- **Official GitHub synchronization is automatic**: after every requested, verified change in the relevant project, sync it to the official `archielin0725` GitHub `main` branch without waiting for another user prompt. Fetch/rebase the official branch before work, preserve unrelated local changes, commit only task-scoped files, push to `origin/main`, and verify the remote SHA. Sync the personal `sammywanwan` mirror when applicable, but never treat it as a replacement for the official upstream.
+- **Single source of truth for both Chiba websites**: the official `archielin0725` GitHub repositories are the sole authoritative sources for Chiba-Shopify and Chiba-AI (including `www.chibataiwan.com`). The `sammywanwan` GitHub repository and local copies are downstream mirrors/workspaces only; they must never be treated as upstream, authority, or a required hop in the delivery pipeline.
+- **Official GitHub synchronization is automatic**: after every requested, verified change in either website project, sync it to the corresponding official `archielin0725` GitHub `main` branch without waiting for another user prompt. Fetch/rebase the official branch before work, preserve unrelated local changes, commit only task-scoped files, push to the official remote, and verify the remote SHA. Update downstream mirrors only after official sync when needed.
 - **模式 1：與 AI 協作時「自動推送」（永久標準規範）**
   - **運作方式**：未來只要使用者指示更新相關檔案（Shopify 主題、官方網站、MOMO 腳本等）：
   - **行為**：AI 在修改完本地檔案並驗證無誤後，必須自動在任務結尾執行 `git add . && git commit -m "<清楚描述修改內容>" && git push origin main`，一次性同步到 GitHub，完全不需要使用者手動輸入任何 Git 指令。
@@ -183,12 +184,11 @@ Current execution scope: **Phase 2 Production Readiness**, explicitly authorized
 
 
 
-## Multi-Developer Dual-Account & Local Disk Sync Standard (雙帳號與本機磁碟同步標準規範)
-- **單一真實資料來源 (Single Source of Truth)**：`archielin0725` 官方遠端倉庫為唯一主幹（Upstream）。
-- **同步管線（Sync Pipeline）**：
-  `archielin0725 (GitHub 主幹)` ➔ `Sammy 本地磁碟 (/Users/sammywang/)` ➔ `sammywanwan (Sammy 個人 GitHub)`
+## Multi-Developer Dual-Account & Local Disk Sync Standard（雙帳號與本機磁碟同步標準規範）
+- **唯一真實資料來源 (Single Source of Truth)**：`archielin0725` 官方 GitHub 倉庫是 Chiba-Shopify 與 Chiba-AI（包含 `www.chibataiwan.com`）的唯一權威來源。
+- **同步管線（Sync Pipeline）**：官方 `archielin0725` GitHub ➔ 本機工作副本；`sammywanwan` GitHub 僅為可選的下游鏡像。絕不可要求變更先經 Sammy 個人倉庫才算完成或同步。
 - **標準同步腳本（Deterministic Sync Script: `scripts/sync_chiba.sh`）**：
-  在 Sammy 本機執行時，腳本自動拉取 `archielin0725` 最新提交至本機磁碟，並自動推送至 Sammy 個人 GitHub，實現三方（Archie 官方、Sammy 本機、Sammy GitHub）100% 同步。
+  若腳本會更新 Sammy 個人 GitHub，必須先確認它只從官方 `archielin0725` 倉庫取得權威變更，且個人倉庫只作下游鏡像；不得將其描述成官方來源或同步必經節點。
 
 ## Rule Governance & Health Checkpoint Standard (MD 規則治理與健康檢查標準)
 - **三層分立架構（Three-Tier Architecture）**：

@@ -2,6 +2,19 @@
 
 Updated: 2026-09-29 01:20 +08:00
 
+## Latest recovery entry — 2026-09-29 21:26 +08:00
+
+### Completed
+
+- Clarified that official `archielin0725` GitHub repositories are the only source of truth for both Chiba websites, including `www.chibataiwan.com`.
+- Replaced ambiguous dual-account pipeline language: `sammywanwan` repositories and local copies are downstream mirrors/workspaces only, never authority or mandatory sync hops.
+- Confirmed current task branch was up to date with official `origin/main` before editing.
+
+### Pending / blocker
+
+- Validate and push this governance clarification to official `archielin0725` main; sync the personal mirror only afterward if applicable.
+- The corrected 20:40 Shopify theme ZIP remains pending user upload/publish for the announcement-bar flag.
+
 ## Latest recovery entry — 2026-09-29 20:43 +08:00
 
 ### Completed

@@ -2,8 +2,8 @@
 
 ## Official repository sync
 
-- Treat `archielin0725`'s GitHub repository as the source of truth. After each requested theme change passes the required validation, commit only the task-scoped files, push to official `origin/main` without waiting for a separate reminder, and verify the remote commit SHA.
-- Keep the `sammywanwan` repository synchronized as a mirror when applicable; never mistake a mirror-only push for official synchronization.
+- Treat the official `archielin0725` GitHub repository as the sole source of truth for both Chiba websites. After each requested theme change passes the required validation, commit only the task-scoped files, push to official `origin/main` without waiting for a separate reminder, and verify the remote commit SHA.
+- `sammywanwan` repositories and local copies are downstream mirrors/workspaces only. Never treat them as authority or a required synchronization hop; update a mirror only after official sync when needed.
 - A GitHub push is not proof of Shopify deployment. Verify the published storefront separately.
 
 ## When deployment is blocked
