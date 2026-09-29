@@ -2,6 +2,25 @@
 
 Updated: 2026-09-29 01:20 +08:00
 
+## Latest recovery entry — 2026-09-30 01:15 +08:00
+
+### Completed
+
+- Performed a full HTTP status and integrity audit of all 434 unique product image URLs across all 93 products and 1,259 variants in the canonical Shopify master CSV.
+- Detected that precisely 1 URL returned HTTP 404: `https://cdn.shopify.com/s/files/1/1015/5950/1113/files/fitness__40425__darkgrey-19__fd707c0881e3a416__40425-19-1.jpg?v=1790331652` for product `chiba-40425-fitness` (Air Performer 透氣機能訓練手套), while all other 433 URLs were 100% healthy (HTTP 200).
+- Confirmed the user updated the image on live Shopify to `https://cdn.shopify.com/s/files/1/1015/5950/1113/files/CHIBA-40425-darkgray-front-20260930-0047.jpg?v=1790700613` (HTTP 200).
+- Updated the canonical master CSV (`/Users/archie/Chiba-AI/data/canonical_shopify_products_master.csv`) by replacing the broken 404 URL in both `Image Src` (position 3) and `Variant Image` for all six `40425-DARKGREY19` variants (XS through XXL).
+- Generated verified, timestamped milestone delivery files:
+  - `/Users/archie/Downloads/CHIBA_Shopify_Full_Products_Fixed_20260930-0115.csv`
+  - `/Users/archie/Chiba-Shopify/Output/CHIBA_Shopify_Full_Products_Fixed_20260930-0115.csv`
+- Executed `python3 scripts/verify_shopify_csv_gate.py` on all copies; verified 100% pass across UTF-8 BOM, 43 columns, 93 canonical products, 0 duplicate variants, and 0 invalid categories.
+- Re-tested image URLs for 40425; confirmed all 6 URLs return HTTP 200 with zero broken links.
+- Synchronized `AGENTS.md` across `Chiba-Shopify` and `Chiba-AI`; passed `audit_md_health.py` with 0 issues.
+
+### Pending / blocker
+
+- None for product CSV. The live Shopify store and canonical product CSV are now 100% aligned.
+
 ## Latest recovery entry — 2026-09-30 00:55 +08:00
 
 ### Completed
