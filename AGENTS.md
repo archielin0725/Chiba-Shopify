@@ -11,6 +11,7 @@
 ## Permanent Rules
 - Finish the CURRENT phase before building future-phase infrastructure.
 - Prefer the shortest safe path.
+- If blocked, promptly explain the specific blocker and offer at least one safe, practical alternative with its trade-offs and exact next step; never leave the user without a fallback or imply an unverified option will work.
 - Prefer prevention at the data boundary over post-build cleanup.
 - Detect the actual technology stack before applying framework-specific settings.
 - Do not invent a new framework if existing architecture is sufficient.

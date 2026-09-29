@@ -1,10 +1,89 @@
 # CHIBA Task Checkpoint
 
-Updated: 2026-09-29 00:51:08 +08:00
+Updated: 2026-09-29 01:20 +08:00
+
+## Latest recovery entry — 2026-09-29 20:31 +08:00
+
+### Completed
+
+- Recorded a standing standard to offer a safe, practical alternative with trade-offs and an exact next step as soon as a proposed route is blocked.
+- Added Shopify deployment fallback guidance covering CLI authorization, draft ZIP upload, GitHub repository access/layout, and clear production verification.
+
+### Pending / blocker
+
+- The full theme ZIP is ready for user upload and preview; no production publish is confirmed.
+- The rule updates are ready for validation and synchronization.
+
+## Latest recovery entry — 2026-09-29 20:28 +08:00
+
+### Completed
+
+- Created a complete Shopify theme ZIP containing root-level theme folders and all current theme files, including the German flag SVG fix.
+- Verified ZIP integrity, root structure, critical templates, and matching SHA-256 for the project and Downloads copies.
+- Theme Check passed before packaging with 0 errors and 21 warnings.
+
+### Pending / blocker
+
+- The ZIP has not been uploaded to Shopify. Upload it through Online Store > Themes > Add theme > Upload ZIP to create a draft; preview before publishing.
+- The GitHub theme-integration path is not viable through the account currently accessible to the user: Shopify documents that personal repositories where the user is a collaborator but not the owner aren't listed. The theme also lives inside the repository's `theme/` directory, while the integration expects Shopify theme files at repository root.
+- The flag-fix commit is already on both GitHub `main` branches at `83e4ac7`; no production update is confirmed.
+- ZIP files: `Output/CHIBA-Shopify-theme-20260929-2028.zip` and `/Users/SammyWang/Downloads/CHIBA-Shopify-theme-20260929-2028.zip`.
+
+## Latest recovery entry — 2026-09-29 20:05 +08:00
+
+### Completed
+
+- Committed the six German-flag SVG fix files as `83e4ac7` and pushed the commit to `origin/main`. GitHub confirms the commit and exact six-file scope.
+- Shopify Theme Check passed with 0 errors and 21 warnings; `git diff --check` passed.
+
+### Pending / blocker
+
+- The public Lady Ibiza product page still renders the German flag emoji after the push; the GitHub push has not been verified as synced to the live theme. Production has not been confirmed updated.
+- Shopify's connected repository and branch could not be verified from the Admin page. Next action: confirm the repository/branch connection in Shopify Online Store > Themes, then trigger or wait for sync and verify the public storefront. If not connected to `origin/main`, use an authorized deployment path.
+- The earlier staged checkpoint changes and the local patch ZIP remain uncommitted; neither was included in `83e4ac7`.
+
+## Latest recovery entry — 2026-09-29 18:48 +08:00
+
+### Completed
+
+- Replaced every German flag emoji in the Shopify public theme with the official-site-matched German flag SVG asset in the product trust badges, header drawer, brand trust section, and glove size guide.
+- Shopify Theme Check passed with 21 warnings and zero errors; SVG validation, `git diff --check`, and the flag-emoji scan passed.
+
+### Pending / blocker
+
+- Production publication was requested but is blocked: `shopify theme list --store shop.chibataiwan.com` reports the CLI is not authorized for `shop.chibataiwan.com.myshopify.com`.
+- No production theme files were published. Live theme remains `190387093817`; rollback theme remains `190385455417`.
+- Next action: complete Shopify Admin/CLI authorization, then publish only `assets/flag-de.svg`, `assets/base.css`, `sections/brand-trust-badges.liquid`, `snippets/glove-size-guide.liquid`, `snippets/header-drawer.liquid`, and `snippets/pdp-trust-badges.liquid`; verify storefront and flag rendering.
+
+## Latest recovery entry — 2026-09-29 18:37 +08:00
+
+### Completed
+
+- Investigated Windows 11 rendering issue where the German flag emoji appears as the letters "DE".
+- Confirmed the official static website renders flags as SVG image assets (`/assets/flags/tw.svg` and `/assets/flags/de.svg`), avoiding platform-dependent emoji rendering.
+- Replaced all four German flag emoji uses in the Shopify theme with a local `flag-de.svg` asset: product trust badges, drawer brand badge, brand trust section, and glove size guide.
+- Added explicit sizing/alignment for the image in each component. No publication, commit, or push was performed.
+
+### Pending
+
+- Shopify Theme Check passed with 21 existing warnings and zero errors; SVG XML validation, `git diff --check`, and a full flag-emoji scan passed.
+- Verify the rendered theme in Windows 11 before any production rollout. No production publish, commit, or push has been performed.
+
+## Latest recovery entry — 2026-09-29 01:20 +08:00
+
+### Completed
+
+- Production pagination deployment is complete on live theme `190387093817`; public `/collections/all?page=2` was verified with numbered pagination for pages 1–4.
+- GitHub `origin/main` contains the pagination settings in `d38a72f7e886ce313610ffbe83ca8d9faf6f8aa2`.
+- The temporary task branch was rebased onto `origin/main`; it now contains commit `d38a72f` and the duplicate local template edit has been removed.
+
+### Pending
+
+- None for this task.
 
 ## Current scope
 
-Phase 2 Production Readiness — approved production publish of the collection filter UX theme.
+Phase 2 Production Readiness — collection product pagination update; prior collection filter UX production rollout remains live.
 
 ## Completed
 
@@ -17,12 +96,12 @@ Phase 2 Production Readiness — approved production publish of the collection f
 - In Shopify Search & Discovery, removed the Color criterion per user direction and saved a `分類` criterion from Product Type with localized values `自行車系列` and `健身重訓系列`. Size is not enabled. These storefront filter settings are shared with the live theme.
 - Verified the live drawer shows only `價格` and `分類`, with the two requested localized category values; no Size, Color, guarantee card, or drawer sorting appears.
 - Shopify Theme Check: 0 errors, 21 warnings. `git diff --check` and JavaScript syntax check passed.
-- Configured collection listings to disable infinite scroll and show 24 products per page. Theme Check reports 0 errors and 21 warnings; collection JSON parsing, the required template-string scan, and `git diff --check` passed. This source change has not been published to Shopify production.
+- Configured collection listings to disable infinite scroll and show 24 products per page. Shopify Theme Check reported 0 errors and 21 warnings; collection JSON parsing and `git diff --check` passed. The change was published to live theme `190387093817`, verified on the public collection page, and committed to GitHub `main` as `d38a72f`.
 
 ## Pending / blockers
 
-- The previous GitHub synchronization blocker is resolved; `origin/main` includes `3d4ff34` and the follow-up commits through `3c2da19`.
-- The current live Shopify theme remains `190387093817`; the 24-per-page collection change is source-only and is not live.
+- The temporary task branch is aligned with `origin/main` at `d38a72f`. The previous GitHub synchronization blocker was resolved upstream.
+- The current live Shopify theme remains `190387093817`; the rollback theme remains unpublished as `190385455417`.
 
 ## Last known good production
 
@@ -34,4 +113,4 @@ Phase 2 Production Readiness — approved production publish of the collection f
 
 ## Next action
 
-Obtain explicit approval before publishing the 24-per-page collection change to Shopify production. Do not perform a production publish without that approval.
+No pending action for this pagination task.
