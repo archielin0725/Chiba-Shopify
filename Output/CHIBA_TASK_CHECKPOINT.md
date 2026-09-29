@@ -2,6 +2,22 @@
 
 Updated: 2026-09-29 01:20 +08:00
 
+## Latest recovery entry — 2026-09-29 20:40 +08:00
+
+### Completed
+
+- Verified the live Lady Ibiza page now renders the German product trust flag from `flag-de.svg`; the CDN image loaded successfully at 24x16.
+- Confirmed `archielin0725/Chiba-Shopify` `main` matched local commit `5f625ab774f570e26fadb36696175084093df546`, including the original six-file SVG fix.
+- Detected one remaining German emoji in the live announcement bar, encoded in `sections/header-group.json`.
+- Updated the announcement block to replace that legacy emoji with the German flag SVG at render time. Shopify Theme Check passed with 0 errors and 21 warnings; header JSON and whitespace checks passed.
+- Created and verified corrected full-theme ZIP `CHIBA-Shopify-theme-20260929-2040.zip` in both `Output/` and `Downloads/`; copies have matching SHA-256.
+
+### Pending / blocker
+
+- The 20:40 ZIP has not been uploaded. The currently published theme still has the emoji in its announcement bar, although the product detail trust flag works. Upload the new ZIP as a draft, preview the announcement and product page, then publish to replace the live theme.
+- Commit and push this last announcement fix to both official `origin/main` and Sammy's personal `sammy/main`; then confirm official main matches the final commit.
+- Windows 11 rendering remains unverified; all flag surfaces should use the SVG after publishing the corrected ZIP.
+
 ## Latest recovery entry — 2026-09-29 20:31 +08:00
 
 ### Completed
