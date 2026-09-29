@@ -1938,8 +1938,15 @@ main > .shopify-section:first-child .section:not(.disable-section-top-offset) {
 }
 
 .menu-drawer__brand-badge-flag {
-  font-size: 0.95rem !important;
-  line-height: 1 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+.menu-drawer__brand-badge-flag img {
+  display: block;
+  width: 18px;
+  height: 12px;
+  object-fit: cover;
 }
 
 .menu-drawer__brand-badge-title {
@@ -2561,6 +2568,10 @@ product-card .price .price-prefix,
 }
 
 .glove-size-modal__footer-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
   margin-top: 16px;
   text-align: center;
   font-size: 0.825rem;
@@ -2569,6 +2580,13 @@ product-card .price .price-prefix,
   background: #ecfdf5;
   padding: 8px 12px;
   border-radius: 6px;
+}
+
+.glove-size-modal__footer-note img {
+  display: block;
+  width: 20px;
+  height: auto;
+  flex: 0 0 auto;
 }
 
 /* PDP Trust Badges */
@@ -2595,6 +2613,12 @@ product-card .price .price-prefix,
 
 .pdp-trust-icon {
   font-size: 1.1rem;
+}
+
+.pdp-trust-icon img {
+  display: block;
+  width: 20px;
+  height: auto;
 }
 
 @media screen and (max-width: 749px) {
