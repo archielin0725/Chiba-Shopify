@@ -2,6 +2,51 @@
 
 Updated: 2026-09-29 01:20 +08:00
 
+## Latest recovery entry — 2026-09-30 00:55 +08:00
+
+### Completed
+
+- User approved updating the live Shopify product `chiba-40425-fitness`.
+- Uploaded the verified official Air Performer deep-gray front/hand-back image (`40425-19-1.jpg`) as Shopify media.
+- Assigned that image to all six `40425-DARKGREY19` variants and retained the existing deep-gray palm/grip image in the product gallery.
+- Saved the product and verified the live product JSON contains six gallery images and all six deep-gray variants point to the newly uploaded front image.
+- Verified the live product page with deep-gray XS selected; the gallery renders the CHIBA-logo hand-back image as its first image.
+- The authoritative source image is already in official `archielin0725/Chiba-AI` `main` (`860f03e4dacba2ba487d0eae47f53e788d6c15aa`) and its SHA-256 matches the official release manifest.
+
+### Pending / blocker
+
+- No product code or canonical data files were changed; the approved update was made directly in Shopify product media and variant assignments.
+- The earlier theme-announcement German emoji still requires uploading and publishing `CHIBA-Shopify-theme-20260929-2040.zip`.
+
+## Latest recovery entry — 2026-09-30 00:47 +08:00
+
+### Completed
+
+- Confirmed the official `Chiba-AI` `main` includes the deep-gray front image for Air Performer SKU 40425: `fitness__40425__darkgrey-19__fd707c0881e3a416__40425-19-1.jpg`.
+- Verified the image's SHA-256 against the official release manifest and visually confirmed it shows the CHIBA logo / hand-back side, unlike the palm-side `19-2` image currently used by Shopify.
+- Shopify's public product JSON has five images and omits the `19-1` front image. The existing product-media records include dark-gray `19-2` but no dark-gray `19-1`.
+- Prepared the verified official image in Downloads and `Output/` as `CHIBA-40425-darkgray-front-20260930-0047.jpg`; both copies match the official source checksum.
+- No live Shopify product change has been made.
+
+### Pending / blocker
+
+- A production product-media change needs user approval. Proposed minimal fix: add the official `19-1` image to the Shopify gallery and assign it as the deep-gray variant's default image, retaining the existing `19-2` palm/grip image as a secondary gallery photo.
+- Shopify Admin is accessible in the browser, but this change has not been saved. Once approved, update the product and verify all six deep-gray sizes display the correct image.
+- Earlier flag task remains at a valid manual-upload stop: the announcement bar still renders an emoji unless the refreshed theme ZIP is uploaded and published.
+
+## Latest recovery entry — 2026-09-30 00:27 +08:00
+
+### Previous task valid stop before switching scope
+
+- Live storefront check confirms the product-page German flag is an SVG, but the announcement bar still contains the German flag emoji. The user was given the verified alternative: upload `CHIBA-Shopify-theme-20260929-2040.zip` as a draft, preview, and publish; no new production upload is assumed.
+- Official repository source was fetched before starting the new product-image investigation.
+
+### New task — Air Performer dark-gray product image
+
+- User reports the dark-gray gloves on `chiba-40425-fitness` do not show the correct front view. The supplied screenshot shows deep gray selected and the current gallery displaying the glove palm/grip side.
+- Local product export includes inconsistent image URLs and variant-image associations for `40425-DARKGREY19`; determine the authoritative front-image asset before changing any product data.
+- No product data or production listing has been changed.
+
 ## Latest recovery entry — 2026-09-29 21:26 +08:00
 
 ### Completed
