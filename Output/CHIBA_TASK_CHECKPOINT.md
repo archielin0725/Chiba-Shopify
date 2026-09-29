@@ -2,6 +2,17 @@
 
 Updated: 2026-09-29 01:20 +08:00
 
+## Latest recovery entry — 2026-09-29 20:43 +08:00
+
+### Completed
+
+- Confirmed the official `archielin0725/Chiba-Shopify` and personal `sammywanwan/Chiba-Shopify` `main` branches both match `ac58278`, including the flag-fix source.
+- Added an explicit standing rule to automatically sync validated changes to official `archielin0725` GitHub without requiring another prompt; the Sammy repository is a mirror only.
+
+### Pending / blocker
+
+- The 20:40 corrected full-theme ZIP still needs uploading as a Shopify draft and publishing to replace the remaining live announcement emoji. Official GitHub source is current, but production sync/deployment is not confirmed.
+
 ## Latest recovery entry — 2026-09-29 20:40 +08:00
 
 ### Completed

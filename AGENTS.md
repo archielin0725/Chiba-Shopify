@@ -67,6 +67,7 @@ Current execution scope: **Phase 2 Production Readiness**, explicitly authorized
 - Checkpoint is read FIRST, followed by policy and this file. Latest dated recovery entry takes precedence over historical entries. Record previous-task valid stop before switching missions.
 
 ## Repository Synchronization Standard (Chiba-Shopify & Chiba-AI)
+- **Official GitHub synchronization is automatic**: after every requested, verified change in the relevant project, sync it to the official `archielin0725` GitHub `main` branch without waiting for another user prompt. Fetch/rebase the official branch before work, preserve unrelated local changes, commit only task-scoped files, push to `origin/main`, and verify the remote SHA. Sync the personal `sammywanwan` mirror when applicable, but never treat it as a replacement for the official upstream.
 - **模式 1：與 AI 協作時「自動推送」（永久標準規範）**
   - **運作方式**：未來只要使用者指示更新相關檔案（Shopify 主題、官方網站、MOMO 腳本等）：
   - **行為**：AI 在修改完本地檔案並驗證無誤後，必須自動在任務結尾執行 `git add . && git commit -m "<清楚描述修改內容>" && git push origin main`，一次性同步到 GitHub，完全不需要使用者手動輸入任何 Git 指令。

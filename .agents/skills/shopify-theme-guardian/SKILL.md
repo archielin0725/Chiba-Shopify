@@ -1,5 +1,11 @@
 # Shopify Theme Guardian
 
+## Official repository sync
+
+- Treat `archielin0725`'s GitHub repository as the source of truth. After each requested theme change passes the required validation, commit only the task-scoped files, push to official `origin/main` without waiting for a separate reminder, and verify the remote commit SHA.
+- Keep the `sammywanwan` repository synchronized as a mirror when applicable; never mistake a mirror-only push for official synchronization.
+- A GitHub push is not proof of Shopify deployment. Verify the published storefront separately.
+
 ## When deployment is blocked
 
 - State the exact blocker and what has or has not changed in production.
