@@ -1,6 +1,27 @@
 # CHIBA Task Checkpoint
 
-Updated: 2026-10-01 02:55 +08:00
+Updated: 2026-10-01 03:12 +08:00
+
+## Latest recovery entry — 2026-10-01 03:12 +08:00
+
+### Completed
+
+- Executed Change Request `CR-20261001-WASH-TRANSLATION` on `archielin0725/Chiba-AI` (`www.chibataiwan.com`).
+- Identified and replaced residual German washing terms `MASCHINENWÄSCHE` and `Waschbar bis 30°C` in technology Section 3 (material feature 08):
+  - In `zh-tw/technology/index.html` (dist & snapshot L248, L253):
+    - Icon badge: `<span>30°C MASCHINENWÄSCHE</span>` ➔ `<span>可於 30°C 機洗</span>`
+    - Card heading: `<h4>Waschbar bis 30°C 全手套可機洗</h4>` ➔ `<h4>30°C Machine Washable 可於 30°C 機洗</h4>`
+  - In `en/technology/index.html` (dist & snapshot L217) & `scripts/build_english_site.py` (L427):
+    - Icon badge: `<span>30°C MASCHINENWÄSCHE</span>` ➔ `<span>30°C MACHINE WASHABLE</span>`
+  - In `scripts/enrich_shopify_csv.py`:
+    - Updated internal references from `Maschinenwäsche` to `Machine Washable`.
+- Re-computed snapshot file checksums in `release-site/release.json`.
+- Verified 0 remaining occurrences of `MASCHINENWÄSCHE` and `Waschbar bis` in `release-site` and `scripts`.
+- Committed and pushed to `archielin0725/Chiba-AI` `main` (`ecd8e44`).
+
+### Pending / blocker
+
+- None. Both BioXCell and washing label German strings have been completely cleared and localized.
 
 ## Latest recovery entry — 2026-10-01 02:55 +08:00
 
