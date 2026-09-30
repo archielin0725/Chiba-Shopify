@@ -1,6 +1,19 @@
 # CHIBA Task Checkpoint
 
-Updated: 2026-10-01 03:12 +08:00
+Updated: 2026-10-01 03:19 +08:00
+
+## Latest recovery entry — 2026-10-01 03:19 +08:00
+
+### Completed
+
+- Added `Credit Conservation & Input Ambiguity Pre-Warning Standard` (額度保護與模糊指令主動預警標準) as a permanent rule to `AGENTS.md`.
+- Enshrined mandatory proactive braking: when user inputs are broad, ambiguous, or lack specific targets, AI is strictly required to pause, issue a high-cost warning, and suggest 1~3 specific scoping options before executing expensive queries.
+- Synchronized `AGENTS.md` across `Chiba-Shopify` and `Chiba-AI`; executed `audit_md_health.py` and passed all governance assertions (210 lines, ~26KB, 100% byte-for-byte identical, symlinks valid).
+- Committed and pushed to `archielin0725/Chiba-AI` and `archielin0725/Chiba-Shopify` `main`.
+
+### Pending / blocker
+
+- None. Permanent credit protection rule is active and enforceable immediately.
 
 ## Latest recovery entry — 2026-10-01 03:12 +08:00
 

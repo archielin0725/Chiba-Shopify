@@ -20,6 +20,7 @@
 - Use deterministic scripts before Astra/AI reasoning.
 - Use the smallest safe rebuild/test scope.
 - Full regression only when release risk requires it.
+- Proactively warn and clarify before running high-cost or ambiguous queries to conserve user credits/tokens.
 - Do not interrupt the user for routine technical issues.
 - Never expose confidential/internal data publicly.
 - Never modify `~/Documents/Chiba`.
@@ -188,6 +189,13 @@ Current execution scope: **Phase 2 Production Readiness**, explicitly authorized
 - **同步管線（Sync Pipeline）**：官方 `archielin0725` GitHub ➔ 本機工作副本；`sammywanwan` GitHub 僅為可選的下游鏡像。絕不可要求變更先經 Sammy 個人倉庫才算完成或同步。
 - **標準同步腳本（Deterministic Sync Script: `scripts/sync_chiba.sh`）**：
   若腳本會更新 Sammy 個人 GitHub，必須先確認它只從官方 `archielin0725` 倉庫取得權威變更，且個人倉庫只作下游鏡像；不得將其描述成官方來源或同步必經節點。
+
+## Credit Conservation & Input Ambiguity Pre-Warning Standard (額度保護與模糊指令主動預警標準)
+- **高消耗指令主動預警與收斂防線（Proactive High-Cost Warning Gate）**：
+  - 當使用者輸入較為寬泛、模糊或缺乏精確標的（例如未指定專案 `Chiba-AI` vs `Chiba-Shopify`、未提供型號 SKU/Handle、或要求全庫無差別掃描），且預期會觸發大量 Token 消耗或撞擊 GitHub Copilot / LLM 額度上限時：
+  - **行為**：AI 嚴禁直接發動全庫盲目檢索。**必須主動暫停並在第一時間向使用者提出預警**，列出預估消耗風險，並提供 1~3 個具體收斂選項（如精確檔案路徑、特定商品品類或確定性本機腳本），待使用者確認後再行執行。
+- **確定性索引優先原則（Deterministic Index Over LLM Brute-Force）**：
+  - 優先透過本地索引工具（`ripgrep -n`、`grep`、`shopify-variant-map.json`、`CHIBA_TASK_CHECKPOINT.md`）定位，杜絕將大量目錄或大檔案全文無端塞入 Context 浪費額度。
 
 ## Rule Governance & Health Checkpoint Standard (MD 規則治理與健康檢查標準)
 - **三層分立架構（Three-Tier Architecture）**：
