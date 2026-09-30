@@ -1,6 +1,27 @@
 # CHIBA Task Checkpoint
 
-Updated: 2026-09-29 01:20 +08:00
+Updated: 2026-10-01 02:55 +08:00
+
+## Latest recovery entry — 2026-10-01 02:55 +08:00
+
+### Completed
+
+- Executed Change Request `CR-20261001-TECH-TRANSLATION` on `archielin0725/Chiba-AI` (`www.chibataiwan.com`).
+- Identified and replaced residual German string `Zweistufiger Aufbau` in BioXCell pillar 01 title with `Two-Stage Construction` across all tracked and build files:
+  - `release-site/snapshot/zh-tw/technology/index.html` (L119)
+  - `release-site/dist/zh-tw/technology/index.html` (L119)
+  - `release-site/snapshot/en/technology/index.html` (L97)
+  - `release-site/dist/en/technology/index.html` (L97)
+  - `scripts/build_english_site.py` (L307)
+  - `scratch/prototype_tech_desktop.html` (L406)
+- Synchronized `release.json` with updated snapshot file checksums.
+- Executed ripgrep search across `Chiba-AI`; verified 0 residual occurrences of `Zweistufiger Aufbau`.
+- Committed and pushed to `archielin0725/Chiba-AI` `main` branch (`db9fd97fe4f8b683a8c39d58f26bffc8082886d4`).
+- Theme performance & preview zip `CHIBA-Shopify-theme-20260930-0133.zip` remains packaged and verified for user preview.
+
+### Pending / blocker
+
+- None for website text translation. Production static site on `Chiba-AI` is clean and pushed.
 
 ## Latest recovery entry — 2026-09-30 01:15 +08:00
 
