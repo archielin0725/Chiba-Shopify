@@ -99,7 +99,7 @@
 
         assign featured_media_loading = 'lazy'
         assign featured_media_sizes = 'auto, ' | append: image_sizes
-        if section.index == null or section.index < 5
+        if section.index == null or section.index == 1
           assign featured_media_loading = 'eager'
           assign featured_media_sizes = image_sizes
         endif

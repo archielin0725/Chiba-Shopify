@@ -138,7 +138,7 @@
           {% render 'link-featured-image', link: link, class: 'mega-menu__link-image', sizes: collection_image_sizes %}
         {% endif %}
         <span class="wrap-text">
-          {{- link.title | replace_first: '目錄', '產品' | replace_first: 'Catalog', '產品' -}}
+          {{- link.title | replace_first: '目錄', '商品' | replace_first: 'Catalog', '商品' | replace_first: '產品', '商品' -}}
         </span>
       </a>
       {% if link.links != blank %}

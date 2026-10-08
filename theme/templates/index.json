@@ -132,9 +132,9 @@
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
-                "type_preset": "h4",
+                "type_preset": "h3",
                 "font": "var(--font-body--family)",
-                "font_size": "1rem",
+                "font_size": "1.5rem",
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
@@ -197,9 +197,9 @@
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
-                "type_preset": "h4",
+                "type_preset": "paragraph",
                 "font": "var(--font-body--family)",
-                "font_size": "1rem",
+                "font_size": "0.95rem",
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
@@ -222,11 +222,11 @@
                 "show_sale_price_first": true,
                 "show_installments": false,
                 "show_tax_info": false,
-                "type_preset": "h4",
+                "type_preset": "paragraph",
                 "width": "100%",
                 "alignment": "center",
                 "font": "var(--font-body--family)",
-                "font_size": "1rem",
+                "font_size": "0.95rem",
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
@@ -266,10 +266,37 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "brand_trust_badges": {
+      "type": "brand-trust-badges",
+      "settings": {
+        "background_color": "#f8fafc",
+        "padding_top": 32,
+        "padding_bottom": 32
+      }
+    },
+    "category_entrance_grid": {
+      "type": "category-entrance-grid",
+      "settings": {
+        "background_color": "#ffffff",
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
+    "technology_spotlight": {
+      "type": "technology-spotlight",
+      "settings": {
+        "background_color": "#090d16",
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
     }
   },
   "order": [
     "hero_jVaWmY",
+    "brand_trust_badges",
+    "category_entrance_grid",
+    "technology_spotlight",
     "product_list_fa6P9H"
   ]
 }
