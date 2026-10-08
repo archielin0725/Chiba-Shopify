@@ -44,9 +44,7 @@
   for filter in filters
     case filter.type
       when 'price_range'
-        if filter.min_value.value != null or filter.max_value.value != null
-          assign total_active_values = total_active_values | plus: 1
-        endif
+        continue
       when 'boolean'
         if filter.active_values[0].value
           assign total_active_values = total_active_values | plus: 1
@@ -205,20 +203,7 @@
                 {%- for filter in filters -%}
                   {% case filter.type %}
                     {% when 'price_range' %}
-                      {%- liquid
-                        if filter.min_value.value != null or filter.max_value.value != null
-                          assign total_active_values = total_active_values | plus: 1
-                          assign is_active = true
-                        endif
-
-                        if block_settings.filter_style != 'vertical'
-                          assign should_render_clear = true
-                        else
-                          assign should_render_clear = false
-                        endif
-
-                        render 'price-filter', filter: filter, filter_style: block_settings.filter_style, should_render_clear: should_render_clear, id_prefix: 'horizontal'
-                      -%}
+                      {% continue %}
                     {% else %}
                       {% liquid
                         if filter.param_name == 'filter.v.availability' or filter.label contains '供貨' or filter.label contains 'Availability'
@@ -485,14 +470,7 @@
                 {%- for filter in filters -%}
                   {% case filter.type %}
                     {% when 'price_range' %}
-                      {%- liquid
-                        if filter.min_value.value != null or filter.max_value.value != null
-                          assign total_active_values = total_active_values | plus: 1
-                          assign is_active = true
-                        endif
-
-                        render 'price-filter', filter: filter, filter_style: 'vertical', should_render_clear: false, id_prefix: 'dialog'
-                      -%}
+                      {% continue %}
                     {% else %}
                       {% liquid
                         if filter.param_name == 'filter.v.availability' or filter.label contains '供貨' or filter.label contains 'Availability'
