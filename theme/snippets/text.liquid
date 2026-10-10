@@ -96,7 +96,7 @@
   assign final_rendered_text = block.settings.text
   if localization.language.iso_code == 'en'
     if final_rendered_text contains '台灣官方總代理'
-      assign final_rendered_text = final_rendered_text | replace: '台灣官方總代理', 'Taiwan Official Distributor' | replace: '統一編號', 'Business Registration No.' | replace: '客服信箱', 'Customer Service Email'
+      assign final_rendered_text = final_rendered_text | replace: '台灣官方總代理', 'Taiwan Official Exclusive Distributor' | replace: '統一編號', 'Business Registration No.' | replace: '客服信箱', 'Customer Service Email'
     elsif final_rendered_text contains '頂級人體工學與極致防護'
       assign final_rendered_text = final_rendered_text | replace: 'SINCE 1853 · 頂級人體工學與極致防護', 'SINCE 1853 · Precision Ergonomics & Ultimate Protection' | replace: '頂級人體工學與極致防護', 'Precision Ergonomics & Ultimate Protection'
     elsif final_rendered_text contains '探索全部商品'
