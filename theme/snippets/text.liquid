@@ -92,13 +92,27 @@
   endif
 %}
 
+{% liquid
+  assign final_rendered_text = block.settings.text
+  if localization.language.iso_code == 'en'
+    if final_rendered_text contains '台灣官方總代理'
+      assign final_rendered_text = final_rendered_text | replace: '台灣官方總代理', 'Taiwan Official Distributor' | replace: '統一編號', 'Business Registration No.' | replace: '客服信箱', 'Customer Service Email'
+    elsif final_rendered_text contains '頂級人體工學與極致防護'
+      assign final_rendered_text = final_rendered_text | replace: 'SINCE 1853 · 頂級人體工學與極致防護', 'SINCE 1853 · Precision Ergonomics & Ultimate Protection' | replace: '頂級人體工學與極致防護', 'Precision Ergonomics & Ultimate Protection'
+    elsif final_rendered_text contains '探索全部商品'
+      assign final_rendered_text = final_rendered_text | replace: '探索全部商品', 'Explore All Products'
+    elsif final_rendered_text contains '熱門推薦商品'
+      assign final_rendered_text = final_rendered_text | replace: '熱門推薦商品', 'Featured Products'
+    endif
+  endif
+%}
 {% if fallback_text != blank and visible_text == blank %}
   <div {{ attributes | strip_newlines | strip }}>
     {{ fallback_text }}
   </div>
 {% elsif plain_text != blank %}
   <{{ element }} {{ attributes | strip_newlines | strip }}>
-    {{ block.settings.text }}
+    {{ final_rendered_text }}
   </{{ element }}>
 {% endif %}
 
