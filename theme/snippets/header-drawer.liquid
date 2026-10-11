@@ -142,7 +142,7 @@
                         id="HeaderDrawer-{{ link.handle }}"
                         class="menu-drawer__menu-item menu-drawer__menu-item--mainlist menu-drawer__animated-element"
                       >
-                        <span class="menu-drawer__menu-item-text wrap-text">{{ link.title | replace_first: '目錄', '商品' | replace_first: 'Catalog', '商品' | replace_first: '產品', '商品' | escape }}</span>
+                        <span class="menu-drawer__menu-item-text wrap-text">{% if localization.language.iso_code == 'en' %}{{ link.title | replace_first: '商品', 'Products' | replace_first: '產品', 'Products' | replace_first: '目錄', 'Products' | escape }}{% else %}{{ link.title | replace_first: '目錄', '商品' | replace_first: 'Catalog', '商品' | replace_first: '產品', '商品' | escape }}{% endif %}</span>
                         <span class="svg-wrapper icon-plus">
                           {{- 'icon-plus.svg' | inline_asset_content -}}
                         </span>
@@ -206,7 +206,7 @@
                       aria-current="page"
                     {% endif %}
                   >
-                    <span class="menu-drawer__menu-item-text wrap-text">{{ link.title | replace_first: '目錄', '商品' | replace_first: 'Catalog', '商品' | replace_first: '產品', '商品' | escape }}</span>
+                    <span class="menu-drawer__menu-item-text wrap-text">{% if localization.language.iso_code == 'en' %}{{ link.title | replace_first: '商品', 'Products' | replace_first: '產品', 'Products' | replace_first: '目錄', 'Products' | escape }}{% else %}{{ link.title | replace_first: '目錄', '商品' | replace_first: 'Catalog', '商品' | replace_first: '產品', '商品' | escape }}{% endif %}</span>
                   </a>
                   {% liquid
                     assign render_link_image = false
@@ -260,7 +260,7 @@
                       aria-current="page"
                     {% endif %}
                   >
-                    <span class="menu-drawer__menu-item-text wrap-text">{{ link.title | replace_first: '目錄', '商品' | replace_first: 'Catalog', '商品' | replace_first: '產品', '商品' | escape }}</span>
+                    <span class="menu-drawer__menu-item-text wrap-text">{% if localization.language.iso_code == 'en' %}{{ link.title | replace_first: '商品', 'Products' | replace_first: '產品', 'Products' | replace_first: '目錄', 'Products' | escape }}{% else %}{{ link.title | replace_first: '目錄', '商品' | replace_first: 'Catalog', '商品' | replace_first: '產品', '商品' | escape }}{% endif %}</span>
                   </a>
                 {% endif %}
               </li>
@@ -289,7 +289,7 @@
                       class="menu-drawer__menu-item menu-drawer__menu-item--mainlist menu-drawer__animated-element{% if link.child_active %} menu-drawer__menu-item--active{% endif %}"
                       on:click="header-drawer/open/submenu"
                     >
-                      <span class="menu-drawer__menu-item-text wrap-text">{{ link.title | replace_first: '目錄', '商品' | replace_first: 'Catalog', '商品' | replace_first: '產品', '商品' | escape }}</span>
+                      <span class="menu-drawer__menu-item-text wrap-text">{% if localization.language.iso_code == 'en' %}{{ link.title | replace_first: '商品', 'Products' | replace_first: '產品', 'Products' | replace_first: '目錄', 'Products' | escape }}{% else %}{{ link.title | replace_first: '目錄', '商品' | replace_first: 'Catalog', '商品' | replace_first: '產品', '商品' | escape }}{% endif %}</span>
                       <span class="svg-wrapper icon-caret icon-caret--forward">
                         {{- 'icon-caret.svg' | inline_asset_content -}}
                       </span>
@@ -318,7 +318,7 @@
                               aria-current="page"
                             {% endif %}
                           >
-                            <span class="menu-drawer__menu-item-text wrap-text">{{ link.title | replace_first: '目錄', '商品' | replace_first: 'Catalog', '商品' | replace_first: '產品', '商品' | escape }}</span>
+                            <span class="menu-drawer__menu-item-text wrap-text">{% if localization.language.iso_code == 'en' %}{{ link.title | replace_first: '商品', 'Products' | replace_first: '產品', 'Products' | replace_first: '目錄', 'Products' | escape }}{% else %}{{ link.title | replace_first: '目錄', '商品' | replace_first: 'Catalog', '商品' | replace_first: '產品', '商品' | escape }}{% endif %}</span>
                           </a>
                           <button
                             class="button button-unstyled close-button menu-drawer__close-button focus-inset"
@@ -395,23 +395,23 @@
                                     tabindex="-1"
                                   >
                                     <li class="menu-drawer__list-item" style="--menu-drawer-animation-index: 1;">
-                                      <a href="/collections/all/bioxcell-line" class="menu-drawer__menu-item menu-drawer__menu-item--child">
-                                        <span class="menu-drawer__menu-item-text wrap-text">BioXCell 減壓系列</span>
+                                      <a href="{{ routes.all_products_collection_url }}/bioxcell-line" class="menu-drawer__menu-item menu-drawer__menu-item--child">
+                                        <span class="menu-drawer__menu-item-text wrap-text">{% if localization.language.iso_code == 'en' %}BioXCell Cushioning{% else %}BioXCell 減壓系列{% endif %}</span>
                                       </a>
                                     </li>
                                     <li class="menu-drawer__list-item" style="--menu-drawer-animation-index: 2;">
-                                      <a href="/collections/all/comfort-line" class="menu-drawer__menu-item menu-drawer__menu-item--child">
-                                        <span class="menu-drawer__menu-item-text wrap-text">Comfort 舒適系列</span>
+                                      <a href="{{ routes.all_products_collection_url }}/comfort-line" class="menu-drawer__menu-item menu-drawer__menu-item--child">
+                                        <span class="menu-drawer__menu-item-text wrap-text">{% if localization.language.iso_code == 'en' %}Comfort{% else %}Comfort 舒適系列{% endif %}</span>
                                       </a>
                                     </li>
                                     <li class="menu-drawer__list-item" style="--menu-drawer-animation-index: 3;">
-                                      <a href="/collections/all/active-line" class="menu-drawer__menu-item menu-drawer__menu-item--child">
-                                        <span class="menu-drawer__menu-item-text wrap-text">Active 活力系列</span>
+                                      <a href="{{ routes.all_products_collection_url }}/active-line" class="menu-drawer__menu-item menu-drawer__menu-item--child">
+                                        <span class="menu-drawer__menu-item-text wrap-text">{% if localization.language.iso_code == 'en' %}Active{% else %}Active 活力系列{% endif %}</span>
                                       </a>
                                     </li>
                                     <li class="menu-drawer__list-item" style="--menu-drawer-animation-index: 4;">
-                                      <a href="/collections/all/race-line" class="menu-drawer__menu-item menu-drawer__menu-item--child">
-                                        <span class="menu-drawer__menu-item-text wrap-text">Race 競速系列</span>
+                                      <a href="{{ routes.all_products_collection_url }}/race-line" class="menu-drawer__menu-item menu-drawer__menu-item--child">
+                                        <span class="menu-drawer__menu-item-text wrap-text">{% if localization.language.iso_code == 'en' %}Race{% else %}Race 競速系列{% endif %}</span>
                                       </a>
                                     </li>
                                   </ul>
@@ -607,7 +607,7 @@
                       aria-current="page"
                     {% endif %}
                   >
-                    <span class="menu-drawer__menu-item-text wrap-text">{{ link.title | replace_first: '目錄', '商品' | replace_first: 'Catalog', '商品' | replace_first: '產品', '商品' | escape }}</span>
+                    <span class="menu-drawer__menu-item-text wrap-text">{% if localization.language.iso_code == 'en' %}{{ link.title | replace_first: '商品', 'Products' | replace_first: '產品', 'Products' | replace_first: '目錄', 'Products' | escape }}{% else %}{{ link.title | replace_first: '目錄', '商品' | replace_first: 'Catalog', '商品' | replace_first: '產品', '商品' | escape }}{% endif %}</span>
                   </a>
                 {%- endif -%}
               </li>
@@ -620,22 +620,22 @@
       <div class="menu-drawer__antigravity-hub menu-drawer__animated-element" style="--menu-drawer-animation-index: 4;">
         <div class="menu-drawer__card menu-drawer__card--guarantee">
           <div class="menu-drawer__card-header">
-            <span class="menu-drawer__card-pill">德國百年工藝</span>
-            <span class="menu-drawer__card-sub">創立於1853</span>
+            <span class="menu-drawer__card-pill">{% if localization.language.iso_code == 'en' %}German craftsmanship{% else %}德國百年工藝{% endif %}</span>
+            <span class="menu-drawer__card-sub">{% if localization.language.iso_code == 'en' %}Since 1853{% else %}創立於1853{% endif %}</span>
           </div>
-          <div class="menu-drawer__card-title">台灣官方線上商店</div>
-          <div class="menu-drawer__card-desc">全館商品皆為台灣總代理原廠正品・享官方保固與售後服務</div>
+          <div class="menu-drawer__card-title">{% if localization.language.iso_code == 'en' %}Official Taiwan Online Store{% else %}台灣官方線上商店{% endif %}</div>
+          <div class="menu-drawer__card-desc">{% if localization.language.iso_code == 'en' %}Genuine products from the official Taiwan distributor with official warranty and after-sales service{% else %}全館商品皆為台灣總代理原廠正品・享官方保固與售後服務{% endif %}</div>
         </div>
 
         <div class="menu-drawer__quick-grid">
           <a href="https://www.chibataiwan.com" target="_blank" rel="noopener" class="menu-drawer__quick-pill">
             <span class="menu-drawer__pill-icon">🌐</span>
-            <span class="menu-drawer__pill-text">品牌形象官網</span>
+            <span class="menu-drawer__pill-text">{% if localization.language.iso_code == 'en' %}Brand Website{% else %}品牌形象官網{% endif %}</span>
             <span class="menu-drawer__pill-arrow">↗</span>
           </a>
-          <a href="/pages/contact" class="menu-drawer__quick-pill">
+          <a href="{{ routes.root_url }}pages/contact" class="menu-drawer__quick-pill">
             <span class="menu-drawer__pill-icon">💬</span>
-            <span class="menu-drawer__pill-text">官方顧客服務</span>
+            <span class="menu-drawer__pill-text">{% if localization.language.iso_code == 'en' %}Customer Service{% else %}官方顧客服務{% endif %}</span>
             <span class="menu-drawer__pill-arrow">→</span>
           </a>
         </div>

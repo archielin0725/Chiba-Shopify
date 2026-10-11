@@ -138,7 +138,7 @@
           {% render 'link-featured-image', link: link, class: 'mega-menu__link-image', sizes: collection_image_sizes %}
         {% endif %}
         <span class="wrap-text">
-          {{- link.title | replace_first: '目錄', '商品' | replace_first: 'Catalog', '商品' | replace_first: '產品', '商品' -}}
+          {% if localization.language.iso_code == 'en' %}{{- link.title | replace_first: '商品', 'Products' | replace_first: '產品', 'Products' | replace_first: '目錄', 'Products' -}}{% else %}{{- link.title | replace_first: '目錄', '商品' | replace_first: 'Catalog', '商品' | replace_first: '產品', '商品' -}}{% endif %}
         </span>
       </a>
       {% if link.links != blank %}
@@ -167,23 +167,23 @@
       {% elsif is_cycling_link %}
         <ul class="list-unstyled">
           <li>
-            <a href="/collections/all/bioxcell-line" class="mega-menu__link">
-              <span class="wrap-text">BioXCell 減壓系列</span>
+            <a href="{{ routes.all_products_collection_url }}/bioxcell-line" class="mega-menu__link">
+              <span class="wrap-text">{% if localization.language.iso_code == 'en' %}BioXCell Cushioning{% else %}BioXCell 減壓系列{% endif %}</span>
             </a>
           </li>
           <li>
-            <a href="/collections/all/comfort-line" class="mega-menu__link">
-              <span class="wrap-text">Comfort 舒適系列</span>
+            <a href="{{ routes.all_products_collection_url }}/comfort-line" class="mega-menu__link">
+              <span class="wrap-text">{% if localization.language.iso_code == 'en' %}Comfort{% else %}Comfort 舒適系列{% endif %}</span>
             </a>
           </li>
           <li>
-            <a href="/collections/all/active-line" class="mega-menu__link">
-              <span class="wrap-text">Active 活力系列</span>
+            <a href="{{ routes.all_products_collection_url }}/active-line" class="mega-menu__link">
+              <span class="wrap-text">{% if localization.language.iso_code == 'en' %}Active{% else %}Active 活力系列{% endif %}</span>
             </a>
           </li>
           <li>
-            <a href="/collections/all/race-line" class="mega-menu__link">
-              <span class="wrap-text">Race 競速系列</span>
+            <a href="{{ routes.all_products_collection_url }}/race-line" class="mega-menu__link">
+              <span class="wrap-text">{% if localization.language.iso_code == 'en' %}Race{% else %}Race 競速系列{% endif %}</span>
             </a>
           </li>
         </ul>
