@@ -1,3 +1,24 @@
+## Latest recovery entry — 2026-10-12 02:10 +08:00
+
+### Completed
+
+- Opened the Shopify Admin product editor for Air Plus Reflex (product ID `10354356977977`) and opened the first media image's information panel.
+- Confirmed the image editor exposes one `替代文字` textarea with the current value `CHIBA Air Plus Reflex 進階透氣反光款 螢光黃`; it does not expose a separate English-locale field. Therefore a direct edit here would change the shared source alt rather than an English-only translation.
+- Did not change the image alt or save the product. Product source and both locale renderings remain unchanged.
+
+### Pending / blocker
+
+- Shopify product media editor has only a shared alt field in the inspected interface. Translate & Adapt's product resource panel did not expose image alt fields. There is no verified safe admin path yet to store locale-specific image alt translations.
+- Do not replace the shared Traditional Chinese alt with English; that would degrade the zh-TW accessibility text.
+
+### Last known good build
+
+- Live theme 47 and draft theme `190807703865` unchanged and unpublished. No product data or translations were changed.
+
+### Next action
+
+- For a safe English-only alt improvement, investigate a theme-layer locale-specific alt strategy that uses the English-translated product title and variant/color context while preserving the original source alt for zh-TW. Implement only after checking all image-rendering surfaces and accessibility behavior; otherwise retain the current source alt until Shopify exposes locale-specific media translations.
+
 ## Latest recovery entry — 2026-10-12 02:06 +08:00
 
 ### Completed
