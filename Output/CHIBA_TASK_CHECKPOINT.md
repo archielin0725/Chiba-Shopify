@@ -1,3 +1,25 @@
+## Latest recovery entry — 2026-10-12 02:47 +08:00
+
+### Completed
+
+- Committed and pushed the English image-alt and flag-only bilingual selector changes as `2d1fbd1`; verified official `origin/main` matches local HEAD.
+- Theme Check: 369 files inspected, 0 errors, 20 warnings; `git diff --check`, header-group JSON parsing, and Taiwan/US SVG validation passed.
+- Created `CHIBA-Shopify-theme-english-alt-flags-20261012-0243.zip` in the project root and `~/Downloads`. Verified the archive opens at theme root, includes both flag assets and all four nonempty core templates, and the two copies match.
+- Selected the ZIP in Shopify Admin and submitted upload. The theme list briefly showed `chiba-shopify-theme-english-alt-flags-20261012` as “installing”.
+
+### Pending / blocker
+
+- Shopify Admin’s embedded Online Store theme page stopped rendering after submission, so the final draft installation state/theme ID and preview behavior could not be confirmed. The uploaded theme was not published; production remains untouched.
+- Still need browser preview verification of English and zh-TW image alts, color labels, and flag selector at desktop/mobile. Current source media alt values are unchanged.
+
+### Last known good build
+
+- `2d1fbd1` on official `main`; mandatory Theme Check completed with 0 errors.
+
+### Next action
+
+- Reopen Shopify Admin → Online Store → Themes to confirm the draft is installed, open its preview (do not publish), and verify product `chiba-3010524-cycling` in English and zh-TW at desktop/mobile. If draft installation did not finish, re-upload the timestamped ZIP from Downloads.
+
 ## Latest recovery entry — 2026-10-12 02:42 +08:00
 
 ### Completed
