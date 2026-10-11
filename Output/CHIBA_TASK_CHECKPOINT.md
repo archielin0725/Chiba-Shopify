@@ -1,3 +1,23 @@
+## Latest recovery entry — 2026-10-12 02:25 +08:00
+
+### Completed
+
+- The shared Shopify Admin URLs identify the permanent store domain as `z6qtdy-ym.myshopify.com`.
+- Retried scoped upload to unpublished theme `190807703865` with the correct domain; the CLI returned HTTP 401 (`Service is not valid for authentication`). The prior vanity-derived domain was incorrect.
+- Confirmed Shopify CLI login flow is `npx -y @shopify/cli auth login`; successful CLI account authorization is required independently of the browser Admin session.
+
+### Pending / blocker
+
+- Need an authenticated Shopify CLI session with staff/store access. After user completes browser sign-in from the CLI login flow, retry the previously recorded scoped upload. No theme changes were uploaded; no production publication.
+
+### Last known good build
+
+- Code commit `98d40fb` is on official main. Live theme `190804492601` and unpublished preview theme `190807703865` are unchanged.
+
+### Next action
+
+- User completes `npx -y @shopify/cli auth login` using a Shopify account permitted to edit themes in `z6qtdy-ym.myshopify.com`; then retry the scoped unpublished-theme upload and verify English/Traditional Chinese output.
+
 ## Latest recovery entry — 2026-10-12 02:23 +08:00
 
 ### Completed
