@@ -1,4 +1,4 @@
-## English storefront audit and theme corrections — 2026-10-12 03:08 +08:00
+## English storefront audit and theme corrections — 2026-10-12 03:13 +08:00
 
 ### Completed
 
@@ -6,13 +6,14 @@
 - `git pull --rebase --autostash origin main` completed with “Already up to date” before edits. Preserved pre-existing unrelated worktree changes and will stage only task-scoped files.
 - Audited 102 sitemap URLs under `/en-tw`: all returned HTTP 200; all had an H1; three lacked a meta description. Three pages had visible CJK text (homepage, frontpage collection, and blog); English product details were localized.
 - Rechecked the published English product page: product-gallery image alts were already English, while the logo, mega-menu product images, and resource/product-card image alts still included Chinese. Product and policy document titles also inherited the Chinese Shopify store name.
-- Implemented locale-specific English display-name output for SEO metadata, organization JSON-LD, home H1, logo alt/fallback, and footer copyright; kept zh-TW values/data unchanged. Added English product-card image alt output and removed redundant CJK alt text from decorative English mega-menu images while retaining existing zh-TW alts. Added the English company-name replacement for the footer text renderer. Added a consistent meta-description fallback for pages whose Shopify page description is empty.
+- Implemented locale-specific English display-name output for SEO metadata, organization JSON-LD, home H1, logo alt/fallback, and footer copyright; kept zh-TW values/data unchanged. Added English product-card image alt output and removed redundant CJK alt text from decorative English mega-menu images while retaining existing zh-TW alts. Added the English company-name replacement for the footer text renderer. Added an English meta-description fallback for pages whose Shopify page description is empty while retaining existing zh-TW metadata behavior.
 - Public English policy routes: refund and privacy policies return 200 but include Traditional Chinese content; shipping and terms-of-service routes return 404. These are Shopify Admin-managed/legal data and have not been fabricated or changed.
 - Theme Check: 369 files inspected, 0 errors, 20 warnings. `git diff --check` passed. The required template JSON English-string grep returned no matches.
+- Committed the scoped theme fixes and checkpoint as `4b898da` and pushed to official `origin/main`; `git ls-remote` confirmed remote SHA `4b898dac217c9b4ff9209fe63f2b9479e8430845`.
 
 ### Pending / blocker
 
-- These theme corrections are local and have not been uploaded to a Shopify preview or published. Do not treat the live storefront as updated.
+- These theme corrections are committed to official GitHub but have not been uploaded to a Shopify preview or published. Do not treat the live storefront as updated.
 - Full English legal coverage is blocked on Shopify Admin policy configuration/approved translation: shipping policy and terms pages are missing; existing refund/privacy pages mix English with Chinese address/company data. Do not invent legal translations or business details.
 - Store Admin content (policy text/routes and any remaining locale-managed page content) must be completed through Shopify-supported translation/admin workflows.
 - Existing user worktree changes and untracked delivery/data artifacts remain untouched and must not be staged.
@@ -23,7 +24,7 @@
 
 ### Next action
 
-- Rerun scoped validation after the final review, then commit/push only the English theme fix files and this checkpoint to official `origin/main`; verify the remote SHA. A Shopify preview/live verification still requires an authenticated supported upload workflow, and no new theme has been published.
+- Create an unpublished Shopify preview from official commit `4b898da` and verify English/zh-TW rendering on desktop and mobile. Obtain approved English policy copy and configure missing policies through Shopify Admin before claiming the full English shopping experience is complete. Do not publish the new theme until preview and legal-content gates pass.
 
 # Latest recovery entry — 2026-10-12 02:59 +08:00
 
