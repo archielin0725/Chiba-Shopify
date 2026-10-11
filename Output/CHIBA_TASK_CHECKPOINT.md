@@ -1,3 +1,29 @@
+## Latest recovery entry — 2026-10-12 02:13 +08:00
+
+### Completed
+
+- Audited theme product-image alt output paths without editing theme code:
+  - Main product gallery uses `media.alt` in `snippets/product-media.liquid`.
+  - Collection/product-card carousel also renders through `snippets/product-media.liquid` from `snippets/card-gallery.liquid`.
+  - Product-gallery thumbnail controls and zoom thumbnails separately use `media.alt` in `snippets/slideshow-controls.liquid` and `snippets/product-media-gallery-content.liquid`.
+  - Sticky add-to-cart image uses the source image alt with a product-title fallback in `sections/product-information.liquid`.
+- Confirmed there is no single alt-rendering hook that can safely translate every product-image surface. Color filtering also checks the source `media.alt` strings in `product-media-gallery-content.liquid`; changing or normalizing those source values could alter variant/media behavior.
+- Replacing every English alt with only translated product title would discard color/image-specific descriptions and produce repetitive screen-reader announcements. No generic rewrite was implemented.
+- Worktree remains unrelated-dirty; fetched official `origin/main` and confirmed HEAD/upstream at `6548dbd9a67cbfa49d49660410924dbff0e4ec6d`. No task theme files were staged or altered.
+
+### Pending / blocker
+
+- Shopify Admin exposes one shared source alt field; current Translate & Adapt UI did not expose an image-alt translation field. A safe English-only translation mechanism is not yet verified.
+- Do not use a theme-generated generic alt as a substitute for proper translations without a validated, product-specific strategy.
+
+### Last known good build
+
+- Live theme 47 remains unchanged; draft theme `190807703865` remains unpublished. Product alt and locale resources are unchanged.
+
+### Next action
+
+- Verify whether Shopify's supported translation workflow/API exposes product media alt as an English translation. If not, retain current accessible source alt values rather than overwrite Chinese; report the platform limitation and only consider an explicitly approved, product-specific theme fallback.
+
 ## Latest recovery entry — 2026-10-12 02:10 +08:00
 
 ### Completed
