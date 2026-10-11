@@ -1,3 +1,26 @@
+## Latest recovery entry — 2026-10-12 01:37 +08:00
+
+### Completed
+
+- Opened the authenticated Translate & Adapt app directly. Dismissed only its first-run tutorial overlay; no translation values were edited, imported, deleted, or saved.
+- Confirmed the active theme shown in the app is `chiba-shopify-theme-20261011-2228` (theme ID `190804492601`); its preview serves `/cdn/shop/t/47/` and the English homepage visibly contains Chinese theme copy.
+- Confirmed the historical theme `chiba-shopify-theme-20261010-2007` (theme ID `190773625145`) serves `/cdn/shop/t/40/`; its English preview renders the homepage hero and major storefront copy in English.
+- Checked Translate & Adapt for the homepage template on both themes: the English target field for the hero text `SINCE 1853 · 頂級人體工學與極致防護` is blank in both. The historical theme template list shows 10/10 items, but that is not proof of translated values. Static sections show 0/0 entries on the active theme and no translatable fields on the historical theme. Current theme settings show only the logo entry.
+- Conclusion: DeepSeek correctly identified a visible difference between historical theme 40 and current theme 47, but its explanation that the missing homepage copy is recoverable Translate & Adapt theme translation is not supported by the fields inspected. The old theme renders English, but the sampled English copy appears in the code/rendered theme while its Translate & Adapt field is blank. Treat translation-loss causality as unproven; do not roll back or retranslate based on the report alone.
+- Existing bilingual fixes remain on unpublished preview theme `190807703865`; Theme Check passed with 0 errors and 20 warnings, and English/Traditional Chinese collection/product routes were verified at 390px and 1280px. No production theme was changed or published.
+
+### Pending / blocker
+
+- Product image alt text and other resource-level translations were not changed. Further auditing of every theme-content translation field would be a separate bounded pass; current evidence covers representative homepage template, section-group, static-section, and theme-settings categories.
+- Keep publication paused until the user reviews the preview and remaining English resource alt text. No Shopify translation edits have been made.
+
+### Last known good build
+
+- Live theme `190804492601` remains unchanged. Scoped code fixes are present on unpublished preview `190807703865` and official GitHub `main` at `9f871f6fc59c243a4f7e3a0890faf84b0bb3cd86`.
+
+### Next action
+
+- If further confirmation is needed, compare a specific missing string (announcement, hero, trust badge, or price prefix) in Translate & Adapt on theme 40 and theme 47, then compare its rendered preview. Avoid bulk retranslation or theme rollback unless the exact string has a verified recoverable translation.
 ## Latest recovery entry — 2026-10-12 01:27 +08:00
 
 ### Completed
