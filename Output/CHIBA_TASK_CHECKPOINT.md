@@ -1,3 +1,23 @@
+## Latest recovery entry — 2026-10-12 02:59 +08:00
+
+### Completed
+
+- Per explicit user authorization, published Shopify theme `chiba-shopify-theme-english-alt-flags-20261012` (theme ID `190810751289`) using Admin confirmation. Shopify listed it as the current theme afterward.
+- Verified the public English product URL without a preview parameter: `/en-tw/products/chiba-3010524-cycling`; it returns the English title, `html lang=en`, selected-color English image alt, and no draft preview bar.
+
+### Pending / blocker
+
+- User requested all English issues, but this scope could mean (a) storefront theme strings/UI only or (b) the whole English shopping experience including all products, navigation, policy pages, and locale-managed content. Broad whole-store auditing is high-cost; clarify scope before launching.
+- `CHIBA_CHECKPOINT_POLICY.md` was not found in this workspace during this task; avoid assuming it exists elsewhere.
+
+### Last known good build
+
+- Public Shopify theme ID `190810751289`, from official commit `2d1fbd1`. Theme Check had 0 errors, with 20 existing warnings.
+
+### Next action
+
+- Ask user to choose a bounded English-audit scope, then continue from that scope. Keep zh-TW/product retail data unchanged unless expressly included.
+
 ## Latest recovery entry — 2026-10-12 02:54 +08:00
 
 ### Completed
