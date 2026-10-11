@@ -1,3 +1,24 @@
+## Latest recovery entry — 2026-10-12 02:23 +08:00
+
+### Completed
+
+- Locale-aware product image alt implementation committed as `98d40fb` and pushed to official `archielin0725/Chiba-Shopify` main; remote SHA matched after push.
+- Shopify Theme Check: 369 files inspected, 0 errors, 20 warnings. `git diff --check` passed.
+- Only task-scoped theme files and this checkpoint were included; unrelated local modifications and untracked files remain untouched.
+
+### Pending / blocker
+
+- Shopify preview upload and rendered-DOM verification are blocked: CLI authorization for `shop.chibataiwan.com.myshopify.com` was denied, and the Shopify Admin theme page returned a technical 404. No draft or live theme was changed.
+- Obtain store owner/staff CLI authorization, then upload only the six task-scoped theme Liquid files to unpublished theme `190807703865`; verify English and Traditional Chinese alts plus color switching. Do not publish production.
+
+### Last known good build
+
+- Live theme `190804492601` and unpublished preview theme `190807703865` remain unchanged.
+
+### Next action
+
+- After CLI authorization, rerun the scoped push command and verify the product page on both locales; production publication remains out of scope.
+
 ## Latest recovery entry — 2026-10-12 02:22 +08:00
 
 ### Completed
