@@ -1,3 +1,23 @@
+## Latest recovery entry — 2026-10-12 02:34 +08:00
+
+### Completed
+
+- Created a Shopify-uploadable, timestamped theme archive from committed official `HEAD` (includes commit `98d40fb` localized alt fix): `CHIBA-Shopify-theme-alt-text-preview-20261012-0235.zip`.
+- ZIP is present in the project root and `~/Downloads`; verified the theme folders are at archive root, the four core templates exist, and all six task files are included.
+- Archive is untracked delivery output and was not included in Git commits.
+
+### Pending / blocker
+
+- The browser-based Admin code editor route does not load reliably and CLI authorization remains unavailable. Upload through Shopify Admin is now the simplest route; add the ZIP as a new unpublished theme. Do not publish it.
+
+### Last known good build
+
+- Existing live theme and preview theme remain unchanged. The ZIP contains the committed theme snapshot plus the verified locale-aware alt change.
+
+### Next action
+
+- In Shopify Admin, open Online Store > Themes > Add theme > Upload zip file; choose `CHIBA-Shopify-theme-alt-text-preview-20261012-0235.zip` from Downloads. After Shopify adds it as a draft, share its preview link or confirm the theme appears so English and Traditional Chinese rendering can be verified.
+
 ## Latest recovery entry — 2026-10-12 02:25 +08:00
 
 ### Completed
