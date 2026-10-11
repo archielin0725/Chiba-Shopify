@@ -1,3 +1,25 @@
+## Latest recovery entry — 2026-10-12 01:56 +08:00
+
+### Completed
+
+- Confirmed from Shopify Admin that draft theme `chiba-mobile-language-preview-20261012-0044` is theme ID `190807703865`.
+- Opened that exact theme's editor on the representative Air Plus Reflex product route; its embedded storefront loaded theme asset path `/cdn/shop/t/48/`, confirming the `/t/48/` preview mapping.
+- Opened Translate & Adapt's product translation interface for English and searched for `Air Plus Reflex`. The source and English product content are visible, but the app currently has modal bottom-sheet overlays covering the product list/detail interaction. Attempts to close/select through the visible UI did not dismiss the overlays or change the selected product.
+- No product image alt, product resource translation, Chinese source content, Shopify theme, or production storefront was edited or saved.
+
+### Pending / blocker
+
+- The single-product English alt-text trial is blocked until Translate & Adapt's overlapping modal sheets are dismissed and the correct product/image-alt field can be identified. Do not type or save while the active product/field is ambiguous.
+- The admin editor preview identifies theme 48 as `190807703865`, but the embedded representative product route currently renders a 404 page; this does not change the theme ID mapping and requires a valid product preview path for visual verification.
+
+### Last known good build
+
+- Live Shopify theme 47 remains unchanged. Preview theme `190807703865` remains unpublished. No resource translations were changed.
+
+### Next action
+
+- Re-enter Translate & Adapt in a clean app session, dismiss any onboarding/modal sheets, then select the exact Air Plus Reflex product and locate the image alt English field. Save only that English field if the UI clearly isolates it; verify English alt changes while zh-TW remains unchanged.
+
 ## Latest recovery entry — 2026-10-12 01:53 +08:00
 
 ### Completed
