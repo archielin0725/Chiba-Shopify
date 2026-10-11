@@ -1,3 +1,28 @@
+## Latest recovery entry — 2026-10-12 01:47 +08:00
+
+### Completed
+
+- Compared archived theme 40 (`CHIBA-Shopify-theme-20261010-2007.zip`) against theme 47 (`CHIBA-Shopify-theme-20261011-2228.zip`) for announcement, price-prefix, and trust-badge rendering.
+- Confirmed the announcement setting text is identical in both archives, but theme 47 removed the English-locale replacement branch from `blocks/_announcement.liquid`; theme 40 had that branch.
+- Confirmed theme 40 `snippets/price.liquid` explicitly selected `Price` for English, while theme 47 switched to a translation key and falls back to the Traditional Chinese `售價` when the key is untranslated or missing.
+- Confirmed theme 40's PDP trust-badge snippet and brand trust section select English copy by locale, while theme 47 hardcodes Traditional Chinese in those rendered strings.
+- Root cause for these sampled untranslated strings is therefore code/fallback divergence between theme versions, not demonstrated loss of Translate & Adapt records. The Chinese announcement setting itself was carried forward unchanged. This does not establish the cause for every missing English string.
+- Preview `190807703865` had already passed bilingual English/Traditional Chinese product and collection checks at 390px and 1280px, including announcement, price prefix, trust badges, and recommendation heading. A new direct preview URL attempt was blocked by browser navigation; no production or Shopify data was changed.
+- Fetched official `origin/main`; local `HEAD`, `origin/main`, and `FETCH_HEAD` all remain `9098d8febdd86d3ef1e9b44a90c90088111abd61`. Did not rebase because the worktree contains numerous unrelated existing changes; no files were staged or overwritten.
+
+### Pending / blocker
+
+- This comparison covers three representative surfaces only. Other English gaps may have different causes, including missing resource translations or other hardcoded theme copy.
+- Keep live theme `190804492601` unchanged. The bilingual code corrections remain on the unpublished preview; publish only with explicit approval.
+
+### Last known good build
+
+- Unpublished preview `190807703865`, previously Theme Check-validated with 0 errors and browser-checked at mobile and desktop widths. Live theme remains unchanged.
+
+### Next action
+
+- If the user wants to proceed, audit remaining English gaps by rendered string and source, then verify on the unpublished preview. Do not bulk-retranslate or roll back theme 47 based on the sampled evidence.
+
 ## Latest recovery entry — 2026-10-12 01:37 +08:00
 
 ### Completed
