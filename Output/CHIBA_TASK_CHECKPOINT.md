@@ -1,3 +1,27 @@
+## Latest recovery entry — 2026-10-12 01:50 +08:00
+
+### Completed
+
+- Ran a bounded browser audit of the English homepage, all-products collection, and representative product page, inspecting rendered Chinese text and image `alt` attributes only. No product resource, translation, theme, or production data was edited.
+- English homepage loaded live theme asset path `/cdn/shop/t/47/`: 50 of 54 image elements had Chinese text in `alt`, across 24 distinct alt values. Examples include the store logo, category images, and multiple product card images. The rendered page also showed Chinese announcement and brand/category/technology section copy; this matches the previously verified theme-code fallback differences.
+- English all-products collection loaded theme asset path `/cdn/shop/t/48/` (preview): 154 of 157 image elements had Chinese text in `alt`, across 79 distinct alt values. Page-level Chinese text was limited to locale name, translated sorting choices, and category navigation in the sampled DOM.
+- English representative product page loaded theme asset path `/cdn/shop/t/48/` (preview): 20 of 23 image elements had Chinese text in `alt`, across 7 distinct alt values. The rendered page still showed Chinese `售價`, three PDP trust-badge strings, and `你可能也會喜歡`. This is evidence that the inspected theme-48 preview does not currently render all previously expected copy fixes; do not claim these strings are fixed on this preview without identifying its corresponding Shopify theme ID and revalidating.
+- Theme versions differed across the shared browser tabs; classified theme 47 homepage as live and theme 48 collection/product as preview based on their loaded CDN asset paths. Findings are limited to these sampled pages and current browser states, not a full-store count.
+
+### Pending / blocker
+
+- Translate product image `alt` values through Shopify product-resource translation workflow; code changes alone will not correct the alt strings sourced from product media.
+- Identify which Shopify draft theme maps to the observed theme-48 preview before continuing verification. Preview still visibly has untranslated PDP strings; inspect the intended draft before any publication decision.
+- Keep live theme unchanged. Do not bulk-edit product translations or publish without explicit approval.
+
+### Last known good build
+
+- Live theme 47 remains unchanged. Previously verified code changes remain in an unpublished draft, but the observed theme-48 preview needs its theme ID confirmed and a fresh render check before treating its PDP fixes as passing.
+
+### Next action
+
+- First confirm the Shopify draft theme ID corresponding to `/cdn/shop/t/48/`; then scope English image-alt translation using a small representative product set and preview the rendered result. Do not begin mass alt edits until the user confirms the translation scope/wording approach.
+
 ## Latest recovery entry — 2026-10-12 01:47 +08:00
 
 ### Completed
