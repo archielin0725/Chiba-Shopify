@@ -1,3 +1,24 @@
+## Latest recovery entry — 2026-10-12 00:35 +08:00
+
+### Completed
+
+- Published only `snippets/breadcrumbs.liquid` to live Shopify theme `chiba-shopify-theme-20261011-2228` (ID `190804492601`); no other live-theme file was replaced.
+- Pulled the live file back from Shopify and confirmed its Home anchor now uses `{{ locale_prefix }}`.
+- Verified collection and product breadcrumb Home links in English and Traditional Chinese at 390px and 1280px: `/en-tw/` and `/zh-tw/`, respectively.
+- Theme Check on the current-live theme snapshot: 366 files inspected, 0 errors, 20 warnings. The timestamped ZIP passed archive integrity, root layout, and core-template checks.
+- Theme ZIP: `CHIBA-Shopify-theme-20261012-0033.zip`, SHA-256 `c6a6e8fabd980fb38432628cbcf33eb064399fddca480bd26b1becbec0c6b318`; identical copies are in the project root, `Output/`, and `Downloads/`.
+
+### Pending / blocker
+
+- None for the locale-aware breadcrumb fix. Other storefront backlog and the separate cached `/admin/` issue were not changed by this task.
+
+### Last known good build
+
+- Live theme `190804492601` with the scoped breadcrumb update; Theme Check has 0 errors.
+
+### Next action
+
+- No further action required for this fix.
 
 ## Latest recovery entry — 2026-10-11 23:44 +08:00
 
