@@ -113,6 +113,8 @@
     </div>
   {% endif %}
 
+  {% render 'header-lang-pill', form_id: 'HeaderActionsLangPill' %}
+
   {% if settings.cart_type == 'drawer' and template.name != 'cart' %}
     <button
       class="header-actions__action button-unstyled{% if display_style == 'text' %} header-actions__text-style{% endif %}"

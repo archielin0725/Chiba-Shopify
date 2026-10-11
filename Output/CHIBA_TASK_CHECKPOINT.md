@@ -1,3 +1,23 @@
+## Latest recovery entry — 2026-10-12 02:42 +08:00
+
+### Completed
+
+- Continued the English image-alt fix: English output uses the localized product title plus the selected/available translated color when present; Chinese source alt values remain intact for Traditional Chinese and existing filtering.
+- Updated the single header language selector to display Taiwan and US flag SVGs only on both desktop and mobile. Language names remain available via accessible labels; the built-in duplicate country/language selector is disabled in header settings.
+- Shopify Theme Check: 369 files inspected, 0 errors, 20 warnings. `git diff --check` and SVG XML checks passed; confirmed no visible language words remain in the custom selector.
+
+### Pending / blocker
+
+- Need upload this combined change to an unpublished Shopify theme and verify English/zh-TW rendering, header selector at mobile and desktop, and variant color updates. No production theme changed.
+
+### Last known good build
+
+- Official `main` was aligned with local HEAD before this phase. Live theme remains unchanged.
+
+### Next action
+
+- Commit/push only task-scoped locale/alt files, create a fresh timestamped ZIP, then upload as an unpublished Shopify draft and verify page output.
+
 ## Latest recovery entry — 2026-10-12 02:34 +08:00
 
 ### Completed

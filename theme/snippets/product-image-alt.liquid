@@ -5,7 +5,7 @@
   if localization.language.iso_code == 'en' and alt_product != blank
     assign alt_variant = alt_product.selected_or_first_available_variant
 
-    if alt_color == blank and alt_variant.featured_media.id == media.id
+    if alt_color == blank
       for option in alt_product.options_with_values
         assign option_name = option.name | downcase
         if option_name contains 'color' or option_name contains 'colour' or option_name contains '色'
