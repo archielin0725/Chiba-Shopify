@@ -162,7 +162,7 @@
               {% endif %}
             >
               <a
-                href="{{ childLink.url }}"
+                href="{% render 'localized-link-url', url: childLink.url %}"
                 class="mega-menu__link"
               >
                 <span class="wrap-text">{{- childLink.title -}}</span>
