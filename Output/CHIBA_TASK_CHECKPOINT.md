@@ -1,4 +1,19 @@
 
+## Latest recovery entry — 2026-10-11 23:44 +08:00
+
+### Completed
+
+- Updated the Shopify breadcrumb home link to use the existing request-path-aware locale prefix, so English and Traditional Chinese breadcrumbs return to their matching locale root.
+- Shopify Theme Check passed: 0 errors, 20 existing warnings; `git diff --check` passed.
+
+### Pending / blocker
+
+- The breadcrumb change is committed and pushed to official GitHub, but has not been uploaded or published as a Shopify theme. Production theme publication requires explicit approval.
+
+### Next action
+
+- After approval, create a timestamped theme ZIP, upload it as an unpublished draft, verify the breadcrumb links on English and Traditional Chinese collection/product pages, then ask before publishing.
+
 ## Latest recovery entry — 2026-10-11 15:32 +08:00
 
 ### Completed
