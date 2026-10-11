@@ -1,6 +1,246 @@
+
+## Latest recovery entry — 2026-10-11 15:32 +08:00
+
+### Completed
+
+- Fixed the remaining active desktop/mobile navigation outputs by routing `grandchildlink.url` and the generic menu block through `localized-link-url`.
+- Theme Check passed with 0 errors and 21 existing warnings; `git diff --check` passed.
+- Pushed official `main` commit `f3ecf94d686420754f4180cec1199076cf48e0c3`.
+- Built and uploaded `CHIBA-Shopify-theme-20261011-2228.zip`.
+- Published Shopify theme `chiba-shopify-theme-20261011-2228` (theme ID `190804492601`).
+- Removed the unused test theme `chiba-shopify-theme-20261011-2216` and accidentally added/removed Horizon without publishing it.
+- Live verification confirms all visible English category links remain under `/en-tw/`, all visible Traditional Chinese category links remain under `/zh-tw/`, and English click destinations preserve `/en-tw/`.
+
+### Pending / blocker
+
+- No blocker for the locale-navigation task. Shopify preview iframe checks may still report CSP `frame-ancestors 'none'`; public storefront verification is the authoritative check.
+
+### Next action
+
+- Monitor the published storefront for CDN propagation; no further code change is required unless another navigation surface is reported.
+
+## Latest recovery entry — 2026-10-11 15:17 +08:00
+
+### Completed
+
+- Created a first silent vertical Cycling performance Reel using approved CHIBA product imagery.
+- Output: `CHIBA-cycling-performance-reel-20261011-1513.mp4`, 9.00 seconds, 1080x1920, H.264, no audio track.
+- Saved the deliverable to `Downloads/` and `Output/`; original image assets were not modified.
+
+### Pending / blocker
+
+- Music has not been added; a licensed or user-provided track is required before a music version is exported.
+
+### Next action
+
+- Review the silent cut and select a legal music direction before producing the final sound version.
+
+## Latest recovery entry — 2026-10-10 19:50 +08:00
+
+### Completed
+
+- Added English-only footer translations for `Taiwan Official Exclusive Distributor`, `Business Registration No.`, and `Customer Service Email` in `theme/snippets/text.liquid`.
+- Preserved the Traditional Chinese footer source in `theme/sections/footer-group.json`.
+- Shopify Theme Check passed with 0 errors; `git diff --check` passed for the change.
+- Generated and validated `CHIBA-Shopify-theme-20261010-1955.zip` with a flat Shopify theme root and copied it to the project root, `Output/`, and `Downloads/`.
+
+### Pending / blocker
+
+- The Shopify worktree contains unrelated pre-existing changes and generated files, so no commit, push, or live theme publish was performed.
+
+### Next action
+
+- Publish the isolated theme change through an approved clean deployment workflow, then verify the English footer live while confirming the Traditional Chinese footer is unchanged.
+
+## Latest recovery entry — 2026-10-10 14:28 +08:00
+
+### Completed
+- Unified language switchers for Desktop and Mobile using segmented pill [ 🇹🇼 繁中 | 🇬🇧 EN ].
+- Decommissioned legacy duplicate dropdown selector (show_language: false in header-group.json).
+- Added comprehensive Liquid fallback translations for Homepage: Announcement Bar, Hero Headline, Hero CTA Button, Featured Products Title, and Collection Sorting options.
+- Added strict Cross-Device (Mobile & Desktop) and Multi-Language Delivery Standards into AGENTS.md across both Chiba-Shopify and Chiba-AI.
+- Theme Check passed with 0 errors.
+
+### Artifacts
+- ZIP package: /Users/SammyWang/Downloads/CHIBA-Shopify-theme-bilingual-pill-20261010.zip
+
 # CHIBA Task Checkpoint
 
 Updated: 2026-10-01 03:19 +08:00
+
+## Latest recovery entry — 2026-10-10 13:10 +08:00
+
+### Completed
+
+- Crawled all 102 public English URLs from the Shopify sitemap and saved the deterministic audit to `Output/english-storefront-audit-20261010/pages.tsv`: 93 products, 6 collections, 1 page, 1 blog, and the homepage; all requests returned HTTP 200.
+- Confirmed the live English crawl still contains Chinese text on all 102 URLs, including product data and collection/page metadata that cannot be safely replaced in theme Liquid.
+- Added English-only fallbacks for mega-menu and mobile drawer series labels while retaining the Traditional Chinese fallback.
+- Re-ran Shopify Theme Check with 0 errors and `git diff --check` passed.
+
+### Pending / blocker
+
+- Shopify Admin Translate & Adapt must create English translation records for the 93 product resources and the collection/page/blog resource fields; the theme repository cannot create those records without Shopify Admin access.
+- The local theme remains unpublished because unrelated uncommitted files are present; no publish or commit was performed.
+
+### Next action
+
+- In Shopify Admin, run Translate & Adapt for the audited resource groups, then re-run `pages.tsv` audit and inspect all 102 English URLs for zero unintended Chinese customer-facing text.
+
+## Latest recovery entry — 2026-10-10 13:10 +08:00
+- Confirmed the English storefront route `/en` exists but still renders substantial Chinese content on navigation, collection, product, and custom-page surfaces.
+- Added language-aware English fallbacks while preserving the existing Traditional Chinese branches in the category entrance, trust badges, technology spotlight, breadcrumbs, mobile drawer, product trust badges, glove size guide, cart free-shipping bar, and collection heading.
+- Shopify Theme Check passed with 0 errors; existing warnings remain.
+- `git diff --check` passed.
+- Official `origin/main` was fetched and is aligned with local `HEAD`; no rebase was attempted because unrelated uncommitted work is present.
+
+### Pending / blocker
+
+- Product titles, descriptions, option values, collection names, and SEO fields for the 94 live products still require Shopify product translation records; theme Liquid cannot safely translate those stored product fields without changing the Traditional Chinese source.
+- The live theme has not been published because the worktree contains unrelated uncommitted files and no approved isolated deployment boundary.
+- English navigation/menu labels and remaining hardcoded template JSON content need a second audit after the product translation workflow is available.
+
+### Next action
+
+- Obtain an approved Shopify Admin translation workflow/token or a reviewed translation import artifact, then create English translations for all public products and pages and verify `/en` without modifying Traditional Chinese output.
+
+## Latest recovery entry — 2026-10-10 09:02 +08:00
+
+### Completed
+
+- Audited the reorganized canonical Shopify CSV at `data/02_structured_data/CHIBA_Shopify_Full_Products_Fixed_20260930-0115.csv`: 93 products, 1,259 variants, 0 populated `Product Category` values, and 0 populated `Variant Barcodes` values.
+- Probed the live UCP discovery and MCP catalog contract at `shop.chibataiwan.com`; `search_catalog` is the scanner-facing catalog tool.
+- Ran a read-only live `search_catalog` request for `手套`; all 10 returned products had no `category`, `product_type`, `brand`, or `vendor` field in the response.
+- Confirmed live `/llms.txt` and `/agents.md` already contain the custom CHIBA agent description; no `llms.txt` change is currently justified.
+
+### Pending / blocker
+
+- Build a deterministic 93-product category mapping and apply verified Shopify taxonomy categories through an approved Admin/CSV workflow.
+- Re-run the live catalog scan after category updates and compare the exact response fields before considering the agent-catalog gate passed.
+- Git sync is currently blocked by unrelated local uncommitted files; do not stash or overwrite them without approval.
+
+### Next action
+
+- Prepare a category-audit artifact from the reorganized canonical CSV only; do not invent GTIN/MPN values and do not modify live Shopify data until the taxonomy mapping is reviewed.
+
+## Latest recovery entry — 2026-10-10 09:05 +08:00
+
+### Completed
+
+- Audited the reorganized `data/` sources without modifying product or live Shopify data.
+- Verified `data/chiba_cycling_fitness_products_bilingual_front+Palm_thumbnails.xlsx` contains 93 product records with source handles matching all 93 handles in the canonical Shopify CSV.
+- Verified the workbook's explicit source classification is complete: 38 `Cycling / 自行車` products and 55 `Fitness / 健身` products.
+- Confirmed the workbook includes useful per-product fields for the next mapping phase: bilingual names and descriptions, source handle, SKU list, size/color data, price, inventory, publication state, and catalog status.
+- Confirmed the existing structured importer in `data/00_uncategorized/import_sheets.py` uses a separate internal `cycling`/`fitness` content category; it is not a Shopify taxonomy mapping and must not be treated as one.
+
+### Pending / blocker
+
+- Map the workbook's 38/55 source categories and product semantics to Shopify's accepted taxonomy values or IDs. The workbook is authoritative for source grouping, but it does not itself provide Shopify taxonomy IDs.
+- Do not overwrite the canonical CSV or live Shopify products until the taxonomy value format is confirmed.
+- Git sync remains blocked by unrelated local uncommitted reorganized data; do not stash or overwrite it without approval.
+
+### Next action
+
+- Use the workbook as the join key and create a reviewable Handle-to-Shopify-taxonomy mapping. Start with the two clear top-level groups, then classify fitness accessories (belts, wraps, straps, grips, bags, and harnesses) separately from gloves.
+
+## Latest recovery entry — 2026-10-10 09:08 +08:00
+
+### Completed
+
+- Created [CHIBA-product-category-review-20261010-0908.csv](./CHIBA-product-category-review-20261010-0908.csv) from the reorganized workbook and canonical CSV without changing either source.
+- Validated 93 unique Handles, including 38 Cycling and 55 Fitness products.
+- Classified the products into semantic groups: 38 cycling gloves, 19 fitness gloves, 6 grip aids, 3 wrist supports, 4 knee supports, 6 lifting straps, 11 weightlifting belts, and the remaining named training accessories.
+- Added evidence, confidence, and review flags to every mapping row. Current result: 85 high-confidence and 8 medium-confidence candidates.
+- Corrected the rule precedence so products explicitly named as gloves remain gloves even when they include wristguard or lifting-assistance features; Powerhook and Strongman Gripper remain grip aids.
+- Confirmed the review artifact leaves `Current Product Category` blank for all rows; no Shopify taxonomy or live product data was changed.
+
+### Pending / blocker
+
+- Confirm the exact accepted Shopify taxonomy names or IDs for the candidate categories, especially grip aids, harnesses, loop accessories, and barbell pads.
+- Human review is still required before changing the canonical CSV or Shopify Admin.
+
+### Next action
+
+- Review the eight medium-confidence rows and resolve the exact Shopify taxonomy IDs, then prepare a separate 43-column CSV patch only if the taxonomy values are confirmed.
+
+## Latest recovery entry — 2026-10-10 09:10 +08:00
+
+### Completed
+
+- Resolved 89 of 93 review rows against Shopify's official `Shopify/product-taxonomy` distribution.
+- Added official taxonomy GIDs and exact breadcrumb paths to [CHIBA-product-category-review-20261010-0908.csv](./CHIBA-product-category-review-20261010-0908.csv).
+- Verified official mappings include bicycle gloves, weight lifting gloves, grip pads and hand grips, wrist wraps, weight lifting straps, weight lifting belts, barbell pads, knee braces, and elbow supports.
+- Reduced unresolved rows to four: `chiba-40700-fitness` Head Harness, `chiba-40710-fitness` Arm Loops, `chiba-40720-fitness` Leg Loops, and `chiba-40755-fitness` Fitness Bag.
+- Validation passed: 93 unique Handles, 89 official taxonomy IDs, 4 unresolved rows, and no source CSV or live Shopify changes.
+
+### Pending / blocker
+
+- Confirm the correct official leaf category for the four remaining training accessory/bag products; do not map them to a broad guessed category.
+- After those four are resolved, generate a separate 43-column CSV patch from the canonical CSV and run the existing Shopify CSV gate before any import.
+
+### Next action
+
+- Obtain or confirm the four remaining taxonomy choices, then create the import patch and stop for explicit approval before changing live Shopify.
+
+## Latest recovery entry — 2026-10-10 09:14 +08:00
+
+### Completed
+
+- Verified the four proposed mappings against Shopify's official taxonomy:
+  - Head Harness, Arm Loops, and Leg Loops use the parent `sg-2-24` Weight Lifting category.
+  - Fitness Bag uses the more specific official `lb-6-1` Gym Duffel Bags category, rather than the broader luggage parent.
+- Updated [CHIBA-product-category-review-20261010-0908.csv](./CHIBA-product-category-review-20261010-0908.csv) with official GIDs for all 93 products.
+- Generated [CHIBA_Shopify_Product_Category_Patch_20261010-0914.csv](./CHIBA_Shopify_Product_Category_Patch_20261010-0914.csv) from the canonical 43-column CSV without modifying the canonical source.
+- Validation passed: UTF-8 BOM, 43 columns, 1,259 rows, 93 unique products, and one verified official category GID per product.
+
+### Pending / blocker
+
+- The category patch has not been imported into Shopify and no live data was changed.
+- Explicit approval is required before any Shopify Admin import or live mutation.
+- After import, re-run UCP `search_catalog` and the scanner to confirm that `category` is present in the live response.
+
+### Next action
+
+- Wait for approval to import [CHIBA_Shopify_Product_Category_Patch_20261010-0914.csv](./CHIBA_Shopify_Product_Category_Patch_20261010-0914.csv), then verify the live catalog response and scanner result.
+
+## Latest recovery entry — 2026-10-10 09:26 +08:00
+
+### Completed
+
+- Created the three-product Shopify import test file [CHIBA_Shopify_Product_Category_Test_20261010-0926.csv](./CHIBA_Shopify_Product_Category_Test_20261010-0926.csv).
+- Synchronized the same timestamped test file to `/Users/SammyWang/Downloads/`.
+- Selected one cycling glove (`chiba-3030424-cycling`), one fitness glove (`chiba-42155-fitness`), and one fitness bag (`chiba-40755-fitness`) to exercise three taxonomy branches and the external-image case.
+- Preserved the original 43-column schema, all 50 source rows/variants for those three products, UTF-8 BOM, SKUs, prices, images, and inventory fields.
+- Validation passed: 50 rows, 43 columns, 3 unique products, and one official Product Category GID on each product's first row.
+- The full category patch and canonical CSV were not changed.
+
+### Pending / blocker
+
+- Shopify Admin import preview/test upload has not been performed.
+- After preview, inspect category acceptance, variant counts, image fetch results, prices, inventory, and product status before any full import.
+
+### Next action
+
+- Upload the test file only in Shopify Admin and stop at the preview screen unless the preview is clean and explicitly approved for import.
+
+## Latest recovery entry — 2026-10-10 09:40 +08:00
+
+### Completed
+
+- Switched to the official local Chiba-AI workspace at `/Users/SammyWang/Chiba-AI`; confirmed it is the source for `www.chibataiwan.com`.
+- Added `release-site/snapshot/llms.txt` with Traditional Chinese brand, product, service, and official Shopify links.
+- Updated `release-site/release.json` with the SHA-256 binding and corrected `file_count` to 1,534.
+- Ran `SITE_ENV=production python3 build.py`; production build passed and manifest/file hashes matched.
+- Committed the scoped Chiba-AI change locally as `3214477` (`Add brand site llms.txt`) with the required Copilot co-author trailer.
+
+### Pending / blocker
+
+- Official `git pull --rebase origin main` and `git push origin main` could not authenticate in this environment (`fatal: unable to get password from user`).
+- Live `https://www.chibataiwan.com/llms.txt` remains HTTP 404 because the commit has not reached the official remote/Cloudflare Pages deployment.
+- No direct upload or DNS change was performed.
+
+### Next action
+
+- Authenticate GitHub for the official `archielin0725/Chiba-AI` remote, push commit `3214477`, wait for Cloudflare Pages Git deployment, then verify `/llms.txt` returns HTTP 200 with the committed content.
 
 ## Latest recovery entry — 2026-10-01 03:19 +08:00
 
