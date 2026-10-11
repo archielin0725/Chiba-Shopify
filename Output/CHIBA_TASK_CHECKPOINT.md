@@ -1,3 +1,24 @@
+## Latest recovery entry — 2026-10-12 02:54 +08:00
+
+### Completed
+
+- Shopify confirmed the draft is installed: `chiba-shopify-theme-english-alt-flags-20261012`, theme ID `190810751289`. Verified through storefront preview; draft badge was visible and it was never published.
+- Mobile verification at 390×844: English product page shows English title/color alt; switching to Black updates image alt to `CHIBA Air Plus Reflex Advanced Breathable Reflective Model — Black`. Flag selector uses US flag for English, opens two flag-only options with accessible language labels. zh-TW remains Traditional Chinese with original Chinese image alt and Taiwan flag.
+- Desktop verification at 1440×900: English title/color alt and US-flag selector render; selector opens with two accessible options and no visible language words. The zh-TW desktop preview also retained Chinese image alt.
+- No media alt values or product data were changed. Theme Check remains 369 files / 0 errors / 20 warnings. ZIP package is available in the project root and Downloads.
+
+### Pending / blocker
+
+- None for the requested English image-alt and bilingual flag selector preview. Production theme remains untouched.
+
+### Last known good build
+
+- Verified draft theme ID `190810751289`, generated from official commit `2d1fbd1`; official `main` and local checkpoint history are synced.
+
+### Next action
+
+- No required action for this task. Do not publish without explicit approval.
+
 ## Latest recovery entry — 2026-10-12 02:47 +08:00
 
 ### Completed
