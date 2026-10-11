@@ -1,3 +1,25 @@
+## Latest recovery entry — 2026-10-12 01:53 +08:00
+
+### Completed
+
+- Confirmed the Shopify Traditional Chinese product page `/zh-tw/products/chiba-3010524-cycling` still renders Traditional Chinese product title, announcement, navigation, and related copy. The recent bounded audit did not edit product resources or Shopify translations.
+- Checked the separate brand website at canonical host `https://www.chibataiwan.com/`: `/en/` renders English homepage content with only the expected Traditional Chinese language-selector label among sampled visible text; `/zh-tw/` renders Traditional Chinese homepage content.
+- Attempts to open the `www.chibataiwan.com` host failed in the browser tool; verification used the canonical no-`www` host. No brand-site files or deployment settings were changed.
+- Conclusion is limited to sampled pages: observed issues are localized to English storefront rendering/content and image alt strings; the sampled Traditional Chinese pages were unaffected. Any future image-alt updates must use English resource translations and be verified against the Chinese source before completion.
+
+### Pending / blocker
+
+- Shopify English image-alt text remains untranslated on sampled pages. The exact scope and wording workflow are not yet agreed; do not bulk-edit product resources.
+- Confirm the draft ID for Shopify theme asset `/t/48/` before any further preview testing. Do not publish without explicit approval.
+
+### Last known good build
+
+- Live Shopify theme 47 remains unchanged; Chinese Shopify product page and canonical brand website homepages were read-only checked. No production change was made.
+
+### Next action
+
+- Keep the current live Chinese experience unchanged. If proceeding with alt translations, first confirm the Shopify English resource-translation process on a representative product and validate both English and Traditional Chinese output.
+
 ## Latest recovery entry — 2026-10-12 01:50 +08:00
 
 ### Completed
