@@ -639,7 +639,7 @@
             <span class="menu-drawer__pill-text">{% if localization.language.iso_code == 'en' %}Brand Website{% else %}品牌形象官網{% endif %}</span>
             <span class="menu-drawer__pill-arrow">↗</span>
           </a>
-          <a href="{{ routes.root_url }}pages/contact" class="menu-drawer__quick-pill">
+          <a href="{{ routes.root_url | append: '/pages/contact' | replace: '//pages', '/pages' }}" class="menu-drawer__quick-pill">
             <span class="menu-drawer__pill-icon">💬</span>
             <span class="menu-drawer__pill-text">{% if localization.language.iso_code == 'en' %}Customer Service{% else %}官方顧客服務{% endif %}</span>
             <span class="menu-drawer__pill-arrow">→</span>

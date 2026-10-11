@@ -2628,7 +2628,13 @@ product-card .price .price-prefix,
     padding: 10px 12px;
   }
   .pdp-trust-badge-item {
-    font-size: 0.8rem;
+    font-size: max(0.875rem, var(--font-size, 0.875rem));
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .product-card .price .price-prefix {
+    font-size: max(0.875rem, var(--font-size, 0.875rem)) !important;
   }
 }
 

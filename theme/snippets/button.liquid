@@ -11,6 +11,20 @@
 {% assign block_settings = block.settings %}
 {% render 'button-custom-styles', block_settings: block_settings, block_id: block.id %}
 
+{% liquid
+  assign button_label = block_settings.label
+  if localization.language.iso_code == 'en'
+    if button_label contains '探索全部商品' or button_label contains '探索商品'
+      assign button_label = 'Explore All Products'
+    elsif button_label contains '查看全部'
+      assign button_label = 'View all'
+    elsif button_label contains '立即購買'
+      assign button_label = 'Shop Now'
+    elsif button_label contains '查看更多'
+      assign button_label = 'Learn More'
+    endif
+  endif
+%}
 <a
   {% if link == blank %}
     role="link"
@@ -30,5 +44,5 @@
   {%- endif -%}
   {{ block.shopify_attributes }}
 >
-  {{ block_settings.label }}
+  {{ button_label }}
 </a>

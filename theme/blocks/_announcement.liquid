@@ -11,6 +11,25 @@
   {%- assign has_german_flag = true -%}
   {%- assign announcement_text = announcement_text | remove: '🇩🇪' | strip -%}
 {%- endif -%}
+{%- if localization.language.iso_code == 'en' -%}
+  {%- if announcement_text contains '德國百年工藝' or announcement_text contains '台灣官方線上商城' or announcement_text contains '全館滿額免運' -%}
+    {%- assign announcement_text = 'German Heritage Craftsmanship · Taiwan Official Store | Free Shipping on Qualifying Orders' -%}
+  {%- endif -%}
+{%- endif -%}
+
+
+  <style>
+    @media screen and (max-width: 749px) {
+      .announcement-bar__text {
+        font-size: max(0.875rem, min(1rem, 2.6vw)) !important;
+        line-height: 1.35 !important;
+        padding-inline: 4px;
+        letter-spacing: -0.01em;
+        white-space: normal !important;
+        word-break: normal;
+      }
+    }
+  </style>
 
 {%- unless plain_text == '' -%}
   <slideshow-slide

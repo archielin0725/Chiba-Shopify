@@ -139,7 +139,13 @@
       {% endif %}
     {% else %}
       <span class="price"
-        >{% assign price_regular_text = 'content.price_regular' | t %}{% if price_regular_text == 'Regular price' or price_regular_text == blank %}{% assign price_regular_text = '售價' %}{% endif %}<span class="price-prefix">{{ price_regular_text }}</span><bdi>{{ price | default: '&nbsp;' }}</bdi></span
+        >{% liquid
+        if localization.language.iso_code == 'en'
+          assign price_regular_text = 'Price'
+        else
+          assign price_regular_text = '售價'
+        endif
+      %}<span class="price-prefix">{{ price_regular_text }}</span><bdi>{{ price | default: '&nbsp;' }}</bdi></span
       >
     {% endif %}
   {% endif %}

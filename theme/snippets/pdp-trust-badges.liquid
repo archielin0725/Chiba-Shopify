@@ -3,14 +3,14 @@
     <span class="pdp-trust-icon">
       <img src="{{ 'flag-de.svg' | asset_url }}" alt="" width="24" height="16" aria-hidden="true">
     </span>
-    <span class="pdp-trust-text">德國百年工藝</span>
+    <span class="pdp-trust-text">{% if localization.language.iso_code == 'en' %}German craftsmanship since 1853{% else %}德國百年工藝{% endif %}</span>
   </div>
   <div class="pdp-trust-badge-item">
     <span class="pdp-trust-icon">🚚</span>
-    <span class="pdp-trust-text">台灣官方直送免運</span>
+    <span class="pdp-trust-text">{% if localization.language.iso_code == 'en' %}Official Taiwan shipping · Free shipping on qualifying orders{% else %}台灣官方直送免運{% endif %}</span>
   </div>
   <div class="pdp-trust-badge-item">
     <span class="pdp-trust-icon">🛡️</span>
-    <span class="pdp-trust-text">7 天鑑賞期售後保障</span>
+    <span class="pdp-trust-text">{% if localization.language.iso_code == 'en' %}7-day inspection period &amp; after-sales support{% else %}7 天鑑賞期售後保障{% endif %}</span>
   </div>
 </div>

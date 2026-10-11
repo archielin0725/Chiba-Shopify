@@ -23,7 +23,7 @@
     assign default_sort_by = results.default_sort_by
     assign has_relevance = false
     for opt in results.sort_options
-      if opt.value == 'relevance'
+      if opt.value == 'relevance' or opt.value == 'most-relevant'
         assign has_relevance = true
       endif
     endfor
@@ -31,20 +31,33 @@
     for option in results.sort_options
       if option.value == sort_by
         assign status = option.name
-        case option.value
-          when 'manual'
-            assign status = '精選推薦'
-          when 'relevance'
-            assign status = '精選推薦'
-          when 'best-selling'
-            assign status = '熱門暢銷'
-          when 'price-ascending'
-            assign status = '價格：由低至高'
-          when 'price-descending'
-            assign status = '價格：由高至低'
-          when 'created-descending'
-            assign status = '最新上架'
-        endcase
+        if localization.language.iso_code == 'en'
+          case option.value
+            when 'manual', 'relevance', 'most-relevant'
+              assign status = 'Featured'
+            when 'best-selling'
+              assign status = 'Best Selling'
+            when 'price-ascending'
+              assign status = 'Price: Low to High'
+            when 'price-descending'
+              assign status = 'Price: High to Low'
+            when 'created-descending'
+              assign status = 'Newest Arrivals'
+          endcase
+        else
+          case option.value
+            when 'manual', 'relevance', 'most-relevant'
+              assign status = '精選推薦'
+            when 'best-selling'
+              assign status = '熱門暢銷'
+            when 'price-ascending'
+              assign status = '價格：由低至高'
+            when 'price-descending'
+              assign status = '價格：由高至低'
+            when 'created-descending'
+              assign status = '最新上架'
+          endcase
+        endif
       endif
     endfor
   %}
@@ -74,20 +87,33 @@
               continue
             endif
             assign display_name = option.name
-            case option.value
-              when 'manual'
-                assign display_name = '精選推薦'
-              when 'relevance'
-                assign display_name = '精選推薦'
-              when 'best-selling'
-                assign display_name = '熱門暢銷'
-              when 'price-ascending'
-                assign display_name = '價格：由低至高'
-              when 'price-descending'
-                assign display_name = '價格：由高至低'
-              when 'created-descending'
-                assign display_name = '最新上架'
-            endcase
+            if localization.language.iso_code == 'en'
+              case option.value
+                when 'manual', 'relevance', 'most-relevant'
+                  assign display_name = 'Featured'
+                when 'best-selling'
+                  assign display_name = 'Best Selling'
+                when 'price-ascending'
+                  assign display_name = 'Price: Low to High'
+                when 'price-descending'
+                  assign display_name = 'Price: High to Low'
+                when 'created-descending'
+                  assign display_name = 'Newest Arrivals'
+              endcase
+            else
+              case option.value
+                when 'manual', 'relevance', 'most-relevant'
+                  assign display_name = '精選推薦'
+                when 'best-selling'
+                  assign display_name = '熱門暢銷'
+                when 'price-ascending'
+                  assign display_name = '價格：由低至高'
+                when 'price-descending'
+                  assign display_name = '價格：由高至低'
+                when 'created-descending'
+                  assign display_name = '最新上架'
+              endcase
+            endif
           %}
           <option
             value="{{ option.value }}"
@@ -160,20 +186,41 @@
                 continue
               endif
               assign display_name = option.name
-              case option.value
-                when 'manual'
-                  assign display_name = '精選推薦'
-                when 'relevance'
-                  assign display_name = '精選推薦'
-                when 'best-selling'
-                  assign display_name = '熱門暢銷'
-                when 'price-ascending'
-                  assign display_name = '價格：由低至高'
-                when 'price-descending'
-                  assign display_name = '價格：由高至低'
-                when 'created-descending'
-                  assign display_name = '最新上架'
-              endcase
+              if localization.language.iso_code == 'en'
+                case option.value
+                  when 'manual'
+                    assign display_name = 'Featured'
+                  when 'relevance'
+                    assign display_name = 'Featured'
+                  when 'most-relevant'
+                    assign display_name = 'Featured'
+                  when 'best-selling'
+                    assign display_name = 'Best Selling'
+                  when 'price-ascending'
+                    assign display_name = 'Price: Low to High'
+                  when 'price-descending'
+                    assign display_name = 'Price: High to Low'
+                  when 'created-descending'
+                    assign display_name = 'Newest Arrivals'
+                endcase
+              else
+                case option.value
+                  when 'manual'
+                    assign display_name = '精選推薦'
+                  when 'relevance'
+                    assign display_name = '精選推薦'
+                  when 'most-relevant'
+                    assign display_name = '精選推薦'
+                  when 'best-selling'
+                    assign display_name = '熱門暢銷'
+                  when 'price-ascending'
+                    assign display_name = '價格：由低至高'
+                  when 'price-descending'
+                    assign display_name = '價格：由高至低'
+                  when 'created-descending'
+                    assign display_name = '最新上架'
+                endcase
+              endif
             %}
             <label
               for="sort-option-{{ option.value }}-{{ section_id }}"

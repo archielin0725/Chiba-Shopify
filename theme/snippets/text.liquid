@@ -103,6 +103,8 @@
       assign final_rendered_text = final_rendered_text | replace: '探索全部商品', 'Explore All Products'
     elsif final_rendered_text contains '熱門推薦商品'
       assign final_rendered_text = final_rendered_text | replace: '熱門推薦商品', 'Featured Products'
+    elsif final_rendered_text contains '你可能也會喜歡'
+      assign final_rendered_text = final_rendered_text | replace: '你可能也會喜歡', 'You may also like'
     endif
   endif
 %}

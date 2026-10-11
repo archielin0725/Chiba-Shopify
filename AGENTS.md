@@ -67,6 +67,28 @@ Current execution scope: **Phase 2 Production Readiness**, explicitly authorized
 - Checkpoint, active context, gate/release and coverage state must use same-directory temporary files, flush/fsync and atomic replacement. Use `scripts/chiba_atomic_state.py`; test failure preservation without damaging real state.
 - Checkpoint is read FIRST, followed by policy and this file. Latest dated recovery entry takes precedence over historical entries. Record previous-task valid stop before switching missions.
 
+
+## Cross-Device (Mobile & Desktop) & Multi-Language Delivery Standards
+
+To prevent regressions, duplicate controls, and wasted token cycles, every agent MUST strictly enforce these delivery rules:
+
+1. **Simultaneous Mobile & Desktop Coverage**:
+   - Every UI, navigation, header, or styling update MUST cover both Mobile (`max-width: 749px` / Drawer / Touch) and Desktop (`min-width: 750px`) simultaneously in the initial delivery.
+   - Never implement desktop-only or mobile-only unless explicitly requested.
+
+2. **Zero-Duplicate & Conflict Audit**:
+   - When introducing any new component or control (e.g. language toggle), the agent MUST proactively audit and decommission/hide all legacy or conflicting counterparts in the same pass.
+
+3. **Multi-Language Full String Sweep**:
+   - When enabling or modifying bilingual features, the agent MUST sweep all template files (`templates/*.json`, `sections/*.liquid`, `snippets/*.liquid`) and provide fallbacks for all hardcoded headings, announcement bars, CTA buttons, trust badges, and sort options in one single pass.
+   - For language-switch changes, verify rendered copy and accessible image text on the target page and in the mobile drawer for every active locale; a successful locale switch or preserved URL alone is not sufficient validation.
+   - Before publishing a replacement theme, verify the status of Translate & Adapt theme-content translations and preserve/migrate them through a Shopify-supported workflow where available; do not assume theme-bound translations carry over.
+   - When customizing collection sort options, inspect the actual `results.sort_options` values and deduplicate the featured/relevance choice in both native-select and custom-list controls; do not assume the API uses a `relevance` value instead of `most-relevant`.
+   - Never leave partial translations on the landing page or require the user to point out missing strings.
+
+4. **Deterministic Pre-Delivery Self-Audit**:
+   - Before packaging theme ZIPs or declaring a task complete, run automated linting (`theme check`) and verify rendering across all active locale + viewport matrix combinations (e.g., `zh-TW` Desktop/Mobile, `en` Desktop/Mobile).
+
 ## Repository Synchronization Standard (Chiba-Shopify & Chiba-AI)
 - **Single source of truth for both Chiba websites**: the official `archielin0725` GitHub repositories are the sole authoritative sources for Chiba-Shopify and Chiba-AI (including `www.chibataiwan.com`). The `sammywanwan` GitHub repository and local copies are downstream mirrors/workspaces only; they must never be treated as upstream, authority, or a required hop in the delivery pipeline.
 - **Official GitHub synchronization is automatic**: after every requested, verified change in either website project, sync it to the corresponding official `archielin0725` GitHub `main` branch without waiting for another user prompt. Fetch/rebase the official branch before work, preserve unrelated local changes, commit only task-scoped files, push to the official remote, and verify the remote SHA. Update downstream mirrors only after official sync when needed.

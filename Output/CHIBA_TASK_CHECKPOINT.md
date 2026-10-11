@@ -1,3 +1,88 @@
+## Latest recovery entry — 2026-10-12 01:24 +08:00
+
+### Completed
+
+- Reviewed the DeepSeek English storefront audit. The reported theme 40-to-47 translation-loss cause remains unverified; the Translate & Adapt admin app stayed on its loading state after navigation and reload, so no translation data was changed.
+- Updated unpublished preview theme `190807703865` only: localized the all-products hidden H1, rendered collection sort labels in both locales, removed the duplicate featured/relevance option by handling Shopify’s actual `most-relevant` value, and added English fallbacks for the product disclosure heading and `View all` button.
+- Existing approved English product-copy fixes remain on the same unpublished preview. Production theme was not changed or published.
+- Theme Check passed: 368 files inspected, 0 errors, 20 existing warnings.
+- Browser-verified preview on English and Traditional Chinese collection/product pages at 390px and 1280px. Collection H1 and all five sort choices matched each locale; product announcement, price prefix, trust badges, and recommendation heading rendered in English, while the same product page retained Traditional Chinese strings in `zh-TW`.
+
+### Pending / blocker
+
+- Translate & Adapt theme-content translation status still requires confirmation in Shopify Admin; image alt translations remain Shopify product-resource content and were not changed.
+- The draft was not published to the live theme. Wait for explicit approval after translation recovery and any remaining copy/resource checks.
+
+### Last known good build
+
+- Unpublished preview theme `190807703865` with the scoped copy/sort fixes. Live theme remains unchanged by this task.
+
+### Next action
+
+- Open Translate & Adapt in Shopify Admin, confirm whether theme-content translations are available on the old/current theme, and preserve or migrate them using a Shopify-supported workflow; then recheck the English homepage, collection, and product pages before considering publication.
+## Latest recovery entry — 2026-10-12 01:05 +08:00
+
+### Completed
+
+- User approved repairing theme-rendered English copy and the broken mobile Customer Service URL before the language-switch publication.
+- Translation scope is limited to the product route and shared header/drawer: announcement, price prefix, trust badges, recommendation heading, and contact link.
+
+### Pending / blocker
+
+- Apply and verify those changes on the unpublished preview first. Do not publish live until mobile/desktop English and Traditional Chinese checks pass.
+- Product gallery alt text and Shopify-managed product title/SEO translations are data/admin content and are excluded from this code batch.
+
+### Last known good build
+
+- Current live theme `190804492601` remains unchanged. Unpublished selector preview is `190807703865`.
+
+### Next action
+
+- Integrate only the approved locale fixes into task files, run Theme Check, upload the scoped files to the preview, and inspect both locales at mobile and desktop widths.
+
+## Latest recovery entry — 2026-10-12 01:03 +08:00
+
+### Completed
+
+- Audited the current live-theme preview on the English product route at mobile CSS 390px and desktop CSS 1280px.
+- Confirmed several visible English-page strings remain Chinese: announcement bar, price prefix, three product trust badges, and the product-recommendation heading. Product gallery image alt text also remains Traditional Chinese.
+- Found the mobile drawer's Customer Service link resolves to `/en-twpages/contact` (missing slash) on the English route.
+- Confirmed English navigation, variant names, and primary purchase actions are translated. The same untranslated product-page copy appears at desktop width, so this is not caused by the mobile language selector.
+- The local worktree contains separate, uncommitted English branches for the announcement, price prefix, and trust badges; these were not part of the language-switch commit or live-theme update. The recommendation heading is hardcoded in `templates/product.json`.
+- Added a precise rendered-copy validation reminder to `AGENTS.md` and the Shopify theme guardian skill.
+
+### Pending / blocker
+
+- Live publish of the language-switch change is paused while the English-copy gaps are reviewed. The published theme has not been changed by this task.
+- Do not stage or deploy the pre-existing translation edits without scope confirmation; the worktree contains unrelated changes.
+
+### Last known good build
+
+- Current live theme `190804492601` remains unchanged. Language-switch preview theme `190807703865` is still unpublished.
+
+### Next action
+
+- Confirm whether to repair the identified English strings and broken mobile Contact URL before publishing the selector, or publish only the selector and handle copy fixes separately.
+
+## Latest recovery entry — 2026-10-12 01:00 +08:00
+
+### Completed
+
+- User explicitly approved publishing the validated mobile language-switch change to live theme `190804492601`.
+- Preview theme `190807703865` passed Theme Check and browser checks for mobile 320px/390px, desktop 1280px, no duplicate drawer picker, and language changes preserving the product route.
+
+### Pending / blocker
+
+- Live theme update and post-deployment verification are in progress; no other theme files are authorized for upload.
+
+### Last known good build
+
+- Unpublished preview theme `190807703865`; current live theme has not yet received this language-switch change.
+
+### Next action
+
+- Confirm the target theme is still live, upload only `sections/header.liquid`, `snippets/header-drawer.liquid`, and `snippets/localization-dropdown.liquid`, then verify both viewport classes and locale switching on live.
+
 ## Latest recovery entry — 2026-10-12 00:59 +08:00
 
 ### Completed

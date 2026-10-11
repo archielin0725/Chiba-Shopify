@@ -37,7 +37,7 @@
 <collection-component view-event-payload="{{ collection | standard_event_data: 'view' | escape }}">
   <h1 class="visually-hidden">
     {%- if collection.handle == 'all' -%}
-      全部商品
+      {% if localization.language.iso_code == 'en' %}All Products{% else %}全部商品{% endif %}
     {%- else -%}
       {{ collection.title }}
     {%- endif -%}
