@@ -25,6 +25,12 @@
   assign links_before_wrap = 10
   assign max_menu_columns = grid_columns_count | default: 6
   assign max_menu_columns_tablet = grid_columns_count_tablet | default: 4
+  assign locale_prefix = routes.root_url
+  if request.path contains '/en-tw'
+    assign locale_prefix = '/en-tw/'
+  elsif request.path contains '/zh-tw'
+    assign locale_prefix = '/zh-tw/'
+  endif
 
   ##
   # We only eager load heavy elements of the page when rendering this template
@@ -167,22 +173,22 @@
       {% elsif is_cycling_link %}
         <ul class="list-unstyled">
           <li>
-            <a href="{{ routes.root_url }}collections/all/bioxcell-line" class="mega-menu__link">
+            <a href="{{ locale_prefix }}collections/all/bioxcell-line" class="mega-menu__link">
               <span class="wrap-text">{% if localization.language.iso_code == 'en' %}BioXCell Cushioning{% else %}BioXCell 減壓系列{% endif %}</span>
             </a>
           </li>
           <li>
-            <a href="{{ routes.root_url }}collections/all/comfort-line" class="mega-menu__link">
+            <a href="{{ locale_prefix }}collections/all/comfort-line" class="mega-menu__link">
               <span class="wrap-text">{% if localization.language.iso_code == 'en' %}Comfort{% else %}Comfort 舒適系列{% endif %}</span>
             </a>
           </li>
           <li>
-            <a href="{{ routes.root_url }}collections/all/active-line" class="mega-menu__link">
+            <a href="{{ locale_prefix }}collections/all/active-line" class="mega-menu__link">
               <span class="wrap-text">{% if localization.language.iso_code == 'en' %}Active{% else %}Active 活力系列{% endif %}</span>
             </a>
           </li>
           <li>
-            <a href="{{ routes.root_url }}collections/all/race-line" class="mega-menu__link">
+            <a href="{{ locale_prefix }}collections/all/race-line" class="mega-menu__link">
               <span class="wrap-text">{% if localization.language.iso_code == 'en' %}Race{% else %}Race 競速系列{% endif %}</span>
             </a>
           </li>

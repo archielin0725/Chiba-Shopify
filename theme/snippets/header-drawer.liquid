@@ -17,6 +17,12 @@
   assign block_settings = block.settings
   assign max_featured_items = 4
   assign image_border_radius = block_settings.image_border_radius
+  assign locale_prefix = routes.root_url
+  if request.path contains '/en-tw'
+    assign locale_prefix = '/en-tw/'
+  elsif request.path contains '/zh-tw'
+    assign locale_prefix = '/zh-tw/'
+  endif
 
   if block_settings.menu_style == 'featured_collections'
     assign ratio = block_settings.featured_collections_aspect_ratio
@@ -395,22 +401,22 @@
                                     tabindex="-1"
                                   >
                                     <li class="menu-drawer__list-item" style="--menu-drawer-animation-index: 1;">
-                                      <a href="{{ routes.root_url }}collections/all/bioxcell-line" class="menu-drawer__menu-item menu-drawer__menu-item--child">
+                                      <a href="{{ locale_prefix }}collections/all/bioxcell-line" class="menu-drawer__menu-item menu-drawer__menu-item--child">
                                         <span class="menu-drawer__menu-item-text wrap-text">{% if localization.language.iso_code == 'en' %}BioXCell Cushioning{% else %}BioXCell 減壓系列{% endif %}</span>
                                       </a>
                                     </li>
                                     <li class="menu-drawer__list-item" style="--menu-drawer-animation-index: 2;">
-                                      <a href="{{ routes.root_url }}collections/all/comfort-line" class="menu-drawer__menu-item menu-drawer__menu-item--child">
+                                      <a href="{{ locale_prefix }}collections/all/comfort-line" class="menu-drawer__menu-item menu-drawer__menu-item--child">
                                         <span class="menu-drawer__menu-item-text wrap-text">{% if localization.language.iso_code == 'en' %}Comfort{% else %}Comfort 舒適系列{% endif %}</span>
                                       </a>
                                     </li>
                                     <li class="menu-drawer__list-item" style="--menu-drawer-animation-index: 3;">
-                                      <a href="{{ routes.root_url }}collections/all/active-line" class="menu-drawer__menu-item menu-drawer__menu-item--child">
+                                      <a href="{{ locale_prefix }}collections/all/active-line" class="menu-drawer__menu-item menu-drawer__menu-item--child">
                                         <span class="menu-drawer__menu-item-text wrap-text">{% if localization.language.iso_code == 'en' %}Active{% else %}Active 活力系列{% endif %}</span>
                                       </a>
                                     </li>
                                     <li class="menu-drawer__list-item" style="--menu-drawer-animation-index: 4;">
-                                      <a href="{{ routes.root_url }}collections/all/race-line" class="menu-drawer__menu-item menu-drawer__menu-item--child">
+                                      <a href="{{ locale_prefix }}collections/all/race-line" class="menu-drawer__menu-item menu-drawer__menu-item--child">
                                         <span class="menu-drawer__menu-item-text wrap-text">{% if localization.language.iso_code == 'en' %}Race{% else %}Race 競速系列{% endif %}</span>
                                       </a>
                                     </li>
