@@ -236,93 +236,20 @@
     assign localization_font_size = '--menu-localization-font-size: [localization_font_size]; ' | replace: '[localization_font_size]', section.settings.localization_font_size
     assign color_shadow = '--color-shadow: rgb(var(--color-foreground-rgb) / var(--opacity-10-25));'
     assign form_style = localization_font | append: localization_font_size | append: color_shadow
+    assign localization_background_color = 'background_color_[row]' | replace: '[row]', section.settings.localization_row
   %}
-  {% if show_language and show_country == false %}
-    <div class="dropdown-localization mobile:hidden">
-      {% render 'localization-form',
-        show_country: show_country,
-        show_language: show_language,
-        localization_style: 'dropdown',
-        form_style: form_style,
-        form_id: section.id
-      %}
-    </div>
-  {% elsif show_country %}
-    <dropdown-localization-component
-      class="dropdown-localization mobile:hidden"
-    >
-      <button
-        type="button"
-        class="button dropdown-localization__button localization-selector header-actions__action"
-        aria-expanded="false"
-        aria-controls="dropdown-localization-results"
-        ref="button"
-        on:click="/toggleSelector"
-        style="{{ localization_font }} {{ localization_font_size }}"
-      >
-        {% if show_country %}
-          {% if section.settings.country_selector_style == true %}
-            {% assign localization_background_color = 'background_color_[row]' | replace: '[row]', section.settings.localization_row %}
-            {% liquid
-              assign background_brightness = section.settings[localization_background_color] | color_brightness
-              if background_brightness < 64
-                assign shadow_size = 4
-              else
-                assign shadow_size = 2
-              endif
-            %}
-            <span
-              class="icon-flag"
-              style="
-                background-image: url({{- localization.country | image_url: width: 32 }});
-                --size-shadow: {{ shadow_size }}px;
-                --color-shadow: rgb(var(--color-foreground-rgb) / var(--opacity-30-60));
-              "
-            ></span>
-          {% endif %}
-          <span
-            class="currency-code"
-            data-testid="localization-currency-code"
-          >
-            {{- localization.country.currency.iso_code -}}
-          </span>
-        {% endif %}
-        <span
-          class="visually-hidden"
-          data-testid="localization-visually-hidden"
-        >
-          {{- 'accessibility.localization_region_and_language' | t -}}
-        </span>
-
-        {%- if show_country and show_language -%}
-          <span>/</span>
-        {%- endif -%}
-
-        {%- if show_language -%}
-          <span>
-            {{ localization.language.iso_code | upcase }}
-          </span>
-        {%- endif -%}
-        <span class="svg-wrapper icon-caret">
-          {{- 'icon-caret.svg' | inline_asset_content -}}
-        </span>
-      </button>
-
-      <div
-        class="localization-wrapper {{ section.settings.localization_position }}-bound color-custom-popover"
-        hidden
-        ref="panel"
-      >
-        {% render 'localization-form',
-          show_country: show_country,
-          show_language: show_language,
-          localization_style: 'dropdown',
-          form_style: form_style,
-          form_id: section.id
-        %}
-      </div>
-    </dropdown-localization-component>
-  {% endif %}
+  {%- render 'localization-dropdown',
+    show_country: show_country,
+    show_language: show_language,
+    localization_position: section.settings.localization_position,
+    localization_font: localization_font,
+    localization_font_size: localization_font_size,
+    form_style: form_style,
+    form_id: section.id,
+    wrapper_class: 'dropdown-localization chiba-mobile-header-localization',
+    country_selector_style: section.settings.country_selector_style,
+    background_color: section.settings[localization_background_color]
+  -%}
 {% endcapture %}
 
 <script type="application/ld+json">
@@ -913,8 +840,12 @@
       }
 
       header-actions {
-        grid-area: rightB;
-        justify-content: flex-end;
+        grid-column: 4 / 6;
+        grid-row: 1;
+        justify-self: flex-end;
+        display: flex;
+        align-items: center;
+        gap: 2px;
       }
     }
   }
@@ -960,6 +891,21 @@
     header-actions {
       grid-area: rightB;
       justify-content: flex-end;
+    }
+
+  }
+
+  @media screen and (max-width: 749px) {
+    #header-component .header__row--top .header__columns {
+      grid-template-rows: auto auto;
+    }
+
+    #header-component .header__row--top .chiba-mobile-header-localization {
+      display: flex;
+      grid-column: 1 / -1;
+      grid-row: 2;
+      justify-self: end;
+      align-self: center;
     }
   }
 

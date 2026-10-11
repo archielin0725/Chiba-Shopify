@@ -1,3 +1,25 @@
+## Latest recovery entry — 2026-10-12 00:59 +08:00
+
+### Completed
+
+- Updated the shared Shopify localization control so mobile displays it directly below the header icon row; removed the drawer duplicate. Desktop selector remains in its existing header position.
+- Updated unpublished preview theme [0m`chiba-mobile-language-preview-20261012-0044` (ID `190807703865`) with only the three task-scoped files.
+- Browser-verified mobile CSS widths 320px and 390px: selector is visible in the header without opening the drawer, no drawer duplicate, and header rows remain 60px + ~49px.
+- Browser-verified desktop CSS width 1280px: selector remains visible in the existing header. Switching zh-TW → English → zh-TW preserves `/products/chiba-3010524-cycling`.
+- Theme Check: 367 files inspected, 0 errors, 20 warnings.
+
+### Pending / blocker
+
+- The preview is validated but has not been published. Publishing to the live theme requires explicit approval.
+
+### Last known good build
+
+- Unpublished preview theme `190807703865` with the mobile header selector; current live theme remains unchanged by this language-switch task.
+
+### Next action
+
+- Await explicit approval before publishing the validated language-switch change to the live Shopify theme.
+
 ## Latest recovery entry — 2026-10-12 00:35 +08:00
 
 ### Completed
