@@ -1,3 +1,25 @@
+## Latest recovery entry — 2026-10-12 02:06 +08:00
+
+### Completed
+
+- Opened a fresh Translate & Adapt product-localization session for English. Its initial full-screen app overlay was closed.
+- Confirmed the app lists 93 products and the Air Plus Reflex English resource exists in the search result, but selecting the product detail remains blocked by a persistent internal modal bottom sheet labeled `正在翻譯 英文` and a second product-category sheet. Dismissal attempts did not clear the sheets; no translation value was edited or saved.
+- Confirmed draft theme `190807703865` still maps to `/t/48/`; its embedded product preview route returned a 404, so this draft route cannot currently provide a valid product-page check.
+- No Shopify resource, translation, theme, live storefront, or Traditional Chinese content was changed.
+
+### Pending / blocker
+
+- Cannot complete the English image-alt pilot safely until the Translate & Adapt internal bottom sheets are dismissed and the image-alt field is exposed. Current UI only exposes product title, description, URL handle, product type, SEO fields, and options.
+- Theme 48 preview product route currently resolves to 404 inside the theme editor.
+
+### Last known good build
+
+- Live theme 47 is unchanged. Draft theme `190807703865` remains unpublished. No product translations were modified.
+
+### Next action
+
+- Stop retrying the same blocked UI. Use Shopify Admin's product editor to inspect whether the source image alt and language-specific translation affordance are available for one representative image; do not alter the Traditional Chinese source alt. If only a global alt field exists, pause and obtain approval for an alternative because changing it could affect both locales.
+
 ## Latest recovery entry — 2026-10-12 01:56 +08:00
 
 ### Completed
