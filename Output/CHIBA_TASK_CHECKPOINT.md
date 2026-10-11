@@ -1,3 +1,21 @@
+## Latest recovery entry — 2026-10-12 01:27 +08:00
+
+### Completed
+
+- Committed the verified task-scoped changes as `d4b42057382b9156d2451ae1dbaa38ca95c20ae9` and pushed to official `archielin0725/Chiba-Shopify` `main`; `git ls-remote` matched the local commit SHA.
+- Theme preview `190807703865` remains unpublished; no live Shopify theme or Translate & Adapt data was changed.
+
+### Pending / blocker
+
+- Translate & Adapt remained inaccessible beyond its loading state in the authenticated admin browser. Theme-bound translation recovery and product image alt translations still require the Shopify Admin/resource workflow.
+
+### Last known good build
+
+- Preview theme `190807703865`, with the locale fixes validated by Theme Check and 390px/1280px English/Traditional Chinese browser checks.
+
+### Next action
+
+- Confirm translation availability and migrate or restore through Translate & Adapt, then decide whether to authorize publication after storefront copy and image alt review.
 ## Latest recovery entry — 2026-10-12 01:24 +08:00
 
 ### Completed
