@@ -1,0 +1,27 @@
+{%- liquid
+  assign alt_product = product
+  assign alt_color = alt_color | default: blank
+
+  if localization.language.iso_code == 'en' and alt_product != blank
+    assign alt_variant = alt_product.selected_or_first_available_variant
+
+    if alt_color == blank and alt_variant.featured_media.id == media.id
+      for option in alt_product.options_with_values
+        assign option_name = option.name | downcase
+        if option_name contains 'color' or option_name contains 'colour' or option_name contains '色'
+          assign alt_color = alt_variant.options[forloop.index0] | default: option.selected_value
+          break
+        endif
+      endfor
+    endif
+
+    echo alt_product.title
+    if alt_color != blank
+      echo ' — ' | append: alt_color
+    endif
+  elsif media.alt != blank
+    echo media.alt
+  elsif alt_product != blank
+    echo alt_product.title
+  endif
+-%}

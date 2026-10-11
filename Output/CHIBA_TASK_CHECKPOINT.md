@@ -1,3 +1,47 @@
+## Latest recovery entry — 2026-10-12 02:22 +08:00
+
+### Completed
+
+- Product-image alt fallback is implemented for English while retaining the original shared alt for non-English locales; source alt values used by filtering are unchanged.
+- Shopify Theme Check: 369 files inspected, 0 errors, 20 warnings. `git diff --check` passed.
+- Reconfirmed English product title and color labels are localized on the storefront; current DOM still has shared Chinese image alts before preview upload.
+
+### Pending / blocker
+
+- The preview upload to unpublished theme `190807703865` was rejected because Shopify CLI is not authorized for `shop.chibataiwan.com.myshopify.com`. Shopify Admin theme page also returned a platform 404/technical error.
+- No Shopify theme files were uploaded; live and draft themes remain unchanged. Do not publish production.
+- Existing unrelated dirty/untracked work remains untouched. Official `origin/main` previously reported the same SHA as local HEAD; the required pull was blocked by unrelated unstaged changes.
+
+### Last known good build
+
+- Live theme `190804492601` unchanged; unpublished preview theme `190807703865` unchanged.
+
+### Next action
+
+- Commit only verified task-scoped Liquid/checkpoint files and push to official `origin/main`; retain the Shopify preview-rendering limitation in the delivery report.
+
+## Latest recovery entry — 2026-10-12 02:22 +08:00
+
+### Completed
+
+- Implemented locale-aware product-image alt rendering: English pages use the translated product title and localized color when available; other locales retain the original shared media alt.
+- Kept source `media.alt` unchanged in all existing color/media filtering logic. Updated product gallery images, thumbnail controls, zoom dialog, product-card media, and sticky add-to-cart image.
+- Verified the live English product page renders the translated product title and color options while source image alt remains Traditional Chinese.
+- `git diff --check` passed. Shopify Theme Check inspected 369 files with 0 errors and 20 existing warnings.
+
+### Pending / blocker
+
+- Validate rendered English and Traditional Chinese image alt values and variant switching on unpublished theme `190807703865`; do not publish production.
+- Worktree contains unrelated existing changes and untracked artifacts; stage only task files.
+
+### Last known good build
+
+- Live theme `190804492601` remains unchanged. Draft theme `190807703865` remains unpublished.
+
+### Next action
+
+- Upload only the task-scoped Liquid files to the unpublished preview theme, verify DOM output in English and Traditional Chinese, then commit and sync verified task files to official `origin/main`.
+
 ## Latest recovery entry — 2026-10-12 02:13 +08:00
 
 ### Completed

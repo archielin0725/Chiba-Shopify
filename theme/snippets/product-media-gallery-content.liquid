@@ -512,10 +512,10 @@
           {% if block_settings.aspect_ratio != 'adapt' and block_settings.constrain_to_viewport %}
             <div
               class="product-media-constraint-wrapper">
-              {%- render 'product-media', media: media, sizes: media_sizes, is_main_product_media: forloop.first -%}
+              {%- render 'product-media', media: media, selected_product: selected_product, alt_color: active_color, sizes: media_sizes, is_main_product_media: forloop.first -%}
             </div>
           {% else %}
-            {%- render 'product-media', media: media, sizes: media_sizes, is_main_product_media: forloop.first -%}
+            {%- render 'product-media', media: media, selected_product: selected_product, alt_color: active_color, sizes: media_sizes, is_main_product_media: forloop.first -%}
           {% endif %}
         {% endcapture %}
         {% capture class %}
@@ -551,6 +551,8 @@
             style: slideshow_controls_style,
             item_count: sorted_media.size,
             thumbnails: sorted_media,
+            product: selected_product,
+            alt_color: active_color,
             controls_on_media: controls_on_media,
             pagination_position: pagination_position,
             aspect_ratio: block_settings.aspect_ratio,
@@ -564,6 +566,8 @@
             style: block_settings.slideshow_mobile_controls_style,
             item_count: sorted_media.size,
             thumbnails: sorted_media,
+            product: selected_product,
+            alt_color: active_color,
             controls_on_media: mobile_controls_on_media,
             pagination_position: 'center',
             aspect_ratio: block_settings.aspect_ratio,
@@ -627,10 +631,10 @@
             -%}
             {% if block_settings.aspect_ratio != 'adapt' and block_settings.constrain_to_viewport %}
               <div class="product-media-constraint-wrapper">
-                {%- render 'product-media', media: media, sizes: media_sizes, is_main_product_media: forloop.first -%}
+                {%- render 'product-media', media: media, selected_product: selected_product, alt_color: active_color, sizes: media_sizes, is_main_product_media: forloop.first -%}
               </div>
             {% else %}
-              {%- render 'product-media', media: media, sizes: media_sizes, is_main_product_media: forloop.first -%}
+              {%- render 'product-media', media: media, selected_product: selected_product, alt_color: active_color, sizes: media_sizes, is_main_product_media: forloop.first -%}
             {% endif %}
           </li>
         {% endfor %}
@@ -664,6 +668,10 @@
             >
               {% if sorted_media.size > 1 %}
                 {%- for media in sorted_media -%}
+                  {% capture media_alt %}
+                    {% render 'product-image-alt', media: media, product: selected_product, alt_color: active_color %}
+                  {% endcapture %}
+                  {% assign media_alt = media_alt | strip %}
                   {% liquid
                     assign aspect_ratio = block_settings.aspect_ratio
                     if block_settings.aspect_ratio == 'adapt'
@@ -673,7 +681,7 @@
                   <button
                     type="button"
                     class="button button-unstyled dialog-thumbnails-list__thumbnail"
-                    aria-label="{{ 'accessibility.scroll_to' | t: title: media.alt | default: media.media_type }}"
+                    aria-label="{{ 'accessibility.scroll_to' | t: title: media_alt | default: media.media_type }}"
                     on:click="/handleThumbnailClick/{{ forloop.index0 }}"
                     on:pointerenter="/handleThumbnailPointerEnter/{{ forloop.index0 }}"
                     style="--aspect-ratio: {{ aspect_ratio }}; --gallery-aspect-ratio: {{ aspect_ratio }};"
@@ -694,7 +702,7 @@
                         loading: 'lazy',
                         sizes: 'auto, 110, (min-width: 750px) 160',
                         widths: '240, 352, 832, 1200',
-                        alt: media.alt,
+                        alt: media_alt,
                         style: focal_point_style
                       | escape
                     }}
@@ -720,6 +728,8 @@
                   <drag-zoom-wrapper class="product-media__drag-zoom-wrapper">
                     {%- render 'product-media',
                       media: media,
+                      selected_product: selected_product,
+                      alt_color: active_color,
                       sizes: '100vw',
                       loading: 'lazy',
                       is_main_product_media: forloop.first,
@@ -729,6 +739,8 @@
                 {% else %}
                   {%- render 'product-media',
                     media: media,
+                    selected_product: selected_product,
+                    alt_color: active_color,
                     sizes: '100vw',
                     loading: 'lazy',
                     is_main_product_media: forloop.first

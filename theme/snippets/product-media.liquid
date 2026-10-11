@@ -8,6 +8,7 @@
   @param {string} [loading] - The loading attribute for the image.
   @param {object} [block] - The block object.
   @param {object} [selected_product] - The currently selected product.
+  @param {string} [alt_color] - The localized color associated with this media.
   @param {boolean} [first_3d_model] - Indicates if this is the first 3D model.
   @param {boolean} [is_main_product_media] - Indicates if this is the main product image.
   @param {string} [image_ref] - Optional ref attribute for the image element.
@@ -28,6 +29,10 @@
   if settings.transition_to_main_product
     assign ref_image_to_transition = 'imagesToTransition[]'
   endif
+  capture image_alt
+    render 'product-image-alt', media: media, product: selected_product, alt_color: alt_color
+  endcapture
+  assign image_alt = image_alt | strip
 %}
 
 <div
@@ -48,7 +53,7 @@
     | image_url: width: 3840
     | image_tag:
       widths: widths,
-      alt: media.alt,
+      alt: image_alt,
       sizes: sizes,
       loading: image_loading,
       class: 'product-media__image',
@@ -75,7 +80,7 @@
               | image_url: width: 3840
               | image_tag:
                 widths: widths,
-                alt: media.alt,
+                alt: image_alt,
                 sizes: sizes,
                 loading: loading,
                 class: 'deferred-media__poster-image'
