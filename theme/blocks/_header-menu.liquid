@@ -48,14 +48,14 @@
             {% for link in block_settings.menu.links %}
               <li>
                 <a
-                  href="{{ link.url }}"
+                  href="{% render 'localized-link-url', url: link.url %}"
                   id="MenuItem-{{ link.handle }}"
                   class="menu-list__item"
                   {% if link.current %}
                     aria-current="page"
                   {% endif %}
                 >
-                  {{- link.title | replace_first: '目錄', '商品' | replace_first: 'Catalog', '商品' | replace_first: '產品', '商品' -}}
+                  {% if localization.language.iso_code == 'en' %}{{- link.title | replace_first: '商品', 'Products' | replace_first: '產品', 'Products' | replace_first: '目錄', 'Products' -}}{% else %}{{- link.title | replace_first: '目錄', '商品' | replace_first: 'Catalog', '商品' | replace_first: '產品', '商品' -}}{% endif %}
                 </a>
               </li>
             {% endfor %}
@@ -104,7 +104,7 @@
             <span class="menu-list__trigger">
           {%- endif -%}
           <a
-            href="{{ link.url }}"
+            href="{% render 'localized-link-url', url: link.url %}"
             data-skip-node-update="true"
             class="menu-list__link{% if link.active %} menu-list__link--active{% endif %}"
             {% if link.current %}
@@ -112,7 +112,7 @@
             {% endif %}
             ref="menuitem"
           >
-            <span class="menu-list__link-title">{{- link.title | replace_first: '目錄', '商品' | replace_first: 'Catalog', '商品' | replace_first: '產品', '商品' -}}</span>
+            <span class="menu-list__link-title">{% if localization.language.iso_code == 'en' %}{{- link.title | replace_first: '商品', 'Products' | replace_first: '產品', 'Products' | replace_first: '目錄', 'Products' -}}{% else %}{{- link.title | replace_first: '目錄', '商品' | replace_first: 'Catalog', '商品' | replace_first: '產品', '商品' -}}{% endif %}</span>
           </a>
           {%- if link.links != blank -%}
             <button

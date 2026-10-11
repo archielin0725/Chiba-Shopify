@@ -120,7 +120,7 @@
     %}
     <div>
       <a
-        href="{{ link.url }}"
+        href="{% render 'localized-link-url', url: link.url %}"
         class="mega-menu__link {% if link.links != blank or is_cycling_link %}mega-menu__link--parent{% endif %}"
       >
         {% if menu_content_type == 'collection_images' %}

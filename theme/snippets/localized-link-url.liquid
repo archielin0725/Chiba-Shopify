@@ -1,0 +1,14 @@
+{%- liquid
+  assign localized_url = url
+  if url contains '/collections/'
+    assign locale_prefix = routes.root_url
+    if request.path contains '/en-tw'
+      assign locale_prefix = '/en-tw/'
+    elsif request.path contains '/zh-tw'
+      assign locale_prefix = '/zh-tw/'
+    endif
+    assign collection_path = url | split: '/collections/' | last
+    assign localized_url = locale_prefix | append: 'collections/' | append: collection_path
+  endif
+-%}
+{{- localized_url -}}
