@@ -17,6 +17,9 @@
   {% assign image_height_2x = height | default: image_height | times: 2 %}
   {% assign image_height_3x = height | default: image_height | times: 3 %}
   {% assign image_alt_text = image.alt | default: alt_text_fallback | default: '' %}
+  {% if localization.language.iso_code == 'en' and alt_text_fallback != blank %}
+    {% assign image_alt_text = alt_text_fallback %}
+  {% endif %}
 
   {% capture image_srcset -%}
     {{ image | image_url: height: image_height }} 1x, {{ image | image_url: height: image_height_2x }} 2x, {{ image | image_url: height: image_height_3x }} 3x

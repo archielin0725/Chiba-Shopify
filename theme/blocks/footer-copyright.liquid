@@ -14,7 +14,11 @@
 >
   <span class="footer-utilities__text">
     &copy; {{ 'now' | date: '%Y' }}
-    {{ shop.name | link_to: routes.root_url -}}
+    {%- assign footer_store_name = shop.name -%}
+    {%- if localization.language.iso_code == 'en' -%}
+      {%- assign footer_store_name = 'CHIBA GLOVES GERMANY Taiwan Official Store' -%}
+    {%- endif -%}
+    {{ footer_store_name | link_to: routes.root_url -}}
     {%- if block_settings.show_powered_by -%}
       , {{ powered_by_link }}
     {%- endif -%}

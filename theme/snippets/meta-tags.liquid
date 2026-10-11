@@ -19,10 +19,16 @@
 >
 
 {%- liquid
-  assign og_title = page_title | default: shop.name
+  assign shop_display_name = shop.name
+  if localization.language.iso_code == 'en'
+    assign shop_display_name = 'CHIBA GLOVES GERMANY Taiwan Official Store'
+    assign og_description = page_description | default: page_title | default: shop_display_name
+  else
+    assign og_description = page_description | default: shop.description | default: shop.name
+  endif
+  assign og_title = page_title | default: shop_display_name
   assign og_url = canonical_url | default: request.origin
   assign og_type = 'website'
-  assign og_description = page_description | default: shop.description | default: shop.name
 
   if request.page_type == 'product'
     assign og_type = 'product'
@@ -35,7 +41,7 @@
 
 <meta
   property="og:site_name"
-  content="{{ shop.name }}"
+  content="{{ shop_display_name | escape }}"
 >
 <meta
   property="og:url"
@@ -107,7 +113,7 @@
   {{ page_title }}
   {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
   {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
-  {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+  {%- unless page_title contains shop_display_name %} &ndash; {{ shop_display_name }}{% endunless -%}
 </title>
 
 <link
@@ -115,7 +121,12 @@
   href="{{ canonical_url }}"
 >
 
-{% if page_description %}
+{% if localization.language.iso_code == 'en' %}
+  <meta
+    name="description"
+    content="{{ og_description | escape }}"
+  >
+{% elsif page_description %}
   <meta
     name="description"
     content="{{ page_description | escape }}"

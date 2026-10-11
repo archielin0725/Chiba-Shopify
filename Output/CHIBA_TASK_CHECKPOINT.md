@@ -1,4 +1,31 @@
-## Latest recovery entry — 2026-10-12 02:59 +08:00
+## English storefront audit and theme corrections — 2026-10-12 03:08 +08:00
+
+### Completed
+
+- Resumed the user's authorized English storefront audit. `CHIBA_CHECKPOINT_POLICY.md`, `Output/CHIBA_ACTIVE_CONTEXT.json`, and `scripts/chiba_atomic_state.py` are not present in this checkout; read the required checkpoint and `AGENTS.md`.
+- `git pull --rebase --autostash origin main` completed with “Already up to date” before edits. Preserved pre-existing unrelated worktree changes and will stage only task-scoped files.
+- Audited 102 sitemap URLs under `/en-tw`: all returned HTTP 200; all had an H1; three lacked a meta description. Three pages had visible CJK text (homepage, frontpage collection, and blog); English product details were localized.
+- Rechecked the published English product page: product-gallery image alts were already English, while the logo, mega-menu product images, and resource/product-card image alts still included Chinese. Product and policy document titles also inherited the Chinese Shopify store name.
+- Implemented locale-specific English display-name output for SEO metadata, organization JSON-LD, home H1, logo alt/fallback, and footer copyright; kept zh-TW values/data unchanged. Added English product-card image alt output and removed redundant CJK alt text from decorative English mega-menu images while retaining existing zh-TW alts. Added the English company-name replacement for the footer text renderer. Added a consistent meta-description fallback for pages whose Shopify page description is empty.
+- Public English policy routes: refund and privacy policies return 200 but include Traditional Chinese content; shipping and terms-of-service routes return 404. These are Shopify Admin-managed/legal data and have not been fabricated or changed.
+- Theme Check: 369 files inspected, 0 errors, 20 warnings. `git diff --check` passed. The required template JSON English-string grep returned no matches.
+
+### Pending / blocker
+
+- These theme corrections are local and have not been uploaded to a Shopify preview or published. Do not treat the live storefront as updated.
+- Full English legal coverage is blocked on Shopify Admin policy configuration/approved translation: shipping policy and terms pages are missing; existing refund/privacy pages mix English with Chinese address/company data. Do not invent legal translations or business details.
+- Store Admin content (policy text/routes and any remaining locale-managed page content) must be completed through Shopify-supported translation/admin workflows.
+- Existing user worktree changes and untracked delivery/data artifacts remain untouched and must not be staged.
+
+### Last known good build
+
+- Published theme ID `190810751289`, based on official commit `2d1fbd1`; official `main` was at `623328d79278b60ea3fc62387bd351e54a6db3cd` before this audit change set.
+
+### Next action
+
+- Rerun scoped validation after the final review, then commit/push only the English theme fix files and this checkpoint to official `origin/main`; verify the remote SHA. A Shopify preview/live verification still requires an authenticated supported upload workflow, and no new theme has been published.
+
+# Latest recovery entry — 2026-10-12 02:59 +08:00
 
 ### Completed
 

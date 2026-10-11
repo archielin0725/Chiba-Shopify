@@ -1,6 +1,11 @@
 
 
 {% liquid
+  assign header_store_name = shop.name
+  if localization.language.iso_code == 'en'
+    assign header_store_name = 'CHIBA GLOVES GERMANY Taiwan Official Store'
+  endif
+
   assign order = 'logo,menu,localization,search,drawer_search,actions'
 
   if shop.customer_accounts_enabled
@@ -256,7 +261,7 @@
   {
     "@context": "http://schema.org",
     "@type": "Organization",
-    "name": {{ shop.name | json }},
+    "name": {{ header_store_name | json }},
     {% if settings.logo %}
       "logo": {{ settings.logo | image_url: width: 500 | prepend: "https:" | json }},
     {% endif %}
@@ -311,7 +316,7 @@
     class="header__underlay header__underlay-open"
   ></div>
   {%- if request.page_type == 'index' -%}
-    <h1 class="visually-hidden">{{ shop.name }}</h1>
+    <h1 class="visually-hidden">{{ header_store_name }}</h1>
   {%- endif -%}
   {% for row in rows %}
     {% liquid
