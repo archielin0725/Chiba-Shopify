@@ -1,3 +1,27 @@
+## Official-site fitness product card routes — verified, not deployed — 2026-10-12 22:52 +08:00
+
+### Scope and completed work
+
+- Resumed from the prior valid stop: checkout branding remains unchanged because Shopify's checkout preview did not load and the profile is associated with a paused launch.
+- In `/Users/SammyWang/Chiba-AI/release-site`, the public English and zh-TW homepages each had 4 fitness product cards linking to `/private/`; each fitness listing had 55 such cards. These were all 118 public-page links to private product-detail routes.
+- Replaced all 118 destinations with their matched Shopify product handle in the corresponding locale (`/en-tw/products/...` or `/zh-tw/products/...`). Match evidence: each handle appears in the existing English product-detail purchase CTA and in `assets/shopify-variant-map.json`.
+- Added a production build guard rejecting indexable pages that link to `/en/private/` or `/zh-tw/private/`; documented the route rule and updated the release review while leaving approval `PENDING`.
+- New release ID: `chiba-ecommerce-phase4-staging-bb6ca13a3bfe76ca-fitness-links-20261012`. Catalogue, SKU, and price data are unchanged.
+
+### Verification
+
+- Production-profile build in an isolated temporary directory passed for all 1,521 snapshot files. Smoke checks confirmed all 118 homepage/category links are locale-matched Shopify destinations, zero public private-route links remain, private product details remain `noindex,nofollow`, and production robots/header behavior remains intact.
+- Public SKU `40125` Shopify product route was opened successfully in both English (`/en-tw/`) and Traditional Chinese (`/zh-tw/`). A bulk HTTP HEAD probe was blocked with 403 responses, so it was not used as availability evidence for the full set.
+- `git diff --check` passed.
+
+### Delivery state / next action
+
+- Local commit `8639e0d` is on branch `chiba/fitness-card-shop-links` in Chiba-AI. It has not been pushed, merged, or deployed; Cloudflare Pages production follows the `main` branch, and the prior approval was for a source fix without publishing.
+- Keep all unrelated Shopify working-tree changes untouched.
+- Next: review the local change/release checklist. Request separate explicit approval before merging/pushing to `main` or production deployment. The homepage CTA/marketing claims and purchase terms from Codex's broader comments were not changed in this scoped route fix.
+
+---
+
 ## Checkout branding investigation — safe stop — 2026-10-12 22:41 +08:00
 
 ### Completed / verified state
