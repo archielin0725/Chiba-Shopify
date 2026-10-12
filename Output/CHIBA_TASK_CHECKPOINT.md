@@ -1,4 +1,4 @@
-## English storefront audit and theme corrections — 2026-10-12 03:13 +08:00
+## English storefront audit and theme corrections — 2026-10-12 14:43 +08:00
 
 ### Completed
 
@@ -17,6 +17,7 @@
 - Full English legal coverage is blocked on Shopify Admin policy configuration/approved translation: shipping policy and terms pages are missing; existing refund/privacy pages mix English with Chinese address/company data. Do not invent legal translations or business details.
 - Store Admin content (policy text/routes and any remaining locale-managed page content) must be completed through Shopify-supported translation/admin workflows.
 - User selected English drafts for review only; do not apply policy text to Shopify. Drafts are based on the zh-TW refund and privacy policies last updated 2026-10-01. Shipping and terms-of-service drafts remain blocked because those source routes return 404 and no approved source copy is available.
+- User explicitly authorized uploading the latest theme as an unpublished Shopify draft for preview only; no permission to replace the live theme was given.
 - Existing user worktree changes and untracked delivery/data artifacts remain untouched and must not be staged.
 
 ### Last known good build
@@ -25,7 +26,7 @@
 
 ### Next action
 
-- Create an unpublished Shopify preview from official commit `4b898da` and verify English/zh-TW rendering on desktop and mobile. Obtain approved English policy copy and configure missing policies through Shopify Admin before claiming the full English shopping experience is complete. Do not publish the new theme until preview and legal-content gates pass.
+- Package the current checked theme workspace in a timestamped ZIP, upload only as an unpublished Shopify draft, and verify English/zh-TW rendering on desktop and mobile. Preserve unrelated local files; do not publish the new theme. Obtain approved English policy copy and configure missing policies through Shopify Admin before claiming the full English shopping experience is complete.
 
 # Latest recovery entry — 2026-10-12 02:59 +08:00
 
