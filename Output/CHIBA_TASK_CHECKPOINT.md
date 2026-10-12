@@ -1,3 +1,19 @@
+## Checkout branding investigation — safe stop — 2026-10-12 22:41 +08:00
+
+### Completed / verified state
+
+- The earlier English collection-filter translations and English privacy-policy rendering remain verified on the live storefront.
+- Inspected Shopify Settings > Checkout and opened the active “My store” checkout profile editor. This is distinct from Translate & Adapt's checkout-string editor.
+- The editor displayed a warning that the profile belongs to a paused launch. Its simulated checkout preview request was aborted and no preview rendered. No branding changes were made or saved.
+- User's prior decision stands: keep the global Chinese store name. No locale-specific store-name control has been identified. Do not alter global name or publish a logo/branding change without first obtaining a working preview in English and Traditional Chinese.
+
+### Safe stop / next action
+
+- Checkout heading localization is unresolved, but safely blocked pending a working Shopify checkout preview or confirmation from Shopify Support that a branding option applies only to English. Keep current branding unchanged.
+- Source-based Codex review comments received 2026-10-12 22:41 are recommendations only; no project code changes were requested or made in this follow-up.
+
+---
+
 ## English checkout/filter localization follow-up — 2026-10-12 19:45 +08:00
 
 ### Completed and verified
