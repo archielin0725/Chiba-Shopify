@@ -1,3 +1,19 @@
+## English checkout/filter Chinese text investigation — 2026-10-12 19:30 +08:00
+
+### Findings
+
+- User supplied `~/Downloads/IMG_0376.PNG` (mobile checkout) and `IMG_0375.PNG` (mobile collection filter).
+- IMG_0376 shows checkout branding heading `CHIBA GLOVES GERMANY 台灣官方線上商城` while checkout form labels and the order summary are English. This points to Shopify store/checkout brand metadata, not the theme's translated storefront header. Check Shopify Translate & Adapt > Store metadata for an English store-name translation and checkout branding settings; do not overwrite the global Chinese store name without confirming locale behavior.
+- IMG_0375 shows the English collection filter drawer but Chinese product-type values `健身重訓系列` and `自行車系列`; surrounding controls are English. Theme code directly renders Shopify's `filter.values[].label` (`theme/snippets/list-filter.liquid`), so the labels originate from Shopify's filter/product data rather than hardcoded theme copy. Check English translations for the corresponding product types/filter values in Shopify Translate & Adapt / Search & Discovery; avoid changing the zh-TW source values.
+- The English refund policy translation has since been saved in Translate & Adapt (visible success state “已儲存 英文”) and verified publicly at `/en-tw/policies/refund-policy`; the public page is now the English translation based on the Taiwan source, preserving the Chinese source.
+- The English privacy policy still needs a targeted localization pass for Chinese store-name/address data. Chinese shipping-policy and terms-of-service routes return 404, so their content cannot be translated from those policy URLs.
+
+### Next action
+
+- Investigate/apply safe English translations for checkout store metadata and product-type filter values, then verify both affected pages. Afterward finish privacy-policy localization. Do not invent shipping/terms legal text or alter Chinese source content.
+
+---
+
 ## Approved English legal-policy localization — 2026-10-12 15:19 +08:00
 
 ### Scope and source check
@@ -5,12 +21,12 @@
 - User explicitly instructed: translate the Chinese legal policy content into English and apply it to the necessary English policy pages.
 - Shopify Translate & Adapt lists two policies for English localization: Privacy Policy and Refund Policy. The Chinese refund policy exists at `/zh-tw/policies/refund-policy`; Chinese privacy policy exists at `/zh-tw/policies/privacy-policy`.
 - Chinese `/zh-tw/policies/shipping-policy` and `/zh-tw/policies/terms-of-service` both return 404, as do English routes. Do not invent these legal texts. Translate/apply only the two existing policies; report missing routes afterward.
-- Current English refund policy is Shopify's generic template and conflicts with the tailored Chinese refund policy. English privacy policy is already rendered in English but leaks the Chinese store name and address. Plan: replace refund's English localization with source-faithful translation; retain the existing Shopify privacy-policy clauses and Liquid behavior while localizing only the store-name and address placeholders, subject to preview verification.
+- Current English refund policy was Shopify's generic template and conflicted with the tailored Chinese refund policy. The English localization has now been replaced with a source-faithful translation and publicly verified. English privacy policy is rendered in English but still contains the Chinese store name/address in places.
 - User authorized English policy translations to be applied. These are Admin-managed locale content, not theme files.
 
 ### Pending
 
-- Apply the two English policy localizations using Translate & Adapt and verify the public `/en-tw/policies/...` pages. Preserve all Chinese policy source text. Do not change/publish theme.
+- Localize and verify the English privacy policy using Translate & Adapt. Preserve all Chinese policy source text. Do not change/publish theme.
 
 ---
 
