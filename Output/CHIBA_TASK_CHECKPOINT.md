@@ -1,3 +1,22 @@
+## Authorized theme publication checkpoint — 2026-10-12 15:11 +08:00
+
+### Authorization and pre-publish status
+
+- User explicitly said “approve all.. go ahead” after being told that publishing theme `190826971449` would change the live storefront. Treat this as authorization to publish this specific reviewed theme; do not publish any other theme.
+- Current live theme before this operation: `190810751289` (`chiba-shopify-theme-english-alt-flags-20261012`). Target: reviewed unpublished theme `190826971449` (`chiba-shopify-theme-english-review-20261012-1442`).
+- Official `origin/main` was fetched/rebased and verified at `3c31b348b998f1d9f5d8dae53bf14b8cec7d691d`.
+- Theme Check completed successfully: 369 files inspected, 0 errors, 20 warnings.
+- Preview evidence: English homepage hero alts are English and CJK-free at desktop (1440px) and mobile (390px); zh-TW title and both original Chinese hero alts remain unchanged at mobile (390px).
+- Shopify CLI lists the target as `unpublished`, not processing. Publish has not yet been run.
+- Translate & Adapt theme-settings route for this new theme ID did not expose translation records in the Admin view. English/zh-TW rendered preview checks passed; do not infer other translation coverage beyond those checked routes.
+- The user's broad approval does not supply source facts for missing shipping and terms policies. Do not invent or publish legal policy content. Existing refund/privacy policy translations remain a separate Admin-content task.
+
+### Next action
+
+- Publish only theme ID `190826971449` using Shopify CLI, then verify it is the live theme and smoke-test the live English and zh-TW homepage hero alts. If publish fails, leave the existing live theme untouched and report the exact failure.
+
+---
+
 ## English storefront audit and theme corrections — 2026-10-12 15:08 +08:00
 
 ### Completed
