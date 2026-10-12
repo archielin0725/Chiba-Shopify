@@ -1,4 +1,4 @@
-## English storefront audit and theme corrections — 2026-10-12 14:49 +08:00
+## English storefront audit and theme corrections — 2026-10-12 15:01 +08:00
 
 ### Completed
 
@@ -13,7 +13,7 @@
 
 ### Pending / blocker
 
-- The existing unpublished draft ID `190826971449` contains the earlier theme build without the latest hero-alt fix. Do not publish it or treat the live storefront as updated.
+- The existing unpublished draft ID `190826971449` still renders the previous Chinese hero alts. No new theme was installed by the failed upload attempt. Do not publish it or treat the live storefront as updated.
 - Full English legal coverage is blocked on Shopify Admin policy configuration/approved translation: shipping policy and terms pages are missing; existing refund/privacy pages mix English with Chinese address/company data. Do not invent legal translations or business details.
 - Store Admin content (policy text/routes and any remaining locale-managed page content) must be completed through Shopify-supported translation/admin workflows.
 - User selected English drafts for review only; do not apply policy text to Shopify. Drafts are based on the zh-TW refund and privacy policies last updated 2026-10-01. Shipping and terms-of-service drafts remain blocked because those source routes return 404 and no approved source copy is available.
@@ -22,6 +22,10 @@
 - Preview-tested English desktop homepage, product, and all-products collection: each returned 200 with English title/H1 and meta description. Product and collection pages had no visible CJK text or CJK image alts. The homepage still showed two Chinese hero image alts, so added locale-aware English alt strings in `theme/sections/hero.liquid`.
 - Preview-tested the same draft's zh-TW homepage at 390x844: `lang=zh-TW`, Chinese title/H1, and both original Chinese hero alt values remained intact.
 - The hero image-alt fix passes Theme Check: 369 files inspected, 0 errors, 20 warnings. It has not yet been uploaded to a draft.
+- Committed and pushed the hero alt fix plus checkpoint as `d7b681e`; `origin/main` verified at `d7b681e9d28ae4e78078947b1c0aa4019c97c6ed`.
+- Created `CHIBA-Shopify-theme-english-review-20261012-1450.zip` in the project root and `~/Downloads`; archive integrity passed, root folders are the expected theme directories, and all four core templates are present.
+- Attempted to install the ZIP in Shopify Admin, but no new draft appeared. Rechecked preview theme `190826971449` on mobile and the English hero alts are still Chinese; do not claim the preview fix is complete.
+- Shopify CLI push of only `sections/hero.liquid` to draft `190826971449` was blocked: CLI is not authenticated/authorized, and `shop.chibataiwan.com` was interpreted as `shop.chibataiwan.com.myshopify.com`. Use the store's permanent `*.myshopify.com` domain and complete Shopify CLI login, or retry the Admin ZIP upload, before retesting.
 - Existing user worktree changes and untracked delivery/data artifacts remain untouched and must not be staged.
 
 ### Last known good build
@@ -30,7 +34,7 @@
 
 ### Next action
 
-- Commit/push the final hero image-alt fix, create a new timestamped ZIP from the checked theme workspace, upload it as an unpublished Shopify draft, and verify English/zh-TW homepage alts on mobile and desktop. Preserve unrelated local files; do not publish any draft. Obtain approved English policy copy and configure missing policies through Shopify Admin before claiming the full English shopping experience is complete.
+- Authenticate Shopify CLI against the permanent store domain (or successfully retry Admin ZIP upload), update only the unpublished draft, then verify English and zh-TW hero alts on mobile and desktop. Preserve unrelated local files; do not publish any draft. Obtain approved English policy copy and configure missing policies through Shopify Admin before claiming the full English shopping experience is complete.
 
 # Latest recovery entry — 2026-10-12 02:59 +08:00
 
