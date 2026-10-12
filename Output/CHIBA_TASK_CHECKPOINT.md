@@ -1,3 +1,23 @@
+## English checkout/filter localization follow-up — 2026-10-12 19:42 +08:00
+
+### Completed and verified
+
+- In Shopify Translate & Adapt > Filters > Category, saved the English values `Fitness & Strength Training` for `健身重訓系列` and `Cycling` for `自行車系列`. Did not rename source product types.
+- Live English collection `/en-tw/collections/all`, filter drawer verified to show `Product type`, `Cycling`, and `Fitness & Strength Training`, with neither Chinese value present.
+- Live Traditional Chinese collection `/zh-tw/collections/all`, filter drawer verified to retain `分類`, `健身重訓系列`, and `自行車系列`, with neither English translation present.
+
+### Blocker and remaining work
+
+- Checkout screenshot `IMG_0376.PNG` shows `CHIBA GLOVES GERMANY 台灣官方線上商城` above an otherwise English checkout. Shopify Settings > General exposes this as one global store name; Translate & Adapt's Store metadata contains only SEO metadata, not a locale-specific store name. Do not replace the global value because that would also change the Traditional Chinese checkout. No safe English-only checkout name control was found in the inspected settings; needs Shopify-supported localized checkout branding or an approved globally neutral brand treatment.
+- The English privacy policy's localized template was edited to replace `{{ shop_name }}` and `{{ address }}` with English renderings, then saved in Translate & Adapt; the public English privacy page still renders the global Chinese store name and Chinese address. This did not pass public verification and must not be called fixed. Root cause appears to be policy placeholder values bound to global shop metadata.
+- Chinese shipping-policy and terms-of-service routes remain 404; do not invent legal text.
+
+### Next action
+
+- Ask Shopify Support/admin guidance for a supported language-specific checkout store-name and privacy-policy placeholder localization path; alternatively obtain approval for a globally neutral checkout brand that does not contain Chinese. Keep the verified English filter translations. Preserve Traditional Chinese product types, store name, and legal policy.
+
+---
+
 ## English checkout/filter Chinese text investigation — 2026-10-12 19:30 +08:00
 
 ### Findings
