@@ -1,3 +1,20 @@
+## Approved theme published and smoke-tested — 2026-10-12 15:12 +08:00
+
+### Completed
+
+- User explicitly approved publishing the reviewed theme. Shopify CLI published only theme `190826971449` (`chiba-shopify-theme-english-review-20261012-1442`) to live.
+- `shopify theme list` confirms `190826971449` is `live`; previous live theme `190810751289` is now unpublished.
+- Post-publish smoke test passed: live English homepage at desktop (1440px) has English title and two English hero image alts; live zh-TW homepage at mobile (390px) retains its Chinese title and both original Chinese hero alts.
+- Pre-publish Theme Check: 369 files inspected, 0 errors, 20 warnings. English/zh-TW draft preview had passed at desktop/mobile before publication.
+- The Translate & Adapt theme-settings view for the target theme did not expose translation records. The rendered English and zh-TW homepage smoke tests passed; theme-specific translations on untested pages were not independently verified.
+- English legal policy content was not changed. The user's approval does not supply the missing shipping/terms source text or confirm business/legal facts; refund/privacy remain Admin-managed content and still require accurate approved copy.
+
+### Current live state / next action
+
+- Current live theme: `190826971449`. No rollback has been requested. Do not edit or publish legal-policy content until source facts/copy are available; next safe work is to review/apply the already approved refund/privacy drafts if their exact text is available, then obtain the missing shipping/terms source content.
+
+---
+
 ## Authorized theme publication checkpoint — 2026-10-12 15:11 +08:00
 
 ### Authorization and pre-publish status
