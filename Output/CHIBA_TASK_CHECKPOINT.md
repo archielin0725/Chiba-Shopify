@@ -16,6 +16,7 @@
 - These theme corrections are committed to official GitHub but have not been uploaded to a Shopify preview or published. Do not treat the live storefront as updated.
 - Full English legal coverage is blocked on Shopify Admin policy configuration/approved translation: shipping policy and terms pages are missing; existing refund/privacy pages mix English with Chinese address/company data. Do not invent legal translations or business details.
 - Store Admin content (policy text/routes and any remaining locale-managed page content) must be completed through Shopify-supported translation/admin workflows.
+- User selected English drafts for review only; do not apply policy text to Shopify. Drafts are based on the zh-TW refund and privacy policies last updated 2026-10-01. Shipping and terms-of-service drafts remain blocked because those source routes return 404 and no approved source copy is available.
 - Existing user worktree changes and untracked delivery/data artifacts remain untouched and must not be staged.
 
 ### Last known good build
