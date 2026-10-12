@@ -1,3 +1,19 @@
+## Approved English legal-policy localization — 2026-10-12 15:19 +08:00
+
+### Scope and source check
+
+- User explicitly instructed: translate the Chinese legal policy content into English and apply it to the necessary English policy pages.
+- Shopify Translate & Adapt lists two policies for English localization: Privacy Policy and Refund Policy. The Chinese refund policy exists at `/zh-tw/policies/refund-policy`; Chinese privacy policy exists at `/zh-tw/policies/privacy-policy`.
+- Chinese `/zh-tw/policies/shipping-policy` and `/zh-tw/policies/terms-of-service` both return 404, as do English routes. Do not invent these legal texts. Translate/apply only the two existing policies; report missing routes afterward.
+- Current English refund policy is Shopify's generic template and conflicts with the tailored Chinese refund policy. English privacy policy is already rendered in English but leaks the Chinese store name and address. Plan: replace refund's English localization with source-faithful translation; retain the existing Shopify privacy-policy clauses and Liquid behavior while localizing only the store-name and address placeholders, subject to preview verification.
+- User authorized English policy translations to be applied. These are Admin-managed locale content, not theme files.
+
+### Pending
+
+- Apply the two English policy localizations using Translate & Adapt and verify the public `/en-tw/policies/...` pages. Preserve all Chinese policy source text. Do not change/publish theme.
+
+---
+
 ## Approved theme published and smoke-tested — 2026-10-12 15:12 +08:00
 
 ### Completed
