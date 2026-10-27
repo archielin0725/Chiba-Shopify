@@ -1,3 +1,19 @@
+## 2026 Gravel Fundo Cinematic Poster (Minimalist Typography: Punctuation-Free Copy) — completed — 2026-10-27 22:36 +08:00
+
+### Completed
+- Streamlined all copy across the Cinematic poster [`CHIBA_Gravel_Poster_Cinematic_Latest.jpg`](file:///Users/SammyWang/Downloads/CHIBA_Gravel_Poster_Cinematic_Latest.jpg) by removing all Chinese punctuation marks for an ultra-clean, minimalist advertising presentation:
+  1. **Clean Headline Rhythm**: Removed commas and periods, replacing them with breathable whitespace:
+     - `碎石塵土飛揚  路況瞬息萬變`
+     - `雙手穩握車把  騎乘節奏由你掌握`
+  2. **Product Line Simplification**: Removed pipe symbol `｜`:
+     - `CHIBA BioXCell 手套  為多變路況而設計`
+  3. **Official Store Link Clarity**: Removed colons `：`:
+     - `探索台灣官網 www.chibataiwan.com`
+     - `德國原廠官網 www.chiba.de`
+  4. **Direct File Exports**: Synchronized to [`CHIBA_Gravel_Poster_Cinematic_Latest.jpg`](file:///Users/SammyWang/Downloads/CHIBA_Gravel_Poster_Cinematic_Latest.jpg), [`CHIBA_Gravel_Poster_Cinematic_20261027-2204.jpg`](file:///Users/SammyWang/Downloads/CHIBA_Gravel_Poster_Cinematic_20261027-2204.jpg), and timestamped archive `CHIBA_Gravel_Poster_Cinematic_20261027-2235.jpg`.
+
+---
+
 ## 2026 Gravel Fundo Cinematic Poster (Website URLs Font Upgrade to Helvetica Neue Bold) — completed — 2026-10-27 22:24 +08:00
 
 ### Completed

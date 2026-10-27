@@ -22,6 +22,13 @@ FONT_ZH_PATH = "/System/Library/Fonts/Hiragino Sans GB.ttc"
 FONT_EN_PATH = "/System/Library/Fonts/Supplemental/DIN Alternate Bold.ttf"
 FONT_URL_PATH = "/System/Library/Fonts/HelveticaNeue.ttc"
 
+# Clean minimalist marketing copy (no punctuation, pure typographic rhythm)
+LINE1_TEXT = "碎石塵土飛揚  路況瞬息萬變"
+LINE2_TEXT = "雙手穩握車把  騎乘節奏由你掌握"
+PROD_ZH_TEXT = "手套  為多變路況而設計"
+LBL1_TEXT = "探索台灣官網"
+LBL2_TEXT = "德國原廠官網"
+
 def add_shadow(img, offset=(0, 6), blur=10, color=(0, 0, 0, 150)):
     pad = blur * 2
     sw, sh = img.width + pad * 2, img.height + pad * 2
@@ -49,8 +56,8 @@ def render_posters():
     W, H = base_img.size  # 896, 1200
 
     # Fonts - Maximum Prominence, Sharpness & Legibility
-    font_head1 = ImageFont.truetype(FONT_ZH_PATH, 31, index=2)  # W6 Bold
-    font_head2 = ImageFont.truetype(FONT_ZH_PATH, 30, index=2)  # W6 Bold
+    font_head1 = ImageFont.truetype(FONT_ZH_PATH, 32, index=2)  # W6 Bold
+    font_head2 = ImageFont.truetype(FONT_ZH_PATH, 31, index=2)  # W6 Bold
     font_din_prod = ImageFont.truetype(FONT_EN_PATH, 28)        # DIN Bold
     font_zh_prod = ImageFont.truetype(FONT_ZH_PATH, 26, index=2) # W6 Bold
     font_zh_lbl = ImageFont.truetype(FONT_ZH_PATH, 22, index=2)  # W6 Bold
@@ -78,7 +85,7 @@ def render_posters():
     badge_sh, b_pad = add_shadow(badge_s, offset=(0, 5), blur=8, color=(0, 0, 0, 140))
 
     # =============================================================
-    # 1. CINEMATIC POSTER (Full Bleed Action + 100% Text Legibility)
+    # 1. CINEMATIC POSTER (Full Bleed Action + Clean Minimalist Text)
     # =============================================================
     cinematic = base_img.copy()
     cinematic.paste(badge_sh, (W - bw - 32 - b_pad, 32 - b_pad), badge_sh)
@@ -108,26 +115,27 @@ def render_posters():
     s_d = ImageDraw.Draw(s_layer)
 
     # Line 1 & Line 2 shadows
-    s_d.text((tx_c, ty), "碎石塵土飛揚，路況瞬息萬變。", font=font_head1, fill=(0, 0, 0, 255), stroke_width=3, stroke_fill=(0, 0, 0, 255))
-    s_d.text((tx_c, ty + 42), "雙手穩握車把，騎乘節奏由你掌握。", font=font_head2, fill=(0, 0, 0, 255), stroke_width=3, stroke_fill=(0, 0, 0, 255))
+    s_d.text((tx_c, ty), LINE1_TEXT, font=font_head1, fill=(0, 0, 0, 255), stroke_width=3, stroke_fill=(0, 0, 0, 255))
+    s_d.text((tx_c, ty + 42), LINE2_TEXT, font=font_head2, fill=(0, 0, 0, 255), stroke_width=3, stroke_fill=(0, 0, 0, 255))
 
     # Line 3 (Product Highlight) shadow
     p_y = ty + 92
     w_chiba = font_din_prod.getbbox("CHIBA BioXCell")[2]
     s_d.text((tx_c, p_y), "CHIBA BioXCell", font=font_din_prod, fill=(0, 0, 0, 255), stroke_width=3, stroke_fill=(0, 0, 0, 255))
-    s_d.text((tx_c + w_chiba + 6, p_y), "手套 ｜ 為多變路況而設計", font=font_zh_prod, fill=(0, 0, 0, 255), stroke_width=3, stroke_fill=(0, 0, 0, 255))
+    s_d.text((tx_c + w_chiba + 6, p_y), PROD_ZH_TEXT, font=font_zh_prod, fill=(0, 0, 0, 255), stroke_width=3, stroke_fill=(0, 0, 0, 255))
 
     # Line 4 (Taiwan Official Store) shadow
     u1_y = p_y + 40
-    w_lbl1 = font_zh_lbl.getbbox("探索台灣官網：")[2]
-    s_d.text((tx_c, u1_y + 1), "探索台灣官網：", font=font_zh_lbl, fill=(0, 0, 0, 255), stroke_width=3, stroke_fill=(0, 0, 0, 255))
-    s_d.text((tx_c + w_lbl1 + 4, u1_y), "www.chibataiwan.com", font=font_url, fill=(0, 0, 0, 255), stroke_width=3, stroke_fill=(0, 0, 0, 255))
+    w_lbl1 = font_zh_lbl.getbbox(LBL1_TEXT)[2]
+    lbl_spacing = 10
+    s_d.text((tx_c, u1_y + 1), LBL1_TEXT, font=font_zh_lbl, fill=(0, 0, 0, 255), stroke_width=3, stroke_fill=(0, 0, 0, 255))
+    s_d.text((tx_c + w_lbl1 + lbl_spacing, u1_y), "www.chibataiwan.com", font=font_url, fill=(0, 0, 0, 255), stroke_width=3, stroke_fill=(0, 0, 0, 255))
 
     # Line 5 (Germany Headquarters) shadow
     u2_y = u1_y + 32
-    w_lbl2 = font_zh_lbl.getbbox("德國原廠官網：")[2]
-    s_d.text((tx_c, u2_y + 1), "德國原廠官網：", font=font_zh_lbl, fill=(0, 0, 0, 255), stroke_width=3, stroke_fill=(0, 0, 0, 255))
-    s_d.text((tx_c + w_lbl2 + 4, u2_y), "www.chiba.de", font=font_url, fill=(0, 0, 0, 255), stroke_width=3, stroke_fill=(0, 0, 0, 255))
+    w_lbl2 = font_zh_lbl.getbbox(LBL2_TEXT)[2]
+    s_d.text((tx_c, u2_y + 1), LBL2_TEXT, font=font_zh_lbl, fill=(0, 0, 0, 255), stroke_width=3, stroke_fill=(0, 0, 0, 255))
+    s_d.text((tx_c + w_lbl2 + lbl_spacing, u2_y), "www.chiba.de", font=font_url, fill=(0, 0, 0, 255), stroke_width=3, stroke_fill=(0, 0, 0, 255))
 
     s_layer = s_layer.filter(ImageFilter.GaussianBlur(3))
     cinematic.alpha_composite(s_layer)
@@ -140,20 +148,20 @@ def render_posters():
     d.rounded_rectangle([tx, ty + 2, tx + 5, ty + 70], radius=2, fill=(235, 35, 75))
 
     # Line 1 & Line 2 (Crisp Pure White with dark anti-halo stroke)
-    d.text((tx_c, ty), "碎石塵土飛揚，路況瞬息萬變。", font=font_head1, fill=(255, 255, 255), stroke_width=1, stroke_fill=(0, 0, 0, 200))
-    d.text((tx_c, ty + 42), "雙手穩握車把，騎乘節奏由你掌握。", font=font_head2, fill=(255, 255, 255), stroke_width=1, stroke_fill=(0, 0, 0, 200))
+    d.text((tx_c, ty), LINE1_TEXT, font=font_head1, fill=(255, 255, 255), stroke_width=1, stroke_fill=(0, 0, 0, 200))
+    d.text((tx_c, ty + 42), LINE2_TEXT, font=font_head2, fill=(255, 255, 255), stroke_width=1, stroke_fill=(0, 0, 0, 200))
 
     # Line 3 (Product Highlight: Electric Crimson DIN Bold + Crisp White Chinese)
     d.text((tx_c, p_y), "CHIBA BioXCell", font=font_din_prod, fill=(255, 50, 85), stroke_width=1, stroke_fill=(0, 0, 0, 180))
-    d.text((tx_c + w_chiba + 6, p_y), "手套 ｜ 為多變路況而設計", font=font_zh_prod, fill=(255, 255, 255), stroke_width=1, stroke_fill=(0, 0, 0, 180))
+    d.text((tx_c + w_chiba + 6, p_y), PROD_ZH_TEXT, font=font_zh_prod, fill=(255, 255, 255), stroke_width=1, stroke_fill=(0, 0, 0, 180))
 
     # Line 4 (Taiwan Official Store: Platinum Label + Pure White Helvetica Neue Bold URL)
-    d.text((tx_c, u1_y + 1), "探索台灣官網：", font=font_zh_lbl, fill=(226, 232, 240), stroke_width=1, stroke_fill=(0, 0, 0, 200))
-    d.text((tx_c + w_lbl1 + 4, u1_y), "www.chibataiwan.com", font=font_url, fill=(255, 255, 255), stroke_width=1, stroke_fill=(0, 0, 0, 200))
+    d.text((tx_c, u1_y + 1), LBL1_TEXT, font=font_zh_lbl, fill=(226, 232, 240), stroke_width=1, stroke_fill=(0, 0, 0, 200))
+    d.text((tx_c + w_lbl1 + lbl_spacing, u1_y), "www.chibataiwan.com", font=font_url, fill=(255, 255, 255), stroke_width=1, stroke_fill=(0, 0, 0, 200))
 
     # Line 5 (Germany Headquarters: Platinum Label + Radiant Warm Gold Helvetica Neue Bold URL)
-    d.text((tx_c, u2_y + 1), "德國原廠官網：", font=font_zh_lbl, fill=(226, 232, 240), stroke_width=1, stroke_fill=(0, 0, 0, 200))
-    d.text((tx_c + w_lbl2 + 4, u2_y), "www.chiba.de", font=font_url, fill=(254, 240, 138), stroke_width=1, stroke_fill=(0, 0, 0, 200))
+    d.text((tx_c, u2_y + 1), LBL2_TEXT, font=font_zh_lbl, fill=(226, 232, 240), stroke_width=1, stroke_fill=(0, 0, 0, 200))
+    d.text((tx_c + w_lbl2 + lbl_spacing, u2_y), "www.chiba.de", font=font_url, fill=(254, 240, 138), stroke_width=1, stroke_fill=(0, 0, 0, 200))
 
     cinematic.alpha_composite(t_layer)
 
@@ -166,7 +174,7 @@ def render_posters():
     cinematic.paste(card2_sh, (qr_x + card1.width + qr_gap - pad2, qr_y - pad2), card2_sh)
 
     # =============================================================
-    # 2. GLASSMORPHIC POSTER (Matching Upgraded Typography)
+    # 2. GLASSMORPHIC POSTER (Matching Upgraded Clean Typography)
     # =============================================================
     glassmorphic = base_img.copy()
     glassmorphic.paste(badge_sh, (W - bw - 32 - b_pad, 32 - b_pad), badge_sh)
@@ -211,20 +219,20 @@ def render_posters():
     d_glass.rounded_rectangle([tx_g, ty_g + 2, tx_g + 5, ty_g + 70], radius=2, fill=(225, 29, 72))
 
     tx_gc = tx_g + 16
-    d_glass.text((tx_gc, ty_g), "碎石塵土飛揚，路況瞬息萬變。", font=font_head1, fill=(255, 255, 255))
-    d_glass.text((tx_gc, ty_g + 42), "雙手穩握車把，騎乘節奏由你掌握。", font=font_head2, fill=(255, 255, 255))
+    d_glass.text((tx_gc, ty_g), LINE1_TEXT, font=font_head1, fill=(255, 255, 255))
+    d_glass.text((tx_gc, ty_g + 42), LINE2_TEXT, font=font_head2, fill=(255, 255, 255))
 
     p_gy = ty_g + 92
     d_glass.text((tx_gc, p_gy), "CHIBA BioXCell", font=font_din_prod, fill=(255, 50, 85))
-    d_glass.text((tx_gc + w_chiba + 6, p_gy), "手套 ｜ 為多變路況而設計", font=font_zh_prod, fill=(255, 255, 255))
+    d_glass.text((tx_gc + w_chiba + 6, p_gy), PROD_ZH_TEXT, font=font_zh_prod, fill=(255, 255, 255))
 
     u1_gy = p_gy + 38
-    d_glass.text((tx_gc, u1_gy + 1), "探索台灣官網：", font=font_zh_lbl, fill=(226, 232, 240))
-    d_glass.text((tx_gc + w_lbl1 + 4, u1_gy), "www.chibataiwan.com", font=font_url, fill=(255, 255, 255))
+    d_glass.text((tx_gc, u1_gy + 1), LBL1_TEXT, font=font_zh_lbl, fill=(226, 232, 240))
+    d_glass.text((tx_gc + w_lbl1 + lbl_spacing, u1_gy), "www.chibataiwan.com", font=font_url, fill=(255, 255, 255))
 
     u2_gy = u1_gy + 30
-    d_glass.text((tx_gc, u2_gy + 1), "德國原廠官網：", font=font_zh_lbl, fill=(226, 232, 240))
-    d_glass.text((tx_gc + w_lbl2 + 4, u2_gy), "www.chiba.de", font=font_url, fill=(254, 240, 138))
+    d_glass.text((tx_gc, u2_gy + 1), LBL2_TEXT, font=font_zh_lbl, fill=(226, 232, 240))
+    d_glass.text((tx_gc + w_lbl2 + lbl_spacing, u2_gy), "www.chiba.de", font=font_url, fill=(254, 240, 138))
 
     qr_gx = card_margin + card_w - total_qr_w - 24
     qr_gy = card_y + (card_h - card1.height) // 2
@@ -236,15 +244,13 @@ def render_posters():
     # =============================================================
     timestamp = datetime.now().astimezone().strftime("%Y%m%d-%H%M")
 
-    # 1. Exact user-requested file in Downloads
+    # 1. Exact user-requested files in Downloads
     p_cin_specified = DOWNLOADS_DIR / "CHIBA_Gravel_Poster_Cinematic_20261027-2204.jpg"
-    cinematic.convert("RGB").save(p_cin_specified, quality=96, optimize=True)
-
-    # 2. Latest file in Downloads
     p_cin_latest_dl = DOWNLOADS_DIR / "CHIBA_Gravel_Poster_Cinematic_Latest.jpg"
+    cinematic.convert("RGB").save(p_cin_specified, quality=96, optimize=True)
     cinematic.convert("RGB").save(p_cin_latest_dl, quality=96, optimize=True)
 
-    # 3. Timestamped files in Downloads and Output
+    # 2. Timestamped files in Downloads and Output
     p_cin_ts_dl = DOWNLOADS_DIR / f"CHIBA_Gravel_Poster_Cinematic_{timestamp}.jpg"
     p_cin_out = OUTPUT_DIR / f"CHIBA_Gravel_Poster_Cinematic_{timestamp}.jpg"
     cinematic.convert("RGB").save(p_cin_ts_dl, quality=96, optimize=True)
@@ -258,8 +264,8 @@ def render_posters():
     glassmorphic.convert("RGB").save(p_glass_ts_dl, quality=96, optimize=True)
     glassmorphic.convert("RGB").save(p_glass_out, quality=96, optimize=True)
 
-    print("Posters successfully updated with Helvetica Neue Bold URLs:")
-    print(f"  User Target:           {p_cin_specified}")
+    print("Posters successfully updated without punctuation marks:")
+    print(f"  Target File:           {p_cin_specified}")
     print(f"  Cinematic (Latest):    {p_cin_latest_dl}")
     print(f"  Cinematic (Timestamp): {p_cin_ts_dl}")
     print(f"  Output Backup:         {p_cin_out}")
