@@ -1,3 +1,14 @@
+## 2026 Gravel Fundo Poster Revision (www.chiba.de & Enhanced Typography) — completed — 2026-10-27 22:06 +08:00
+
+### Completed
+- Updated cinematic poster [`CHIBA_Gravel_Poster_Cinematic_Latest.jpg`](file:///Users/SammyWang/Downloads/CHIBA_Gravel_Poster_Cinematic_Latest.jpg) and glassmorphic edition per user directions:
+  1. Added German headquarters website `www.chiba.de` directly stacked under `www.chibataiwan.com` (`探索台灣官網：www.chibataiwan.com` & `德國原廠官網：www.chiba.de` with matching label widths for clean vertical URL alignment).
+  2. Enhanced prominence and contrast of product line (`CHIBA BioXCell 手套 ｜ 為多變路況而設計`) by increasing font size to 26px with radiant crimson `#FF4B5F`, pure white `#F8FAFC`, and deep drop shadows.
+  3. Made website lines significantly more distinct (font size 21px, crisp `#FFFFFF` for Taiwan URL and subtle warm gold `#FEF08A` for German URL).
+  4. Automatically exported to `~/Downloads/` as `CHIBA_Gravel_Poster_Cinematic_Latest.jpg` and timestamped versions.
+
+---
+
 ## 2026 Gravel Fundo Poster Revision (Proportional QR & Distinct Typography) — completed — 2026-10-27 21:52 +08:00
 
 ### Completed
