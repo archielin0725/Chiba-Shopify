@@ -1,3 +1,14 @@
+## 2026 Gravel Fundo Cinematic Poster (Website URLs Font Upgrade to Helvetica Neue Bold) — completed — 2026-10-27 22:24 +08:00
+
+### Completed
+- Per user direction, updated the typography for the official website URLs (`www.chibataiwan.com` and `www.chiba.de`):
+  1. **Website Font Upgrade**: Replaced narrow/industrial DIN font with modern, open, and world-standard **Helvetica Neue Bold** (23px). Character shapes (notably 'w', 'c', 'h', 'i', 'b', 'a') now display with balanced x-height, natural kerning, and crisp web elegance.
+  2. **Harmonious Baseline Alignment**: Matched the baseline and cap height seamlessly with the Chinese labels (`探索台灣官網：` and `德國原廠官網：`).
+  3. **High-Contrast Color Preservation**: Pure brilliant white (`#FFFFFF`) for Taiwan official store and radiant warm gold (`#FEF08A`) for Germany headquarters, surrounded by 360-degree dark ambient halo.
+  4. **Direct File Update**: Directly updated the user's referenced target file [`CHIBA_Gravel_Poster_Cinematic_20261027-2204.jpg`](file:///Users/SammyWang/Downloads/CHIBA_Gravel_Poster_Cinematic_20261027-2204.jpg), [`CHIBA_Gravel_Poster_Cinematic_Latest.jpg`](file:///Users/SammyWang/Downloads/CHIBA_Gravel_Poster_Cinematic_Latest.jpg), and created timestamped version `CHIBA_Gravel_Poster_Cinematic_20261027-2223.jpg` in `~/Downloads/` and `Output/`.
+
+---
+
 ## 2026 Gravel Fundo Cinematic Poster (100% Font & Text Visibility Optimization) — completed — 2026-10-27 22:17 +08:00
 
 ### Completed

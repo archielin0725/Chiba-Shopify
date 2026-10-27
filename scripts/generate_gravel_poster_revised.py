@@ -14,9 +14,13 @@ BADGE_PILL_PATH = OUTPUT_DIR / "badge_pill_clean.png"
 C1_PATH = OUTPUT_DIR / "c1_full_border.png"
 C2_PATH = OUTPUT_DIR / "c2_full_border.png"
 
-# Ultra-legible display fonts: Hiragino Sans GB W6 (Apple bold sans) + German DIN Alternate Bold
+# Ultra-legible display fonts:
+# 1. Hiragino Sans GB W6 (Apple bold sans for Chinese headlines and labels)
+# 2. German DIN Alternate Bold (Athletic brand typography for CHIBA BioXCell)
+# 3. Helvetica Neue Bold (Crisp Swiss precision typography for clean website URLs)
 FONT_ZH_PATH = "/System/Library/Fonts/Hiragino Sans GB.ttc"
 FONT_EN_PATH = "/System/Library/Fonts/Supplemental/DIN Alternate Bold.ttf"
+FONT_URL_PATH = "/System/Library/Fonts/HelveticaNeue.ttc"
 
 def add_shadow(img, offset=(0, 6), blur=10, color=(0, 0, 0, 150)):
     pad = blur * 2
@@ -50,7 +54,7 @@ def render_posters():
     font_din_prod = ImageFont.truetype(FONT_EN_PATH, 28)        # DIN Bold
     font_zh_prod = ImageFont.truetype(FONT_ZH_PATH, 26, index=2) # W6 Bold
     font_zh_lbl = ImageFont.truetype(FONT_ZH_PATH, 22, index=2)  # W6 Bold
-    font_din_url = ImageFont.truetype(FONT_EN_PATH, 24)         # DIN Bold
+    font_url = ImageFont.truetype(FONT_URL_PATH, 23, index=1)   # Helvetica Neue Bold for URLs
 
     # QR Codes (perfectly scaled ~100px width for harmonious proportions)
     c1 = Image.open(C1_PATH).convert("RGBA")
@@ -117,13 +121,13 @@ def render_posters():
     u1_y = p_y + 40
     w_lbl1 = font_zh_lbl.getbbox("探索台灣官網：")[2]
     s_d.text((tx_c, u1_y + 1), "探索台灣官網：", font=font_zh_lbl, fill=(0, 0, 0, 255), stroke_width=3, stroke_fill=(0, 0, 0, 255))
-    s_d.text((tx_c + w_lbl1 + 4, u1_y), "www.chibataiwan.com", font=font_din_url, fill=(0, 0, 0, 255), stroke_width=3, stroke_fill=(0, 0, 0, 255))
+    s_d.text((tx_c + w_lbl1 + 4, u1_y), "www.chibataiwan.com", font=font_url, fill=(0, 0, 0, 255), stroke_width=3, stroke_fill=(0, 0, 0, 255))
 
     # Line 5 (Germany Headquarters) shadow
     u2_y = u1_y + 32
     w_lbl2 = font_zh_lbl.getbbox("德國原廠官網：")[2]
     s_d.text((tx_c, u2_y + 1), "德國原廠官網：", font=font_zh_lbl, fill=(0, 0, 0, 255), stroke_width=3, stroke_fill=(0, 0, 0, 255))
-    s_d.text((tx_c + w_lbl2 + 4, u2_y), "www.chiba.de", font=font_din_url, fill=(0, 0, 0, 255), stroke_width=3, stroke_fill=(0, 0, 0, 255))
+    s_d.text((tx_c + w_lbl2 + 4, u2_y), "www.chiba.de", font=font_url, fill=(0, 0, 0, 255), stroke_width=3, stroke_fill=(0, 0, 0, 255))
 
     s_layer = s_layer.filter(ImageFilter.GaussianBlur(3))
     cinematic.alpha_composite(s_layer)
@@ -143,13 +147,13 @@ def render_posters():
     d.text((tx_c, p_y), "CHIBA BioXCell", font=font_din_prod, fill=(255, 50, 85), stroke_width=1, stroke_fill=(0, 0, 0, 180))
     d.text((tx_c + w_chiba + 6, p_y), "手套 ｜ 為多變路況而設計", font=font_zh_prod, fill=(255, 255, 255), stroke_width=1, stroke_fill=(0, 0, 0, 180))
 
-    # Line 4 (Taiwan Official Store: Platinum Label + Pure White DIN Bold URL)
+    # Line 4 (Taiwan Official Store: Platinum Label + Pure White Helvetica Neue Bold URL)
     d.text((tx_c, u1_y + 1), "探索台灣官網：", font=font_zh_lbl, fill=(226, 232, 240), stroke_width=1, stroke_fill=(0, 0, 0, 200))
-    d.text((tx_c + w_lbl1 + 4, u1_y), "www.chibataiwan.com", font=font_din_url, fill=(255, 255, 255), stroke_width=1, stroke_fill=(0, 0, 0, 200))
+    d.text((tx_c + w_lbl1 + 4, u1_y), "www.chibataiwan.com", font=font_url, fill=(255, 255, 255), stroke_width=1, stroke_fill=(0, 0, 0, 200))
 
-    # Line 5 (Germany Headquarters: Platinum Label + Radiant Warm Gold DIN Bold URL)
+    # Line 5 (Germany Headquarters: Platinum Label + Radiant Warm Gold Helvetica Neue Bold URL)
     d.text((tx_c, u2_y + 1), "德國原廠官網：", font=font_zh_lbl, fill=(226, 232, 240), stroke_width=1, stroke_fill=(0, 0, 0, 200))
-    d.text((tx_c + w_lbl2 + 4, u2_y), "www.chiba.de", font=font_din_url, fill=(254, 240, 138), stroke_width=1, stroke_fill=(0, 0, 0, 200))
+    d.text((tx_c + w_lbl2 + 4, u2_y), "www.chiba.de", font=font_url, fill=(254, 240, 138), stroke_width=1, stroke_fill=(0, 0, 0, 200))
 
     cinematic.alpha_composite(t_layer)
 
@@ -216,11 +220,11 @@ def render_posters():
 
     u1_gy = p_gy + 38
     d_glass.text((tx_gc, u1_gy + 1), "探索台灣官網：", font=font_zh_lbl, fill=(226, 232, 240))
-    d_glass.text((tx_gc + w_lbl1 + 4, u1_gy), "www.chibataiwan.com", font=font_din_url, fill=(255, 255, 255))
+    d_glass.text((tx_gc + w_lbl1 + 4, u1_gy), "www.chibataiwan.com", font=font_url, fill=(255, 255, 255))
 
     u2_gy = u1_gy + 30
     d_glass.text((tx_gc, u2_gy + 1), "德國原廠官網：", font=font_zh_lbl, fill=(226, 232, 240))
-    d_glass.text((tx_gc + w_lbl2 + 4, u2_gy), "www.chiba.de", font=font_din_url, fill=(254, 240, 138))
+    d_glass.text((tx_gc + w_lbl2 + 4, u2_gy), "www.chiba.de", font=font_url, fill=(254, 240, 138))
 
     qr_gx = card_margin + card_w - total_qr_w - 24
     qr_gy = card_y + (card_h - card1.height) // 2
@@ -254,7 +258,7 @@ def render_posters():
     glassmorphic.convert("RGB").save(p_glass_ts_dl, quality=96, optimize=True)
     glassmorphic.convert("RGB").save(p_glass_out, quality=96, optimize=True)
 
-    print("Posters successfully generated with 100% optimized typography:")
+    print("Posters successfully updated with Helvetica Neue Bold URLs:")
     print(f"  User Target:           {p_cin_specified}")
     print(f"  Cinematic (Latest):    {p_cin_latest_dl}")
     print(f"  Cinematic (Timestamp): {p_cin_ts_dl}")
