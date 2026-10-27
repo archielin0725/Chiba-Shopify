@@ -1,3 +1,196 @@
+## 2026 Gravel Fundo Poster Revision (Proportional QR & Distinct Typography) — completed — 2026-10-27 21:52 +08:00
+
+### Completed
+- Resolved user feedback regarding oversized QR codes and low-contrast typography:
+  1. Proportionally scaled down the two QR code cards (Instagram @chibataiwan and Official Website) from dominating ~50% width to an elegant, harmonious ~24% width, matching the height of the accompanying typography.
+  2. Upgraded typography from thin, washed-out serif/mingliu to bold, modern, authoritative STHeiti Medium (`#FFFFFF` with `#FF465A` red accent for `CHIBA BioXCell 手套`), completely resolving readability issues against rugged gravel textures.
+  3. Cleaned and vectorized the top-right `CHIBA ERGONOMIC GLOVES` pill badge with smooth alpha masking and subtle realistic drop shadow.
+  4. Built deterministic generator script `scripts/generate_gravel_poster_revised.py` providing two distinct, high-impact aesthetic treatments:
+     - **Option 1 (Glassmorphic)**: Luxury dark translucent carbon plate with 1px border and German flag micro-accent (`🇩🇪`).
+     - **Option 2 (Cinematic)**: Edge-to-edge seamless dark bottom gradient scrim with soft text drop shadows.
+- Generated and validated deliverables with timestamps synced to `Output/` and `~/Downloads/`:
+  - `CHIBA_Gravel_Poster_Glassmorphic_20261027-2150.jpg`
+  - `CHIBA_Gravel_Poster_Cinematic_20261027-2150.jpg`
+
+### Pending / next action
+- User review of both aesthetic options in `Downloads/` and selection for publication.
+
+---
+
+## 2026 Gravel Fundo Stage 3 Sponsorship Media Package — completed — 2026-10-27 20:43 +08:00
+
+### Completed
+- Analyzed 2026 Gravel Fundo Stage 3 (北部年終站 11/01 at 林口水牛坑) official registration and event briefing; verified official sponsor listing for CHIBA GLOVES GERMANY / Chiba Taiwan 奇柏有限公司.
+- Developed deterministic Python image composition pipeline (`scripts/generate_gravel_poster.py`) utilizing 100% authentic CHIBA image bank assets from `data/03_images_media/` (`bioxcell-pro-front-transparent.png`, `bioxcell-pro-palm-transparent.png`, `CHIBA Logo white.png`) combined with the official event banner.
+- Generated two high-resolution official marketing posters:
+  1. 4:5 Instagram/Facebook Feed Poster (1080x1350): `CHIBA-Gravel-Fundo-Official-Poster-20261027-2038.jpg`
+  2. 9:16 Instagram Story/Reel Cover Poster (1080x1920): `CHIBA-Gravel-Fundo-Official-Story-20261027-2042.jpg`
+  Both synced to `Output/` and `~/Downloads/`.
+- Generated cinematic action visual (`CHIBA-Gravel-Fundo-BioXCell-20261027-2032.jpg`) featuring the Linkou Buffalo Pit off-road gravel terrain.
+- Formulated complete social media copy package (ready-to-post IG carousel and FB post), plus a reusable AI copywriting prompt.
+
+### Pending / next action
+- User review deliverables in Downloads and publish to official @chibataiwan IG & Facebook channels.
+
+---
+
+## Instagram @chibataiwan Profile & Quick-Pull Reel — completed — 2026-10-18 07:22 +08:00
+
+### Completed
+- Prepared comprehensive Instagram @chibataiwan profile optimization blueprint (Bio, Category, Highlights, and 9-grid visual layout).
+- Developed deterministic video rendering pipeline (`scripts/create_quick_pull_reel.py`) using Pillow and bundled ffmpeg to create a luxury, high-conversion 12.0s 1080x1920 (9:16 vertical) Instagram Reel showcasing the CHIBA Quick-Pull feature.
+- Generated deliverable video with timestamp: `CHIBA-Quick-Pull-Reel-20261018-0720.mp4` (3.56 MB, H.264 high-profile, faststart enabled) and synchronized to `Output/` and `~/Downloads/`.
+- Validated all 4 scenes visually via extracted preview frames; verified 0 missing glyphs, precise fingertip loop radar alignment, and vector icon rendering.
+- Prepared complete posting package: Reel script, caption copy, audio recommendation, and high-impact hashtags.
+
+### Pending / next action
+- User review and publish the Reel to @chibataiwan with recommended trending audio track.
+- Update Instagram profile bio and story highlights on the active IG account.
+
+---
+
+## Germany price comparison percentages — completed — 2026-10-13 16:30 +08:00
+
+- Created percentage-enriched copy: `/Users/SammyWang/Chiba-AI/CHIBA-Germany-Price-Comparison-Percentages-20261013-1629.xlsx`; prior comparison and source workbooks remain unchanged.
+- Added two percentage columns to Product List and Germany Website Prices: signed Germany-vs-Taiwan difference as a percentage of the Taiwan price, and the Taiwan price premium as a percentage of the converted Germany price. Formula basis uses the converted Germany NT dollar price rounded to a whole NT dollar; both percentages rounded to 2 decimals.
+- All 69 matched products have both percentages. Taiwan is 3.60%–21.62% higher than the converted German displayed price; average Taiwan premium is 13.72%. Products not matched to the three supplied pages have blank percentage cells.
+- Validation passed: recalculated all 138 percentage fields, verified all 4 worksheet relationships and package CRC, table/filter extents, and Read Me definitions. No storefront/deployment changed and no commit/push was made.
+
+---
+
+## Germany-to-Taiwan price comparison — completed — 2026-10-13 16:24 +08:00
+
+- Created `/Users/SammyWang/Chiba-AI/CHIBA-Germany-Price-Comparison-20261013-1619.xlsx` from the local comparison workbook, leaving the input workbook unchanged (SHA-256: `6204a11b49e7a63c724c2fc2314acecfddbdaa84ae8f240cccb2e7a39b6ecd97`).
+- Compared the 93 Taiwan product rows against the three supplied German collection pages: `https://chiba.de/damen-fahrrad-sommer`, `https://chiba.de/damen-fitness-handschuhe`, and `https://chiba.de/damen-fitness-accessoires` (observed 2026-10-13). Captured 71 German product cards; 69 matched to workbook product IDs by model name or clear German/English equivalent, and two German listings had no Taiwan workbook counterpart. Twenty-four workbook products had no matching listing on those three pages; this is not evidence that they are absent from the full German catalogue. SKU 30410 is classified Cycling in the workbook but appears on the German Fitness Handschuhe page and was matched by model name.
+- Added EUR price, user-specified exchange rate (EUR 1 = NT$37), converted rounded NT dollar price, difference from workbook Taiwan price, and direct German product/collection URLs. Difference is Germany-converted price minus Taiwan workbook price. Displayed-price tax/shipping treatment was not independently normalized.
+- Verified XLSX CRC, all 4 worksheet/package relationships, 93 source product rows, 69 product conversions and differences, all 71 German-page entries, and totals in the Read Me. All matched German-converted prices were NT$40–250 below the corresponding Taiwan workbook prices (mean difference -NT$137.72). No storefront, product prices, deployment, or source workbook was changed; no commit or push was performed.
+
+---
+
+## Cycling and Fitness workbook split — completed — 2026-10-13 13:41 +08:00
+
+- Created two category-only workbooks in `/Users/SammyWang/Chiba-AI/`: `CHIBA-Cycling-Products-20261013-1339.xlsx` (38 products, 886 variants, 75 matching embedded images) and `CHIBA-Fitness-Products-20261013-1339.xlsx` (55 products, 360 variants, 72 matching embedded images).
+- Each workbook retains the Product List, matching Variant Details, and Read Me sheets; the product/variant tables and filters were resized to their split data. Unrelated product rows, variants, and image assets were excluded.
+- Verification passed for both XLSX ZIP CRCs, internal package relationships, category-only rows, image preservation, and source totals: 93 products and 1,246 variants reconcile exactly. The combined timestamped source workbook remains unchanged. No Shopify/live storefront, deployment, or GitHub remote was changed.
+
+---
+
+## Cycling product-line workbook — completed in session copy — 2026-10-13 13:24 +08:00
+
+- Created timestamped session artifact: `/Users/SammyWang/.copilot/session-state/894f13ed-a610-4a7b-9f5b-5f294889af33/files/chiba_cycling_fitness_products_bilingual_front+Palm_thumbnails_line-classified_20261013-1320.xlsx`. The source workbook in Documents remains unchanged because macOS continued to deny writes there.
+- Added Product List column S, "Cycling Product Line / 自行車手套產品線", and extended the product table/autofilter. Added a Read Me note explaining the four primary lines and source-listed exceptions. Fitness rows are blank.
+- Exact line totals: BioXCell 8, Comfort 11, Active 9, Race 7, Kids and Youth 2, Allround 1 (SKU 30410). Main-line mapping is from Bike Summer Collection 2026 index pages 86–87; SKU 30410 is Allround Line in Fitness Collection 2026 ENG page 20.
+- Validation passed: 38 cycling SKUs assigned exactly once; all 55 fitness rows blank; table has 19 columns and spans A1:S94; XLSX ZIP CRC passed; all 147 embedded image files unchanged; all unrelated XLSX package parts unchanged. No project source, live Shopify data, theme, deployment, or GitHub remote was changed.
+- Remaining delivery action: user may move/copy this session artifact over their Documents original after review.
+
+---
+
+## Documents write retry — still blocked — 2026-10-13 13:20 +08:00
+
+- User selected granting access and retrying. Re-tested a uniquely named temporary file in the exact target folder after that selection; Node still returns `EPERM: operation not permitted`. No temporary file was created, and the workbook remains unchanged.
+- Do not attempt an alternate-process or permission-bypass write. Safe next options: restart VS Code/command host after granting Documents permission and retry, or have the user copy the workbook into the session workspace for an updated copy.
+## Cycling product-line workbook — blocked by Documents write permission — 2026-10-13 13:18 +08:00
+
+- Exact manufacturer-index mapping is ready for the 38 cycling rows: BioXCell Line 8 SKUs (3060125, 3060224, 3060324, 3060426, 3060526, 3060820, 3067125, 3069122); Comfort Line 11 (30117, 3010226, 3010320, 3010424, 3010524, 3010626, 3017126, 3019124, 3019221, 3029125, 3040518); Active Line 9 (3020224, 3040018, 3020522, 3020426, 3020622, 3027126, 3020026, 3020326, 3027423); Race Line 7 (3030122, 3030424, 3070820, 3030224, 3030524, 3037124, 3037225); Kids and Youth Line 2 (3050122, 3050224); Allround Line 1 (30410). Sources: Bike Summer Collection 2026 PDFs, pp. 86–87; Fitness Collection 2026 ENG.pdf, p.20.
+- No workbook bytes were changed. A same-directory atomic-update attempt was denied by macOS with `PermissionError: Operation not permitted` while creating a temporary file in the user's Documents folder.
+- The intended change remains: append “Cycling Product Line / 自行車手套產品線” in Product List column S, update its table/filter extent, document the exceptions in Read Me, leave fitness rows blank, and preserve all embedded images and Variant Details.
+- Next action: wait for user to grant the invoking app/VS Code Documents-folder write access, or choose an updated copy in the session workspace for manual placement. Then perform the atomic edit and verify the 38 SKU assignments plus all 147 embedded media files.
+## Cycling product-line column — preparing workbook edit — 2026-10-13 13:17 +08:00
+
+- Previous manufacturer-description review reached a valid local-only stop; claims evidence and release approval remain pending, and that work is not being resumed or changed here.
+- New request: add one product-line column to the specified external bilingual cycling/fitness workbook. Confirmed workbook has Product List, Variant Details, and Read Me sheets; Product List is a 93-product range with 147 embedded media files.
+- Source: 2026 Bike Summer catalogue index pages 86–87; SKU 30410 is listed as Allround Line in Fitness 2026 English catalogue page 20. The four requested primary cycling lines are BioXCell, Comfort, Active, and Race; source-listed exceptions Kids and Youth Line and Allround Line will remain distinct rather than be forced into a different line. Fitness rows will be blank.
+- No workbook changes have been made yet. Before the in-place edit, the next action is to extend Product List/table/filter/dimension and Read Me with the bilingual line column while preserving all existing embedded media and other sheets, using a same-directory temporary XLSX and atomic replacement. Then verify every cycling SKU is assigned once, non-cycling rows are blank, and embedded asset parts remain unchanged.
+## Manufacturer product-description audit — local only — 2026-10-13 01:24 +08:00
+
+### Completed
+- Re-fetched Shopify public product JSON for all 92 products overlapping the local catalogue; zh-TW and English descriptions are now available for 92/92 in each locale, including SKUs 3029125 and 3060820. Shopify-only SKU 3030424 remains outside the local catalogue.
+- Mapped all 92 local SKUs by exact SKU to manufacturer catalogue product pages: 36 cycling products in the Bike Summer 2026 English and Traditional Chinese PDFs, SKU 30410 in the Fitness 2026 English catalogue, and 55 fitness products in the Fitness 2026 English catalogue; German fitness page references are included where found. No Chinese-language 2026 fitness catalogue was located.
+- Updated `release-site/cms/PRODUCT-DESCRIPTION-REVIEW.csv` with source document/page references and per-SKU findings for heritage, timed Quick-Pull, health/nerve and 90% wording. Corrected the prior source assessment that no manufacturer product-page material was available.
+- Manufacturer wording found: Bike catalogue p.85 includes a general Poron XRD statement of up to 90% impact-energy absorption; pages 10/14 include BioXCell numbness/nerve marketing; catalogues state the company was founded in 1853. These are manufacturer marketing statements, not independent test, clinical, certification, or product-specific technical evidence. For 3060426, 90% is applied by Shopify to numbness rather than impact energy; for 3067125 the Shopify metric is high-frequency road vibration.
+- Quick-Pull product pages describe a pull-off aid, but Shopify adds an “in one second”/instant promise in 56 zh-TW and 32 English descriptions. No duration was found in the matched product pages.
+
+### Scope and release state
+- This is a source-reference and claim-wording review, not a claim-by-claim engineering sign-off or independent validation of every material, dimension, care instruction, or performance statement. Obtain technical specifications and test/certification evidence before treating those items as verified.
+- No Shopify or local candidate product copy, price/catalogue data, release manifest, production setting, or theme file was changed. Candidate marketing wording and live Shopify copy remain unchanged; no push or deployment occurred. Release approval remains PENDING.
+- Validation: 92 CSV product rows, 92 exact product-page mappings, and 92/92 descriptions per locale. Documentation-only work; prior isolated production-profile build (1,521 manifest entries) remains the last known-good build; no rebuild was needed.
+- Official main synchronization remains blocked by pre-existing dirty worktrees in both repositories; no stash, reset, staging, or commit was performed. `CHIBA_CHECKPOINT_POLICY.md`, `Output/CHIBA_ACTIVE_CONTEXT.json`, and `scripts/chiba_atomic_state.py` were not present at their expected paths. Checkpoint/release-review writes used same-directory temporary files, fsync, and atomic replacement as a safe fallback.
+
+### Pending / next action
+- Obtain actual manufacturer technical specifications and independent support/approval for health, quantified performance, certification, and timed-removal claims; finish full materials/care field-by-field verification. Preserve current copy until a separate copy decision. Keep release approval PENDING and do not push or deploy.
+
+---
+
+## Product-description review and release checklist update — local only — 2026-10-13 01:01 +08:00
+
+### Completed
+- Preserved the user's selected local candidate copy revision; did not restore the older copy and did not edit live Shopify product descriptions or Shopify theme files.
+- Compared the local 92-SKU catalogue with public Shopify product JSON for all 93 mapped handles. 90 overlapping SKUs returned both zh-TW and English descriptions. SKU 3060820 returned English only; SKU 3029125 was rate-limited in both locales. Shopify's additional SKU 3030424 remains outside the local catalogue.
+- Product-copy findings: 35/37 zh-TW cycling summaries and 35/37 public English cycling PDP summaries are model/series-only. All 55 fitness catalogue detail routes match private/noindex pages. Live Shopify descriptions include century/「百年」 heritage wording; hand-numbness/nerve-relief copy on 8 zh-TW and 9 English SKUs; and explicit 90% claims in both locales for SKUs 3010626, 3060426, and 3067125. No certification wording was found in fetched product descriptions, which does not validate other storefront pages.
+- Updated the local release review to distinguish copy comparison from evidence-based substantiation and to record API coverage gaps. No product/copy data, release manifest, production setting, or Shopify file was changed.
+
+### Verification and state
+- The description review used public Shopify product JSON and the frozen local catalogue; no authoritative manufacturer specification sheets were provided. Treat technical/material facts and all retained marketing claims as not substantiated by this review.
+- Prior isolated production-profile build remains the last known good build (1,521 snapshot manifest entries verified). This phase changed review/checkpoint documentation only, so no source build was rerun and the release manifest was not changed.
+- The release-review diff check passed. No push or deployment occurred. The Chiba-AI candidate remains local and release approval remains pending. Existing unrelated Chiba-Shopify worktree changes were left untouched.
+
+### Pending / next action
+- Obtain authoritative product specifications and claim evidence/approval; resolve Shopify rate-limited responses for SKU 3029125 (both locales) and SKU 3060820 (zh-TW); review the remaining site content and release gates before any separate release decision.
+
+---
+
+### Shipping fee alignment and marketing-copy scope — verified locally, not deployed — 2026-10-13 00:35 +08:00
+
+- User confirmed the under-threshold shipping charge should be NT$100, matching the observed live Shopify checkout; the free-shipping threshold remains NT$1,500.
+- User explicitly asked to leave the “170 years,” hand-numbness/nerve-pressure relief, certification, and “90% impact absorption” claims unchanged for now. This pass changes no marketing copy and does not publish.
+- Updated the local Chiba-AI static checkout fee in `release-site/snapshot/assets/chiba-ecommerce.js` and `release-site/snapshot/assets/chiba-config.json`; updated only those asset hashes in `release-site/release.json`.
+- Updated `release-site/cms/RELEASE-REVIEW.txt` with the fee alignment and scope note. JavaScript syntax, JSON configuration, fee boundary cases (NT$0, NT$800, NT$1,499, NT$1,500, NT$1,600), and isolated production-profile build passed; all 1,521 snapshot manifest entries verified. Temporary validation output was removed.
+- Release ID: `chiba-ecommerce-phase4-staging-bb6ca13a3bfe76ca-fitness-commerce-audit-20261012-price-display-shipping-nt100-20261013`. No production deployment or Git push occurred; release review remains pending.
+
+## Official-site route, language, and claim cleanup — verified locally, not deployed — 2026-10-12 23:37 +08:00
+
+### Bilingual public price-label normalization — verified locally, not deployed — 2026-10-13 00:02 +08:00
+
+- User confirmed customer-facing prices on `www.chibataiwan.com` should show the amount only, e.g. `NT$ 1,280`, in both Traditional Chinese and English.
+- Source audit found visible inconsistency: Chinese cycling showed「建議零售價」, fitness showed「台灣零售價」, English used “Suggested/Retail Price”, some English PDPs appended “(incl. VAT)”, and series overview ranges used separate RRP/retail labels.
+- Normalized product-card, product-detail, variant-switch/price-override, and category starting-price output in both locales; removed labels and English VAT suffix while preserving every amount. Refreshed the 1,521-file manifest and versioned the release ID with `price-display`.
+- Updated `AGENTS.md`, release README, and release review to define amount-only customer display in all locales; added a build-time guard against redundant labels.
+- Audited 192 changed HTML pages against their prior price text nodes: zero numeric price changes. Full snapshot sweep found zero public price-label prefixes in either locale.
+- Isolated production-profile build passed for all 1,521 snapshot files. Browser validation passed in en and zh-TW at desktop (1280x900) and mobile (390x844) for product detail, cycling/fitness product cards, and category starting-price ranges. Variant selection retained amount-only output. `git diff --check` passed in both repos.
+- Chiba-AI task commit `3414c88` created locally; branch is 3 commits ahead of and 0 behind `origin/main`. No push or production publish occurred. Chiba-Shopify `AGENTS.md` and this checkpoint contain the requested rule updates; all unrelated dirty Shopify files remain untouched.
+- Current release ID: `chiba-ecommerce-phase4-staging-bb6ca13a3bfe76ca-fitness-commerce-audit-20261012-price-display`. Release approval stays pending; do not push/deploy without explicit approval.
+
+### Release checklist clarification — 2026-10-12 23:46 +08:00
+
+- Reviewer correctly noted the release checklist incorrectly said “Checkout remains disabled.” Local release config has `enableEcommerce: true` and `checkoutGateway: "shopify"`; the static site itself does not host checkout, but its CTAs send shoppers to Shopify. Actual live checkout availability is not verified. The checklist was corrected to require confirmation in Shopify admin; no checkout or store settings were changed.
+- Product prices were not changed by this diff, but that does not verify them against the live store. The checklist now separately requires an independent live Shopify comparison before release approval.
+- These are documentation/checklist corrections only. Keep the local feature branch unpushed and production approval pending.
+
+### Completed in this phase
+
+- Resumed the uncompleted Chiba-AI feature branch `chiba/fitness-card-shop-links` at `8639e0d`; the prior production-profile build was not accepted because the generated 118 fitness-card links had an extra closing quote.
+- Corrected all 118 localized Shopify product-card URLs and added a locale-matched direct-to-Shopify homepage CTA in English and Traditional Chinese.
+- Rewrote high-risk public copy around hand numbness, nerve compression, medical endorsement, 80%/90% efficacy, unsupported exact dimensions, and stale 170-year claims in both locales. A subsequent full public-page scan found and removed four remaining anti-numbness claims from the English/Traditional Chinese about and cycling pages. Kept Taiwan shipping/legal terms unchanged because the available configuration is not separate approval for a new public promise.
+- Swept all 52 public English HTML pages, translating Traditional Chinese language-switcher title, aria-label and flag alt text; removed the remaining Chinese legal-name duplication and one Chinese image-alt phrase where an English name/description already exists.
+- Added build gates for malformed doubled-quote hrefs, private routes, CJK in public English pages, locale-specific homepage shopping CTAs, and unsupported health/efficacy claims across all indexable public pages. Updated the release manifest hashes for 1,521 snapshot files.
+- Final deterministic audit passed: all 1,521 snapshot hashes match; the 118 fitness product links (4 + 55 per locale) and all 155 public localized Shopify product links use the matching storefront locale; zero malformed hrefs, public private-route links, English CJK text, or unsupported-claim matches remain.
+- Isolated production-profile build passed for 1,521 files. Browser checks on the final build passed for homepage shopping CTA visibility/URL, technology and product-catalogue headings, and unsupported-copy absence in English and Traditional Chinese at desktop (1280x900) and mobile (390x844).
+- `git diff --check` passed. Temporary builds and preview servers created for this validation were removed/stopped. Checkout, business terms, and production deployment were not changed.
+- Task-scoped commit `acf0dc03e3958f1479d212ed96de4bd9a7c4dcbf` was created locally on `chiba/fitness-card-shop-links`; the worktree is clean. The branch is 2 commits ahead of and 0 behind `origin/main`. Nothing was pushed.
+
+### Pending / not yet verified
+
+- Chiba-AI remains on local branch `chiba/fitness-card-shop-links`; do not push/merge to official `main` or trigger Cloudflare production until the user gives separate deployment approval. No site deployment occurred.
+- No package files were generated for delivery. Existing Shopify dirty/untracked files remain untouched.
+
+### Last known good state / blockers
+
+- Final isolated production-profile build and local browser smoke checks passed. Existing `release-site/dist` was preserved.
+- `CHIBA_CHECKPOINT_POLICY.md`, `Output/CHIBA_ACTIVE_CONTEXT.json`, and `scripts/chiba_atomic_state.py` are absent in the checked-out Chiba-Shopify/Chiba-AI workspaces. This update used a same-directory temporary file, fsync, and atomic rename; no active-context file was created.
+- Next action: ask for a separate go-live decision; keep the verified local commit unpushed unless explicit approval is given.
+
+---
+
 ## Official-site fitness product card routes — verified, not deployed — 2026-10-12 22:52 +08:00
 
 ### Scope and completed work
@@ -647,7 +840,7 @@
 ### Completed
 
 - Updated the shared Shopify localization control so mobile displays it directly below the header icon row; removed the drawer duplicate. Desktop selector remains in its existing header position.
-- Updated unpublished preview theme [0m`chiba-mobile-language-preview-20261012-0044` (ID `190807703865`) with only the three task-scoped files.
+- Updated unpublished preview theme `chiba-mobile-language-preview-20261012-0044` (ID `190807703865`) with only the three task-scoped files.
 - Browser-verified mobile CSS widths 320px and 390px: selector is visible in the header without opening the drawer, no drawer duplicate, and header rows remain 60px + ~49px.
 - Browser-verified desktop CSS width 1280px: selector remains visible in the existing header. Switching zh-TW → English → zh-TW preserves `/products/chiba-3010524-cycling`.
 - Theme Check: 367 files inspected, 0 errors, 20 warnings.
