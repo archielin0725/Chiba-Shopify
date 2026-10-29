@@ -1,3 +1,20 @@
+## Shopify Product Description Copy Cleanup — current export processed; awaiting user review — 2026-10-30 03:06 +08:00
+
+### Completed
+- Processed the user-provided current Shopify export `~/Downloads/products_export_1.csv` (SHA-256 `a8ff8ae5c176218119779e7f0139bd3c590da6ee2f1fa4d4ebd6597088ac96ad`) with `scripts/clean_product_descriptions.py`.
+- Generated `Output/CHIBA_Shopify_Full_Products_Cleaned_20261030-0306.csv` and copied it to `~/Downloads/`.
+- Validation passed: 1,259 variant rows, 93 product handles, all 51 columns preserved, 37 product handles updated, 39 occurrences removed, zero remaining `原創` anywhere in the output, zero duplicate variant keys (including Option 3), and no changed cells outside `Body (HTML)`. The Downloads and project copies are byte-identical.
+- Reviewed the affected sentences: Quick-Pull copy now reads `指尖拉環設計`; Solar copy reads `Lycra® Solar 透光均勻曬膚科技`; BioXCell/Econyl copy reads `BioXCell 兩階段防手麻設計，搭配 Econyl® 海洋再生尼龍`. The revised wording remains grammatical and preserves the intended meaning.
+- This is a Shopify product-data CSV, not a theme ZIP: product descriptions are product records, so a theme package would not change them.
+- No live Shopify data was changed or imported.
+
+### Pending / blocker
+- Await user review/approval before importing the CSV into Shopify. This candidate uses the current export supplied by the user; keep the original export as the backup.
+- Initial `git pull --rebase origin main` was blocked because the shared worktree contains existing uncommitted changes. `git fetch origin main` succeeded. No unrelated changes were staged or modified.
+- Last known good theme package remains `CHIBA-Shopify-theme-20261030-0204.zip`; no theme files were changed in this task.
+
+---
+
 ## Shopify Storefront Technology Spotlight Copy Optimization (Remove 原創 / Clean Presentation) — completed — 2026-10-30 02:05 +08:00
 
 ### Completed
