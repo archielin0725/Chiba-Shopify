@@ -21,34 +21,38 @@
     type="button"
     class="glove-size-guide-btn"
     onclick="document.getElementById('glove-size-guide-modal').showModal()"
-    aria-label="查看手套掌圍對照表"
+    aria-label="{% if localization.language.iso_code == 'en' %}View glove size guide{% else %}查看手套掌圍對照表{% endif %}"
   >
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M2 12h20M6 8v8M10 9v6M14 8v8M18 9v6"/>
     </svg>
-    <span>掌圍對照表</span>
+    <span>{% if localization.language.iso_code == 'en' %}Glove Size Guide{% else %}掌圍對照表{% endif %}</span>
   </button>
 
   <dialog id="glove-size-guide-modal" class="glove-size-modal">
     <div class="glove-size-modal__content">
       <div class="glove-size-modal__header">
-        <h3>📐 CHIBA 手套掌圍測量指南</h3>
+        <h3>📐 CHIBA {% if localization.language.iso_code == 'en' %}Glove Size Guide{% else %}手套掌圍測量指南{% endif %}</h3>
         <button
           type="button"
           class="glove-size-modal__close"
           onclick="document.getElementById('glove-size-guide-modal').close()"
-          aria-label="關閉"
+          aria-label="{% if localization.language.iso_code == 'en' %}Close{% else %}關閉{% endif %}"
         >&times;</button>
       </div>
       <div class="glove-size-modal__body">
         <p class="glove-size-modal__desc">
-          <strong>測量方法：</strong>使用軟尺繞過掌心四指最寬處（不含大拇指）測量周長。若介於兩尺寸之間，建議選擇較大尺寸以獲得最佳舒適合腳感。
+          {% if localization.language.iso_code == 'en' %}
+            <strong>How to measure:</strong> Wrap a soft measuring tape around the widest part of your palm below the fingers, excluding the thumb. If you are between sizes, choose the larger size for the best comfort and fit.
+          {% else %}
+            <strong>測量方法：</strong>使用軟尺繞過掌心四指最寬處（不含大拇指）測量周長。若介於兩尺寸之間，建議選擇較大尺寸以獲得最佳舒適合腳感。
+          {% endif %}
         </p>
         <table class="glove-size-table">
           <thead>
             <tr>
               <th>尺寸 (Size)</th>
-              <th>歐規號碼</th>
+              <th>{% if localization.language.iso_code == 'en' %}EU Size{% else %}歐規號碼{% endif %}</th>
               <th>掌圍周長 (Palm Circumference)</th>
             </tr>
           </thead>
@@ -87,7 +91,7 @@
         </table>
         <div class="glove-size-modal__footer-note">
           <img src="{{ 'flag-de.svg' | asset_url }}" alt="" width="24" height="16" aria-hidden="true">
-          德國原廠極致工藝 · 3D 人體工學剪裁包覆
+          {% if localization.language.iso_code == 'en' %}German craftsmanship · 3D ergonomic fit{% else %}德國原廠極致工藝 · 3D 人體工學剪裁包覆{% endif %}
         </div>
       </div>
     </div>

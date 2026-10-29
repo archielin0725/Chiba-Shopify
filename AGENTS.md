@@ -47,7 +47,7 @@ If previous task is NOT complete: resume from checkpoint, complete or reach vali
 - `/Users/archie/Documents/Chiba` is strictly read-only. Never modify, overwrite, rename, move, or delete anything under it.
 - Do not publish externally, change DNS, sign up for paid services, or deploy to production without explicit human approval.
 - Generated files belong inside `~/Chiba-AI`.
-- Public website may use ONLY 台灣零售價 (approved Taiwan retail price). Never expose 經銷商價 (dealer price) publicly.
+- Public websites may use only the approved Taiwan retail price as their price source; never expose 經銷商價 (dealer price). Customer-facing product prices must show the amount only (for example, `NT$ 1,280`) in every locale, without `台灣零售價`, `建議零售價`, RRP, or MSRP prefixes. Keep `起`/`From` only for category starting-price ranges. RRP is an internal price-source term, not a second public price label.
 
 ## Phase Roadmap
 - **Phase 1**: Catalogue Completeness / Canonical Product Universe
@@ -162,7 +162,7 @@ To prevent regressions, duplicate controls, and wasted token cycles, every agent
      - **官方網站 (www.chibataiwan.com) 與 Shopify 商城 (shop.chibataiwan.com) 雙平台聯動標準 (Dual-Platform Alignment Standard)**：
        * **三位一體鍵值對齊 (Tri-Key Consistency)**：商品 `Handle`（如 `chiba-40186-fitness`）、規格 `Variant SKU`（如 `40186-BLACKGOLD-S/M`）與建議售價 `Price`（如 `NT$ 1,280`），在官網靜態 DTO/JSON、Shopify CSV 主檔與導購對照表（`shopify-variant-map.json`）中必須 100% 絕對一致。
        * **官網跳轉預選子類 (Variant Deep-Link Handover)**：官網商品頁選定顏色與尺寸點擊「前往購買」時，帶入的 URL 參數 `?variant={variant_id}` 必須與 Shopify 後台子類 ID 絕對對齊，實現即時預選規格與一鍵加入購物車。
-       * **全站嚴格單一零售價防線 (RRP Brand Protection)**：全站（官網、Shopify、匯出 DTO、JSON）僅允許渲染台灣官方建議零售價（建議售價 / RRP），禁止出現小數點 `.00`。嚴禁在任何公開檔案或 CSV `Cost per item` 洩漏原廠經銷商批發價（Dealer Price）。
+       * **全站嚴格單一零售價防線 (RRP Brand Protection)**：全站（官網、Shopify、匯出 DTO、JSON）的價格來源僅允許使用核准的台灣建議零售價（RRP），禁止出現小數點 `.00`。顧客頁面只顯示金額（如 `NT$ 1,280`），不得再加「台灣零售價／建議零售價」或 RRP/MSRP 標籤；RRP 是內部價格來源名稱，不是第二種公開價格。嚴禁在任何公開檔案或 CSV `Cost per item` 洩漏原廠經銷商批發價（Dealer Price）。
        * **標準商品標題公式**：統一採用 `CHIBA [英文型號/系列] [繁體中文品名]`（例如：`CHIBA Motivation Grippad 激勵防滑握力護墊`）。
        * **結構化 HTML 描述規範**：統一採用 `<div class="chiba-product-description">`，依序包含產品核心特點條列、系列材質、標準洗滌保養（`30°C 水洗或柔洗，平放陰乾，切勿烘乾`）、德國百年研發承諾，以及官方授權正品免運保證。
        * **掌圍指南品類邊界**：掌圍尺寸測量表（XS–XXL / 16.5–29cm）僅限手套品類（58款）注入；車衣、袖套、腰帶、深蹲纏繞護膝等 36 款非手套商品嚴禁殘留任何掌圍指南文字。

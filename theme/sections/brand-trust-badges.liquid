@@ -100,32 +100,48 @@
           <img src="{{ 'flag-de.svg' | asset_url }}" alt="" width="24" height="16">
         </div>
         <div class="brand-trust-content">
-          <h4 class="brand-trust-title">德國百年傳承</h4>
-          <p class="brand-trust-desc">始於 1853 年，超過 170 年人體工學工藝，專業運動員信賴首選</p>
+          <h4 class="brand-trust-title">
+            {%- if localization.language.iso_code == 'en' -%}German Heritage Since 1853{%- else -%}德國百年傳承{%- endif -%}
+          </h4>
+          <p class="brand-trust-desc">
+            {%- if localization.language.iso_code == 'en' -%}More than 170 years of ergonomic craftsmanship trusted by professional athletes{%- else -%}始於 1853 年，超過 170 年人體工學工藝，專業運動員信賴首選{%- endif -%}
+          </p>
         </div>
       </div>
 
       <div class="brand-trust-card">
         <div class="brand-trust-icon-wrap" aria-hidden="true">🛡️</div>
         <div class="brand-trust-content">
-          <h4 class="brand-trust-title">官方正品保障</h4>
-          <p class="brand-trust-desc">台灣官方直營旗艦館，原廠正品防偽標籤，售後無虞安心選購</p>
+          <h4 class="brand-trust-title">
+            {%- if localization.language.iso_code == 'en' -%}Official Authenticity Guaranteed{%- else -%}官方正品保障{%- endif -%}
+          </h4>
+          <p class="brand-trust-desc">
+            {%- if localization.language.iso_code == 'en' -%}Official Taiwan store with genuine products, authentication labels, and reliable after-sales service{%- else -%}台灣官方直營旗艦館，原廠正品防偽標籤，售後無虞安心選購{%- endif -%}
+          </p>
         </div>
       </div>
 
       <div class="brand-trust-card">
         <div class="brand-trust-icon-wrap" aria-hidden="true">🚚</div>
         <div class="brand-trust-content">
-          <h4 class="brand-trust-title">全館滿額免運</h4>
-          <p class="brand-trust-desc">單筆訂單滿 NT$ 1,500 即享台灣本島超商/宅配零元免運直送</p>
+          <h4 class="brand-trust-title">
+            {%- if localization.language.iso_code == 'en' -%}Free Shipping on Qualifying Orders{%- else -%}全館滿額免運{%- endif -%}
+          </h4>
+          <p class="brand-trust-desc">
+            {%- if localization.language.iso_code == 'en' -%}Free convenience-store or home delivery in Taiwan on orders over NT$1,500{%- else -%}單筆訂單滿 NT$ 1,500 即享台灣本島超商/宅配零元免運直送{%- endif -%}
+          </p>
         </div>
       </div>
 
       <div class="brand-trust-card">
         <div class="brand-trust-icon-wrap" aria-hidden="true">🔄</div>
         <div class="brand-trust-content">
-          <h4 class="brand-trust-title">7 天鑑賞換貨</h4>
-          <p class="brand-trust-desc">享 7 天鑑賞期服務，專人提供尺寸對照與規格更換專業諮詢</p>
+          <h4 class="brand-trust-title">
+            {%- if localization.language.iso_code == 'en' -%}7-Day Returns and Exchanges{%- else -%}7 天鑑賞換貨{%- endif -%}
+          </h4>
+          <p class="brand-trust-desc">
+            {%- if localization.language.iso_code == 'en' -%}Enjoy a 7-day review period with expert help choosing sizes and exchanging products{%- else -%}享 7 天鑑賞期服務，專人提供尺寸對照與規格更換專業諮詢{%- endif -%}
+          </p>
         </div>
       </div>
     </div>

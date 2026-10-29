@@ -178,47 +178,53 @@
   <div class="tech-spotlight-container">
     <div class="tech-spotlight-header">
       <span class="tech-spotlight-eyebrow">GERMAN ERGONOMIC SYSTEM</span>
-      <h2 class="tech-spotlight-title">BioXCell® 人體工學雙階減壓系統</h2>
+      <h2 class="tech-spotlight-title">
+        {%- if localization.language.iso_code == 'en' -%}BioXCell® Two-Stage Ergonomic Cushioning System{%- else -%}BioXCell® 人體工學雙階減壓系統{%- endif -%}
+      </h2>
       <p class="tech-spotlight-subtitle">
-        專為緩解手麻與震動壓迫而生。由德國百年人體工學研發團隊精心打造，為每一次騎乘與高強度抓握提供極致保護。
+        {%- if localization.language.iso_code == 'en' -%}
+          Designed to relieve hand numbness and vibration pressure. Developed by a German ergonomic research team to protect every ride and high-intensity grip.
+        {%- else -%}
+          專為緩解手麻與震動壓迫而生。由德國百年人體工學研發團隊精心打造，為每一次騎乘與高強度抓握提供極致保護。
+        {%- endif -%}
       </p>
     </div>
 
     <div class="tech-spotlight-grid">
       <!-- Card 1 -->
       <div class="tech-card">
-        <span class="tech-card__badge">歐洲人體工學認證</span>
+        <span class="tech-card__badge">{% if localization.language.iso_code == 'en' %}European Ergonomic Certification{% else %}歐洲人體工學認證{% endif %}</span>
         <div class="tech-card__icon" aria-hidden="true">🧬</div>
-        <h3 class="tech-card__title">BioXCell 雙階避震凝膠</h3>
+        <h3 class="tech-card__title">{% if localization.language.iso_code == 'en' %}BioXCell Two-Stage Shock-Absorbing Gel{% else %}BioXCell 雙階避震凝膠{% endif %}</h3>
         <p class="tech-card__desc">
-          精確避開掌面尺神經與正中神經通道，階梯式雙層凝膠墊有效分散車把微幅震盪，徹底防止長途騎乘所產生的手指麻痺與握力疲乏。
+          {% if localization.language.iso_code == 'en' %}Precisely positioned away from the ulnar and median nerve pathways, the stepped dual-layer gel pad disperses handlebar vibration to help prevent numb fingers and grip fatigue on long rides.{% else %}精確避開掌面尺神經與正中神經通道，階梯式雙層凝膠墊有效分散車把微幅震盪，徹底防止長途騎乘所產生的手指麻痺與握力疲乏。{% endif %}
         </p>
       </div>
 
       <!-- Card 2 -->
       <div class="tech-card">
-        <span class="tech-card__badge" style="color: #f59e0b; background: rgba(245, 158, 11, 0.1); border-color: rgba(245, 158, 11, 0.2);">90% 衝擊吸收</span>
+        <span class="tech-card__badge" style="color: #f59e0b; background: rgba(245, 158, 11, 0.1); border-color: rgba(245, 158, 11, 0.2);">{% if localization.language.iso_code == 'en' %}90% Impact Absorption{% else %}90% 衝擊吸收{% endif %}</span>
         <div class="tech-card__icon" aria-hidden="true">⚡</div>
-        <h3 class="tech-card__title">Poron® XRD 極致吸震核心</h3>
+        <h3 class="tech-card__title">{% if localization.language.iso_code == 'en' %}Poron® XRD Advanced Impact Protection{% else %}Poron® XRD 極致吸震核心{% endif %}</h3>
         <p class="tech-card__desc">
-          常態下柔軟透氣貼合掌形，遭遇劇烈衝擊瞬間分子連鎖硬化，瞬間吸收高達 90% 衝擊能量，為掌骨提供最堅固的無形防護。
+          {% if localization.language.iso_code == 'en' %}Soft and breathable in everyday use, the material conforms to the palm and hardens in an instant on impact, absorbing up to 90% of impact energy to protect the metacarpal bones.{% else %}常態下柔軟透氣貼合掌形，遭遇劇烈衝擊瞬間分子連鎖硬化，瞬間吸收高達 90% 衝擊能量，為掌骨提供最堅固的無形防護。{% endif %}
         </p>
       </div>
 
       <!-- Card 3 -->
       <div class="tech-card">
-        <span class="tech-card__badge" style="color: #10b981; background: rgba(16, 185, 129, 0.1); border-color: rgba(16, 185, 129, 0.2);">原創快拆結構</span>
+        <span class="tech-card__badge" style="color: #10b981; background: rgba(16, 185, 129, 0.1); border-color: rgba(16, 185, 129, 0.2);">{% if localization.language.iso_code == 'en' %}Quick-Release Design{% else %}快拆結構{% endif %}</span>
         <div class="tech-card__icon" aria-hidden="true">🧲</div>
-        <h3 class="tech-card__title">Quick-Pull 原創快速脫手拉環</h3>
+        <h3 class="tech-card__title">{% if localization.language.iso_code == 'en' %}Quick-Pull Release Loop{% else %}Quick-Pull 快速脫手拉環{% endif %}</h3>
         <p class="tech-card__desc">
-          Chiba 原創經典設計。高強度運動大量出汗後，只需以雙指穿入中指與無名指間的拉環，即可一秒俐落脫卸手套，保護縫線不拉扯。
+          {% if localization.language.iso_code == 'en' %}A classic Chiba design. After intense exercise, slip two fingers through the loop between the middle and ring fingers to remove the gloves quickly without pulling the seams.{% else %}Chiba 經典設計。高強度運動大量出汗後，只需以雙指穿入中指與無名指間的拉環，即可一秒俐落脫卸手套，保護縫線不拉扯。{% endif %}
         </p>
       </div>
     </div>
 
     <div class="tech-spotlight-cta">
       <a href="{{ routes.all_products_collection_url }}/bioxcell-line" class="tech-spotlight-button">
-        探索 BioXCell 減壓系列 <span aria-hidden="true">→</span>
+        {% if localization.language.iso_code == 'en' %}Explore BioXCell Cushioning{% else %}探索 BioXCell 減壓系列{% endif %} <span aria-hidden="true">→</span>
       </a>
     </div>
   </div>

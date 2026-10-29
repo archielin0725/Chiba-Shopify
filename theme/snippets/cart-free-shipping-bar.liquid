@@ -24,17 +24,17 @@
     {%- if cart.item_count == 0 -%}
       <span class="cart-free-shipping-bar__icon">🚚</span>
       <span class="cart-free-shipping-bar__text">
-        全館消費滿 <strong>NT$ 1,500</strong> 享免運優惠
+        {% if localization.language.iso_code == 'en' %}Free shipping on orders over <strong>NT$1,500</strong>{% else %}全館消費滿 <strong>NT$ 1,500</strong> 享免運優惠{% endif %}
       </span>
     {%- elsif is_free_shipping -%}
       <span class="cart-free-shipping-bar__icon">🎉</span>
       <span class="cart-free-shipping-bar__text cart-free-shipping-bar__text--achieved">
-        <strong>已達成！</strong> 您已享有 0 元免運優惠
+        {% if localization.language.iso_code == 'en' %}<strong>Unlocked!</strong> You qualify for free shipping{% else %}<strong>已達成！</strong> 您已享有 0 元免運優惠{% endif %}
       </span>
     {%- else -%}
       <span class="cart-free-shipping-bar__icon">🚚</span>
       <span class="cart-free-shipping-bar__text">
-        還差 <strong>{{ remaining_amount | money }}</strong> 即可享有免運優惠！
+        {% if localization.language.iso_code == 'en' %}<strong>{{ remaining_amount | money }}</strong> more for free shipping!{% else %}還差 <strong>{{ remaining_amount | money }}</strong> 即可享有免運優惠！{% endif %}
       </span>
     {%- endif -%}
   </div>

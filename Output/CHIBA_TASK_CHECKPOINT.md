@@ -1,3 +1,18 @@
+## Shopify Storefront Technology Spotlight Copy Optimization (Remove 原創 / Clean Presentation) — completed — 2026-10-30 02:05 +08:00
+
+### Completed
+- Audited `https://shop.chibataiwan.com/zh-tw` and identified all occurrences of "原創" (clustered in Card 3 of `theme/sections/technology-spotlight.liquid`):
+  1. **Badge**: Replaced `原創快拆結構` with `快拆結構` (`Quick-Release Design` in EN).
+  2. **Title**: Replaced `Quick-Pull 原創快速脫手拉環` with `Quick-Pull 快速脫手拉環` (`Quick-Pull Release Loop` in EN), aligning with the official trademark feature name across the product catalog.
+  3. **Description**: Replaced `Chiba 原創經典設計。` with `Chiba 經典設計。` (`A classic Chiba design.` in EN), providing natural, professional, and confident brand phrasing.
+- Performed linguistic and brand reasonableness review:
+  - Removing "原創" eliminates redundant marketing rhetoric, establishing an understated, authoritative German engineering tone consistent with Card 1 (`歐洲人體工學認證`) and Card 2 (`90% 衝擊吸收`).
+  - Card 3 title now cleanly reads `Quick-Pull 快速脫手拉環`, eliminating the awkward modifier between the brand name and the component noun.
+- Verified Theme Check: 0 Errors (`npx -y @shopify/cli theme check --path theme --fail-level error --no-color`).
+- Generated and verified timestamped package `CHIBA-Shopify-theme-20261030-0204.zip` in project root, `Output/`, and `~/Downloads/`.
+
+---
+
 ## 2026 Gravel Fundo Cinematic Poster (Minimalist Typography: Punctuation-Free Copy) — completed — 2026-10-27 22:36 +08:00
 
 ### Completed

@@ -188,9 +188,19 @@
   <div class="category-entrance-container">
     <div class="category-entrance-header">
       <span class="category-entrance-eyebrow">EXPLORE BY SPORT</span>
-      <h2 class="category-entrance-title">探索專業運動裝備</h2>
+      <h2 class="category-entrance-title">
+        {%- if localization.language.iso_code == 'en' -%}
+          Explore Professional Sports Equipment
+        {%- else -%}
+          探索專業運動裝備
+        {%- endif -%}
+      </h2>
       <p class="category-entrance-subtitle">
-        德國百年人體工學研究，針對不同運動強度與受力模式，提供專屬掌部減壓與關節保護
+        {%- if localization.language.iso_code == 'en' -%}
+          Backed by more than a century of German ergonomic research, with purpose-built palm cushioning and joint protection for every sport.
+        {%- else -%}
+          德國百年人體工學研究，針對不同運動強度與受力模式，提供專屬掌部減壓與關節保護
+        {%- endif -%}
       </p>
     </div>
 
@@ -199,12 +209,12 @@
       <a href="{{ routes.collections_url }}/chiba-gloves-germany" class="category-card">
         <div class="category-card__media-wrapper">
           {%- if section.settings.cycling_image != blank -%}
-            {{ section.settings.cycling_image | image_url: width: 1200 | image_tag: class: 'category-card__media', loading: 'lazy', alt: 'CHIBA 自行車系列' }}
+            {{ section.settings.cycling_image | image_url: width: 1200 | image_tag: class: 'category-card__media', loading: 'lazy', alt: 'CHIBA Cycling Collection' }}
           {%- else -%}
             <img
               src="https://cdn.shopify.com/s/files/1/1015/5950/1113/files/cycling__3060224__2fb5e63976f1a90e__3060224_10_1.jpg?v=1790331617"
               class="category-card__media"
-              alt="CHIBA 自行車系列"
+              alt="CHIBA Cycling Collection"
               loading="lazy"
               width="600"
               height="600"
@@ -214,12 +224,18 @@
         <div class="category-card__overlay"></div>
         <div class="category-card__content">
           <span class="category-card__tag">CYCLING COLLECTION</span>
-          <h3 class="category-card__title">自行車專業裝備</h3>
+          <h3 class="category-card__title">
+            {%- if localization.language.iso_code == 'en' -%}Professional Cycling Equipment{%- else -%}自行車專業裝備{%- endif -%}
+          </h3>
           <p class="category-card__desc">
-            BioXCell® 雙階人體工學減壓 · Poron® XRD 衝擊吸收 · 公路競速與長途巡航
+            {%- if localization.language.iso_code == 'en' -%}
+              BioXCell® two-stage ergonomic cushioning · Poron® XRD impact absorption · Road racing and long-distance riding
+            {%- else -%}
+              BioXCell® 雙階人體工學減壓 · Poron® XRD 衝擊吸收 · 公路競速與長途巡航
+            {%- endif -%}
           </p>
           <span class="category-card__button">
-            選購自行車系列 <span aria-hidden="true">→</span>
+            {%- if localization.language.iso_code == 'en' -%}Shop Cycling{%- else -%}選購自行車系列{%- endif -%} <span aria-hidden="true">→</span>
           </span>
         </div>
       </a>
@@ -228,12 +244,12 @@
       <a href="{{ routes.collections_url }}/chiba-gloves-germany-1" class="category-card">
         <div class="category-card__media-wrapper">
           {%- if section.settings.fitness_image != blank -%}
-            {{ section.settings.fitness_image | image_url: width: 1200 | image_tag: class: 'category-card__media', loading: 'lazy', alt: 'CHIBA 健身重訓系列' }}
+            {{ section.settings.fitness_image | image_url: width: 1200 | image_tag: class: 'category-card__media', loading: 'lazy', alt: 'CHIBA Fitness and Training Collection' }}
           {%- else -%}
             <img
               src="https://cdn.shopify.com/s/files/1/1015/5950/1113/files/fitness__40148__black-10__2e46c13787f494d4__40148-10-1.jpg?v=1790331642"
               class="category-card__media"
-              alt="CHIBA 健身重訓系列"
+              alt="CHIBA Fitness and Training Collection"
               loading="lazy"
               width="600"
               height="600"
@@ -243,12 +259,18 @@
         <div class="category-card__overlay"></div>
         <div class="category-card__content">
           <span class="category-card__tag" style="color: #f59e0b; background: rgba(245, 158, 11, 0.15); border-color: rgba(245, 158, 11, 0.3);">FITNESS & TRAINING</span>
-          <h3 class="category-card__title">健身重訓裝備</h3>
+          <h3 class="category-card__title">
+            {%- if localization.language.iso_code == 'en' -%}Fitness and Training Equipment{%- else -%}健身重訓裝備{%- endif -%}
+          </h3>
           <p class="category-card__desc">
-            腕關節剛性鎖定 · 激勵防滑握力護墊 · 頂級重訓手套與專業運動護具
+            {%- if localization.language.iso_code == 'en' -%}
+              Wrist stabilization · Motivation grip pads · Premium training gloves and professional supports
+            {%- else -%}
+              腕關節剛性鎖定 · 激勵防滑握力護墊 · 頂級重訓手套與專業運動護具
+            {%- endif -%}
           </p>
           <span class="category-card__button">
-            選購健身重訓系列 <span aria-hidden="true">→</span>
+            {%- if localization.language.iso_code == 'en' -%}Shop Fitness and Training{%- else -%}選購健身重訓系列{%- endif -%} <span aria-hidden="true">→</span>
           </span>
         </div>
       </a>
