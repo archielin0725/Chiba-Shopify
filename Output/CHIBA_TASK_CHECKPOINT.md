@@ -1,4 +1,4 @@
-## Shopify Product Description Copy Cleanup — current export processed; awaiting user review — 2026-10-30 03:06 +08:00
+## Shopify Product Description Copy Cleanup — CSV ready; live import blocked on Shopify Admin authentication — 2026-10-30 03:09 +08:00
 
 ### Completed
 - Processed the user-provided current Shopify export `~/Downloads/products_export_1.csv` (SHA-256 `a8ff8ae5c176218119779e7f0139bd3c590da6ee2f1fa4d4ebd6597088ac96ad`) with `scripts/clean_product_descriptions.py`.
@@ -9,7 +9,9 @@
 - No live Shopify data was changed or imported.
 
 ### Pending / blocker
-- Await user review/approval before importing the CSV into Shopify. This candidate uses the current export supplied by the user; keep the original export as the backup.
+- User approved executing the live update. Attempted to open Shopify Admin at 2026-10-30 03:09 +08:00, but the available browser session is unauthenticated and is at the Shopify sign-in page. No login credentials were requested or entered and no live product changes were made.
+- Next action: user signs in to the already-open Shopify browser page themselves, then asks to continue. After authentication, inspect Products > Import, select the prepared current-export CSV, review Shopify's import summary and overwrite options, execute the import, and verify affected product descriptions live.
+- The candidate uses the current export supplied by the user; keep `~/Downloads/products_export_1.csv` as the original backup.
 - Initial `git pull --rebase origin main` was blocked because the shared worktree contains existing uncommitted changes. `git fetch origin main` succeeded. No unrelated changes were staged or modified.
 - Last known good theme package remains `CHIBA-Shopify-theme-20261030-0204.zip`; no theme files were changed in this task.
 
