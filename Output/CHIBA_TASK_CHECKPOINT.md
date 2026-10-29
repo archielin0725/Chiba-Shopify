@@ -1,17 +1,16 @@
-## Shopify Product Description Copy Cleanup — CSV ready; live import blocked on Shopify Admin authentication — 2026-10-30 03:09 +08:00
+## Shopify Product Description Copy Cleanup — live import completed and verified — 2026-10-30 03:15 +08:00
 
 ### Completed
 - Processed the user-provided current Shopify export `~/Downloads/products_export_1.csv` (SHA-256 `a8ff8ae5c176218119779e7f0139bd3c590da6ee2f1fa4d4ebd6597088ac96ad`) with `scripts/clean_product_descriptions.py`.
-- Generated `Output/CHIBA_Shopify_Full_Products_Cleaned_20261030-0306.csv` and copied it to `~/Downloads/`.
-- Validation passed: 1,259 variant rows, 93 product handles, all 51 columns preserved, 37 product handles updated, 39 occurrences removed, zero remaining `原創` anywhere in the output, zero duplicate variant keys (including Option 3), and no changed cells outside `Body (HTML)`. The Downloads and project copies are byte-identical.
+- Generated `Output/CHIBA_Shopify_Full_Products_Cleaned_20261030-0314.csv` and copied it to `~/Downloads/`. This upload candidate contains only 10 columns needed to update existing product descriptions and map existing variants: Handle, Title, Body (HTML), option names/values, and Variant SKU. It intentionally excludes price, inventory, image, publication, metafield, and cost fields.
+- Shopify preview confirmed the scoped import covered 37 existing products, 862 variants, and 0 images; overwrite of matching handles was enabled and “publish new products” was disabled. The import completed and Shopify closed the in-progress dialog.
+- Verified all 37 live product endpoints on `shop.chibataiwan.com` returned HTTP 200 after import. Across all 37, live descriptions contained zero `原創` occurrences and showed the expected replacement phrasing. Both special Solar and BioXCell/Econyl sentences were verified in the live product data.
+- CSV validation passed: source export contains 1,259 rows, 93 product handles, and 51 columns; the actual minimal import contains 862 rows across 37 handles and 10 columns. All original non-description fields were excluded from the import; zero duplicate variant keys; no `原創` remaining in the target output. Downloads/project copies are byte-identical.
 - Reviewed the affected sentences: Quick-Pull copy now reads `指尖拉環設計`; Solar copy reads `Lycra® Solar 透光均勻曬膚科技`; BioXCell/Econyl copy reads `BioXCell 兩階段防手麻設計，搭配 Econyl® 海洋再生尼龍`. The revised wording remains grammatical and preserves the intended meaning.
-- This is a Shopify product-data CSV, not a theme ZIP: product descriptions are product records, so a theme package would not change them.
-- No live Shopify data was changed or imported.
+- This was a Shopify product-data update, not a theme ZIP. No theme files or storefront code were changed.
 
 ### Pending / blocker
-- User approved executing the live update. Attempted to open Shopify Admin at 2026-10-30 03:09 +08:00, but the available browser session is unauthenticated and is at the Shopify sign-in page. No login credentials were requested or entered and no live product changes were made.
-- Next action: user signs in to the already-open Shopify browser page themselves, then asks to continue. After authentication, inspect Products > Import, select the prepared current-export CSV, review Shopify's import summary and overwrite options, execute the import, and verify affected product descriptions live.
-- The candidate uses the current export supplied by the user; keep `~/Downloads/products_export_1.csv` as the original backup.
+- None. Original source export `~/Downloads/products_export_1.csv` remains unchanged as the backup.
 - Initial `git pull --rebase origin main` was blocked because the shared worktree contains existing uncommitted changes. `git fetch origin main` succeeded. No unrelated changes were staged or modified.
 - Last known good theme package remains `CHIBA-Shopify-theme-20261030-0204.zip`; no theme files were changed in this task.
 

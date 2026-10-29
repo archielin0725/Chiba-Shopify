@@ -24,6 +24,18 @@ REPLACEMENTS = {
         1,
     ),
 }
+MINIMAL_UPDATE_FIELDS = [
+    "Handle",
+    "Title",
+    "Body (HTML)",
+    "Option1 Name",
+    "Option1 Value",
+    "Option2 Name",
+    "Option2 Value",
+    "Option3 Name",
+    "Option3 Value",
+    "Variant SKU",
+]
 
 
 def read_csv(path: Path) -> tuple[list[str], list[dict[str, str]]]:
@@ -58,6 +70,16 @@ def main() -> None:
         "input_csv",
         type=Path,
         help="Current Shopify product CSV export to use as the source",
+    )
+    parser.add_argument(
+        "--only-changed-products",
+        action="store_true",
+        help="Export all variant rows only for products whose descriptions changed",
+    )
+    parser.add_argument(
+        "--minimal-update",
+        action="store_true",
+        help="Include only product text and variant identity fields, not price, inventory, images, publication, or cost",
     )
     args = parser.parse_args()
     input_csv = args.input_csv
@@ -95,14 +117,29 @@ def main() -> None:
                 f"found {found_counts[phrase]}"
             )
 
+    changed_handles: set[str] = set()
     for row in rows:
         body = row.get("Body (HTML)") or ""
         for phrase, (replacement, _) in REPLACEMENTS.items():
+            if phrase in body:
+                changed_handles.add(row.get("Handle", ""))
             body = body.replace(phrase, replacement)
         row["Body (HTML)"] = body
 
+    if args.only_changed_products:
+        rows = [row for row in rows if row.get("Handle", "") in changed_handles]
+    if args.minimal_update:
+        missing_fields = set(MINIMAL_UPDATE_FIELDS).difference(fieldnames)
+        if missing_fields:
+            raise ValueError(
+                f"CSV is missing fields required for a minimal update: "
+                f"{sorted(missing_fields)}"
+            )
+        fieldnames = MINIMAL_UPDATE_FIELDS
+        rows = [{field: row.get(field, "") for field in fieldnames} for row in rows]
+
     if any("原創" in (row.get("Body (HTML)") or "") for row in rows):
-        raise ValueError("Unreviewed 原創 wording remains in product descriptions")
+        raise ValueError("Unreviewed 原創 wording remains in the selected products")
 
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     DOWNLOADS_DIR.mkdir(parents=True, exist_ok=True)
@@ -120,7 +157,10 @@ def main() -> None:
     shutil.copy2(output_path, downloads_path)
 
     exported_headers, exported_rows = read_csv(output_path)
-    if exported_headers != fieldnames or len(exported_rows) != EXPECTED_ROWS:
+    expected_output_rows = (
+        len(rows) if args.only_changed_products else EXPECTED_ROWS
+    )
+    if exported_headers != fieldnames or len(exported_rows) != expected_output_rows:
         raise ValueError("Exported CSV failed the structure re-read check")
     validate_variants(exported_rows)
     if any("原創" in value for row in exported_rows for value in row.values() if value):
@@ -130,7 +170,16 @@ def main() -> None:
 
     print(f"Prepared {output_path}")
     print(f"Copied   {downloads_path}")
-    print(f"Verified {len(exported_rows)} rows, {len(exported_headers)} columns,")
+    print(
+        f"Verified {len(exported_rows)} rows across "
+        f"{len({row.get('Handle') for row in exported_rows})} products, "
+        f"{len(exported_headers)} columns,"
+    )
+    if args.minimal_update:
+        print(
+            "         minimal update omits prices, inventory, images, publication, "
+            "metafields, and cost"
+        )
     print(f"         0 原創 occurrences in Body (HTML); 0 duplicate variant keys")
     print("Replacements:")
     for phrase, (replacement, count) in REPLACEMENTS.items():
